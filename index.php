@@ -1,50 +1,47 @@
-<?php
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-error_reporting( E_ALL );
-ini_set('display_errors', 'On');
+    <title>Signin Template for Bootstrap</title>
 
-require_once 'ebas.class.php';
-require_once 'session.php';
-require_once 'header.php';
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
 
-?>
-<div class="row">
-        <div class="col-md-12">*suche</div>
-</div>
-<div class="row">
-        <div class="kurs col-md-12">
-          <?php
+    <!-- Custom styles for this template -->
+    <link href="ebas.css" rel="stylesheet">
 
-          $ebas = new ebas;
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
 
-          $kurse = $ebas->kurse->getAlleKurse();
-          foreach($kurse as $kurs){
-            echo '<div class="inner-kurs row">';
-              echo '<div class="kurs-ort col-md-3">'.$kurs["bezeichnung_de"].'</div>';
-              echo '<div class="kurs-datum col-md-5">'.''.'</div>';
-              echo '<div class="kurs-sprache col-md-1">'.$kurs["sprache"].'</div>';
-              echo '<div class="kurs-tz col-md-3">'.$kurs["max_teilnehmer"].'/'.$kurs["max_teilnehmer"].'</div>';
-            echo '</div>';
-          }
+  <body>
 
+    <div class="container">
 
-          ?>
+      <form class="form-signin" role="form">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="email" class="form-control" placeholder="Email address" required="" autofocus="">
+        <input type="password" class="form-control" placeholder="Password" required="">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
         </div>
-</div>
-<table style="margin:50px">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Bezeichnung</th>
-    </tr>
-  </thead>
-  <tbody>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
 
-</tbody>
-</table>
+    </div> <!-- /container -->
 
-<?php
 
-require_once 'footer.php';
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="bootstrap.min.js""></script>
 
-?>
+
+</body></html>
