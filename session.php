@@ -1,0 +1,3 @@
+<?php
+$ebas = new ebas;
+?>

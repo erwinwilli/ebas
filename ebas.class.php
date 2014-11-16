@@ -5,6 +5,7 @@ class ebas{
   public $session;
   public $user;
   public $kurse;
+  public $anmeldungen;
   public $interessenten;
   public $db;
 
@@ -17,13 +18,14 @@ class ebas{
     $this->session = new session($this);
     $this->user = new user($this);
     $this->kurse = new kurse($this);
+    $this->anmeldungen = new anmeldungen($this);
     $this->interessenten = new interessenten($this);
     $this->db = new mysqli(self::SERVER, self::USER, self::PASSWORD, self::DATABASE);
     $this->db->set_charset("utf8");
     if ($this->db->connect_errno) {
       echo "Failed to connect to MySQL: (" . $this->db->connect_errno . ") " . $this->db->connect_error;
+      echo $this->db->host_info . "\n";
     }
-    echo $this->db->host_info . "\n";
   }
 
 }
@@ -55,7 +57,7 @@ class kurse {
   }
 
   public function getAlleKurse(){
-    $SQL = "SELECT * FROM `tbl_kurse_2014_2` ORDER BY 'bezeichnung_it' ASC";
+    $SQL = "SELECT * FROM 'tbl_kurse_2014_2' ORDER BY 'bezeichnung_it' ASC";
     /* Select queries return a resultset */
     if ($result = $this->ebas->db->query($SQL)) {
         printf("Select returned %d rows.\n", $result->num_rows);
@@ -71,23 +73,38 @@ class kurse {
   }
 
   public function getKurs($id){
-    $SQL = "SELECT * FROM `tbl_kurse_2014_2` ORDER BY 'bezeichnung_it' ASC";
+    $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit FROM `tbl_anmeldungen_2014_2` WHERE kurs = ? ORDER BY name ASC";
     if ($stmt = $this->ebas->db->prepare($SQL)) {
 
       /* bind parameters for markers */
-      $stmt->bind_param("s", $cit, $stringy);
+      $stmt->bind_param("i", $id);
 
       /* execute query */
       $stmt->execute();
 
+      /* bind result */
+      $stmt->bind_result($id, $kurs, $gutschein, $name, $vorname, $adresse, $plz, $ort, $email, $sprache, $zeit);
+
       // Daten zuweisen
-      $kurse = $res->fetch_all();
+      while ($stmt->fetch()) {
+        $anmeldungen[] = array(
+          'anmeldung_id' => $id,
+          'kurs' => $kurs,
+          'gutschein' => $gutschein,
+          'name' => $name,
+          'vorname' => $vorname,
+          'adresse' => $adresse,
+          'plz' => $plz,
+          'ort' => $ort,
+          'email' => $email,
+          'sprache' => $sprache,
+          'zeit' => $zeit
+        );
+      }
 
       // Schliessen
       $stmt->close();
-
-      return $kurse;
-
+      return $anmeldungen;
     }
 
   }
@@ -96,8 +113,88 @@ class kurse {
 
   }
 
-  public function getAnmeldungen($id){
+}
 
+class anmeldungen {
+
+  public $ebas;
+
+  public function __construct($ebas){
+    $this->ebas = $ebas;
+  }
+
+  public function getAlleAnmeldungen(){
+    $SQL = "SELECT * FROM 'tbl_anmeldungen_2014_2' ORDER BY name ASC";
+    /* Select queries return a resultset */
+    if ($result = $this->ebas->db->query($SQL)) {
+        printf("Select returned %d rows.\n", $result->num_rows);
+        while($row = $result->fetch_assoc()){
+            $anmeldungen [] = $row;
+        }
+        /* free result set */
+        $result->close();
+    }
+  }
+
+  public function getAnmeldungen($id){
+      $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit FROM `tbl_anmeldungen_2014_2` WHERE kurs = ? ORDER BY name ASC";
+      if ($stmt = $this->ebas->db->prepare($SQL)) {
+
+        /* bind parameters for markers */
+        $stmt->bind_param("i", $id);
+
+        /* execute query */
+        $stmt->execute();
+
+        /* bind result */
+        $stmt->bind_result($id, $kurs, $gutschein, $name, $vorname, $adresse, $plz, $ort, $email, $sprache, $zeit);
+
+        // Daten zuweisen
+        while ($stmt->fetch()) {
+          $anmeldungen[] = array(
+            'anmeldung_id' => $id,
+            'kurs' => $kurs,
+            'gutschein' => $gutschein,
+            'name' => $name,
+            'vorname' => $vorname,
+            'adresse' => $adresse,
+            'plz' => $plz,
+            'ort' => $ort,
+            'email' => $email,
+            'sprache' => $sprache,
+            'zeit' => $zeit
+          );
+        }
+
+        // Schliessen
+        $stmt->close();
+        return $anmeldungen;
+      }
+  }
+
+  public function searchAnmeldungen($q){
+    if(filter_var($q, FILTER_VALIDATE_EMAIL)){
+      $email = $q;
+    }else{
+      $email = 'FALSE';
+    }
+    $q = preg_replace("/[^a-zA-Z0-9-öäüÖÄÜéàèÉÀÈÂâ]+/", "", $q);
+    $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit
+     FROM `tbl_anmeldungen_2014_2`
+     WHERE name LIKE '%$q%' OR vorname LIKE '%$q%' OR adresse LIKE '%$q%' OR plz LIKE '%$q%' OR ort LIKE '%$q%' OR email LIKE '%$email%'
+     ORDER BY name ASC";
+    /* Select queries return a resultset */
+    if ($result = $this->ebas->db->query($SQL)) {
+      $anmeldungen = array();
+        while($row = $result->fetch_assoc()){
+            $anmeldungen[] = $row;
+        }
+        /* free result set */
+        $result->close();
+    }else {
+      $anmeldungen = array();
+    }
+    return $anmeldungen;
   }
 
   public function updateAnmeldungen($id){
@@ -115,7 +212,18 @@ class interessenten {
   }
 
   public function getAlleInteressenten(){
+    $SQL = "SELECT * FROM 'tbl_interessenten_2014_2' ORDER BY 'name' ASC";
+    /* Select queries return a resultset */
+    if ($result = $this->ebas->db->query($SQL)) {
+        printf("Select returned %d rows.\n", $result->num_rows);
+        while($row = $result->fetch_assoc()){
+            $interessenten[] = $row;
+        }
+        /* free result set */
+        $result->close();
+    }
 
+    return $interessenten;
   }
 
   public function getInteressent($id){
