@@ -18,7 +18,7 @@ require_once 'header.php';
 			$kurse = $ebas->kurse->getAlleKurse();
 			echo "<table border='3' >";
 			echo "<tr>";
-			echo "<th style=' padding:5px'>Ort</th>";
+			echo "<th style=' padding:5px'>Ort</th>";//Titel der Tabele wird eingefügt
 			echo "<th style=' padding:5px'>Sprache</th>"; 
 			echo "<th style=' padding:5px'>Teilnehmer</th>";
 			echo "<tr>";
@@ -37,7 +37,7 @@ require_once 'header.php';
         
 
           ?>
-        </div
+        </div>
 </div>
 <table style="margin:50px">
   <thead>
