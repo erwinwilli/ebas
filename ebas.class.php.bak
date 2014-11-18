@@ -57,7 +57,7 @@ class kurse {
   }
 
   public function getAlleKurse(){
-    $SQL = "SELECT * FROM `tbl_kurse_2014_2` ORDER BY 'bezeichnung_it' ASC";
+    $SQL = "SELECT * FROM 'tbl_kurse_2014_2' ORDER BY 'bezeichnung_it' ASC";
     /* Select queries return a resultset */
     if ($result = $this->ebas->db->query($SQL)) {
         printf("Select returned %d rows.\n", $result->num_rows);
