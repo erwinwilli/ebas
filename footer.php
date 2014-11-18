@@ -1,4 +1,4 @@
-
-</div><script src="./assets/ebas.min.js"></script>
+</div>
+<script src="./assets/ebas.min.js"></script>
 </body>
 </html>
