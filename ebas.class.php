@@ -110,6 +110,26 @@ class kurse {
 
   }
 
+  public function searchKurse($k){
+
+  $k = preg_replace("/[^a-zA-Z0-9-öäüÖÄÜéàèÉÀÈÂâ]+/", "", $k);
+  $SQL = "SELECT kurs_id, bezeichnung_de, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, ort, datum
+   FROM `tbl_anmeldungen_2014_2`
+   WHERE bezeichnung_de LIKE '%$k%' OR sprache LIKE '%$k%' OR ort LIKE '%$k%' OR datum LIKE '%$k%' ORDER BY ort ASC";
+  /* Select queries return a resultset */
+  if ($result = $this->ebas->db->query($SQL)) {
+    $kurse = array();
+      while($row = $result->fetch_assoc()){
+          $kurse[] = $row;
+      }
+      /* free result set */
+      $result->close();
+  }else {
+    $kurse = array();
+  }
+  return $kurse;
+}
+
   public function updateKurs($id){
 
   }
