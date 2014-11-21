@@ -38,7 +38,11 @@ require_once 'header.php';
           <td><?= $kurs["bezeichnung_de"] ?></td>
           <td><?= $kurs["sprache"] ?></td>
           <td><?= $kurs["ort"] ?></td>
-          <td><?= $kurs["datum"] ?></td>
+		  <?php
+			$datum = $kurs["datum"];
+			$datum = date("d.m.Y", strtotime($datum));					
+			?>
+          <td><?= $datum?></td>
           <td><?= $kurs["max_teilnehmer"] ?></td>
         </tr>
 
