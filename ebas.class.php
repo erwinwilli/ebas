@@ -73,7 +73,7 @@ class kurse {
   }
 
   public function getKurs($id){
-    $SQL = "SELECT kurs_id, kurs, bezeichnung_de, bezeichnung_fr, bezeichnung_it, bezeichnung_en, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, ort, datum FROM `tbl_kurse_2014_2` WHERE kurs = ? ORDER BY bezeichnung_de ASC";
+    $SQL = "SELECT kurs_id, bezeichnung_de, bezeichnung_fr, bezeichnung_it, bezeichnung_en, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, ort, datum FROM `tbl_kurse_2014_2` WHERE kurs_id = ? ORDER BY bezeichnung_de ASC";
     if ($stmt = $this->ebas->db->prepare($SQL)) {
 
       /* bind parameters for markers */
@@ -83,25 +83,25 @@ class kurse {
       $stmt->execute();
 
       /* bind result */
-      $stmt->bind_result($id, $kurs, $bezeichnung_de, $sprache, $ort, $max_teilnehmer, $max_teilnehmer_PF, $datum);
+      $stmt->bind_result($id, $bezeichnung_de, $bezeichnung_fr, $bezeichnung_it, $bezeichnung_en, $sortierung, $sprache, $max_teilnehmer, $max_teilnehmer_PF, $ort, $datum);
 
       // Daten zuweisen
       while ($stmt->fetch()) {
         $kurse[] = array(
           'kurs_id' => $id,
-          'kurs' => $kurs,
           'bezeichnung_de' => $bezeichnung_de,
           'sprache' => $sprache,
           'ort' => $ort,
           'max_teilnehmer' => $max_teilnehmer,
           'max_teilnehmer_PF' => $max_teilnehmer_PF,
-          'datum' => $date
+          'datum' => $datum
         );
       }
 
       // Schliessen
       $stmt->close();
       return $kurse;
+      printf($kurse);
     }
 
   }
