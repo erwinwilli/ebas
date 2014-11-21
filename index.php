@@ -14,37 +14,40 @@ require_once 'header.php';
 			</p>
 		</div>
 </div>
-<div class="row">	
+<div class="row">
     <div class="kurs col-md-12">
-		<?php 
+		<?php
 			$ebas = new ebas;
 			$kurse = $ebas->kurse->getAlleKurse();
-			echo '<div class="inner-kurs	 ">';
-				echo '<div class="kurs-ort col-md-7">Kursort und Datum</div>';
-				echo '<div class="kurs-sprache col-md-1">Sprache</div>';
-				echo '<div class="kurs-tz col-md-2">Teilnehmeranzahl</div>';
-				foreach($kurse as $kurs){            
-					echo '<div class="kurs-ort col-md-7">'.$kurs["bezeichnung_de"].'</div>';		
-					echo '<div class="kurs-sprache col-md-1">'.$kurs["sprache"].'</div>';
-					echo '<div class="kurs-tz col-md-2">'.$kurs["max_teilnehmer"].'/'.$kurs["max_teilnehmer"].'</div>';
-				}
-				echo '<div class="kurs-ende col-md-10"></div>';
-			echo '</div>';
-			
-        ?>
+      ?>
+      <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Kursort und Datum</th>
+          <th>Sprache</th>
+          <th>Ort</th>
+          <th>Datum</th>
+          <th>Max Teilnehmer</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <?php foreach($kurse as $kurs){ ?>
+
+        <tr>
+          <td><?= $kurs["bezeichnung_de"] ?></td>
+          <td><?= $kurs["sprache"] ?></td>
+          <td><?= $kurs["ort"] ?></td>
+          <td><?= $kurs["datum"] ?></td>
+          <td><?= $kurs["max_teilnehmer"] ?></td>
+        </tr>
+
+        <?php } ?>
+
+      </tbody>
+    </table>
         </div>
 </div>
-<table style="margin:50px">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Bezeichnung</th>
-    </tr>
-  </thead>
-  <tbody>
-
-</tbody>
-</table>
 
 <?php
 

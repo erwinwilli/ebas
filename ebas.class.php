@@ -57,7 +57,7 @@ class kurse {
   }
 
   public function getAlleKurse(){
-    $SQL = "SELECT * FROM `tbl_kurse_2014_2` ORDER BY 'bezeichnung_it' ASC";
+    $SQL = "SELECT * FROM `tbl_kurse_2014_2` ORDER BY 'bezeichnung_de' ASC";
     /* Select queries return a resultset */
     if ($result = $this->ebas->db->query($SQL)) {
         printf("Select returned %d rows.\n", $result->num_rows);
@@ -83,23 +83,19 @@ class kurse {
       $stmt->execute();
 
       /* bind result */
-      $stmt->bind_result($id, $kurs, $bezeichnung_de, $bezeichnung_fr, $bezeichnung_it, $bezeichnung_en, $sortierung, $sprache, $max_teilnehmer, $max_teilnehmer_PF, $ort, $datum);
+      $stmt->bind_result($id, $kurs, $bezeichnung_de, $sprache, $ort, $max_teilnehmer, $max_teilnehmer_PF, $datum);
 
       // Daten zuweisen
       while ($stmt->fetch()) {
         $kurse[] = array(
           'kurs_id' => $id,
           'kurs' => $kurs,
-          'bezeichnung_de' => $gutschein,
-          'bezeichnung_fr' => $name,
-          'bezeichnung_it' => $vorname,
-          'bezeichnung_en' => $adresse,
-          'sortierung' => $plz,
-          'sprache' => $ort,
-          'max_teilnehmer' => $email,
-          'max_teilnehmer_PF' => $sprache,
-          'ort' => $zeit,
-          'datum' => $datum
+          'bezeichnung_de' => $bezeichnung_de,
+          'sprache' => $sprache,
+          'ort' => $ort,
+          'max_teilnehmer' => $max_teilnehmer,
+          'max_teilnehmer_PF' => $max_teilnehmer_PF,
+          'datum' => $date
         );
       }
 
