@@ -18,7 +18,7 @@ require_once 'header.php';
     <div class="kurs col-md-12">
 		<?php
 			$kurse = $ebas->kurse->getAlleKurse();
-      ?>
+    ?>
       <table class="table table-striped">
       <thead>
         <tr>
@@ -33,10 +33,9 @@ require_once 'header.php';
 
         <?php foreach($kurse as $kurs){ ?>
         <tr>
-          <td><a href= kurse.php?kurs=<?= $kurs["kurs_id"]?>><?= $kurs["kurs_id"] ?></td>
-          <td><?= $kurs["bezeichnung_de"] ?></td>
+          <td><a href= kurse.php?kurs=<?= $kurs["kurs_id"]?>><?= $kurs["bezeichnung_de"] ?></td>
           <td><?= $kurs["sprache"] ?></td>
-          <td><?= $kurs["ort"] ?></td>
+          <td><?= $kurs["kursort"] ?></td>
 		  <?php
 			$datum = $kurs["datum"];
 			$datum = date("d.m.Y", strtotime($datum));

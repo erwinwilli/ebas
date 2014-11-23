@@ -73,7 +73,7 @@ class kurse {
   }
 
   public function getKurs($id){
-    $SQL = "SELECT kurs_id, bezeichnung_de, bezeichnung_fr, bezeichnung_it, bezeichnung_en, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, ort, datum FROM `tbl_kurse_2014_2` WHERE kurs_id = ? ORDER BY bezeichnung_de ASC";
+    $SQL = "SELECT kurs_id, bezeichnung_de, bezeichnung_fr, bezeichnung_it, bezeichnung_en, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, kursort, datum FROM `tbl_kurse_2014_2` WHERE kurs_id = ? ORDER BY bezeichnung_de ASC";
     if ($stmt = $this->ebas->db->prepare($SQL)) {
 
       /* bind parameters for markers */
@@ -83,7 +83,7 @@ class kurse {
       $stmt->execute();
 
       /* bind result */
-      $stmt->bind_result($id, $bezeichnung_de, $bezeichnung_fr, $bezeichnung_it, $bezeichnung_en, $sortierung, $sprache, $max_teilnehmer, $max_teilnehmer_PF, $ort, $datum);
+      $stmt->bind_result($id, $bezeichnung_de, $bezeichnung_fr, $bezeichnung_it, $bezeichnung_en, $sortierung, $sprache, $max_teilnehmer, $max_teilnehmer_PF, $kursort, $datum);
 
       // Daten zuweisen
       while ($stmt->fetch()) {
@@ -91,7 +91,7 @@ class kurse {
           'kurs_id' => $id,
           'bezeichnung_de' => $bezeichnung_de,
           'sprache' => $sprache,
-          'ort' => $ort,
+          'kursort' => $kursort,
           'max_teilnehmer' => $max_teilnehmer,
           'max_teilnehmer_PF' => $max_teilnehmer_PF,
           'datum' => $datum
@@ -108,9 +108,9 @@ class kurse {
   public function searchKurse($k){
 
   $k = preg_replace("/[^a-zA-Z0-9-öäüÖÄÜéàèÉÀÈÂâ]+/", "", $k);
-  $SQL = "SELECT kurs_id, bezeichnung_de, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, ort, datum
+  $SQL = "SELECT kurs_id, bezeichnung_de, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, kursort, datum
    FROM `tbl_anmeldungen_2014_2`
-   WHERE bezeichnung_de LIKE '%$k%' OR sprache LIKE '%$k%' OR ort LIKE '%$k%' OR datum LIKE '%$k%' ORDER BY ort ASC";
+   WHERE bezeichnung_de LIKE '%$k%' OR sprache LIKE '%$k%' OR kursort LIKE '%$k%' OR datum LIKE '%$k%' ORDER BY ort ASC";
   /* Select queries return a resultset */
   if ($result = $this->ebas->db->query($SQL)) {
     $kurse = array();
@@ -153,7 +153,9 @@ class anmeldungen {
   }
 
   public function getAnmeldungen($id){
-      $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit FROM `tbl_anmeldungen_2014_2` WHERE kurs = ? ORDER BY name ASC";
+      $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit
+      FROM `tbl_anmeldungen_2014_2`
+      WHERE kurs = ? ORDER BY name ASC";
       if ($stmt = $this->ebas->db->prepare($SQL)) {
 
         /* bind parameters for markers */
@@ -169,7 +171,7 @@ class anmeldungen {
         while ($stmt->fetch()) {
           $anmeldungen[] = array(
             'anmeldung_id' => $id,
-            'kurs' => $kurs,
+            'bezeichnung_de' => $kurs,
             'gutschein' => $gutschein,
             'name' => $name,
             'vorname' => $vorname,

@@ -9,11 +9,12 @@ require_once 'header.php';
 
 ?>
 <div class="row">
-        <div class="col-md-3">
+  <div class="col-md-3">
       <input type="text" class="search form-control" size="12" placeholder="Search">
       </p>
     </div>
 </div>
+
 <div class="row">
     <div class="kurs col-md-12">
     <?php
