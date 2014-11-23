@@ -32,9 +32,9 @@ require_once 'header.php';
       <tbody>
 
         <?php foreach($kurse as $kurs){ ?>
-
         <tr>
-          <td><a href="kurse.php?kurs=2"> <?= $kurs["bezeichnung_de"] ?></td>
+          <td><a href= kurse.php?kurs=<?= $kurs["kurs_id"]?>><?= $kurs["kurs_id"] ?></td>
+          <td><?= $kurs["bezeichnung_de"] ?></td>
           <td><?= $kurs["sprache"] ?></td>
           <td><?= $kurs["ort"] ?></td>
 		  <?php

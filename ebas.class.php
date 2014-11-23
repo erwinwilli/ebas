@@ -101,7 +101,6 @@ class kurse {
       // Schliessen
       $stmt->close();
       return $kurse;
-      printf($kurse);
     }
 
   }

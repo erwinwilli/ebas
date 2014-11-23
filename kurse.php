@@ -17,9 +17,9 @@ require_once 'header.php';
 <div class="row">
     <div class="kurs col-md-12">
     <?php
-      isset ($_GET['kurs']))
-      $kurse = $ebas->anmeldungen->getAnmeldungen(kurs);
-
+      if (isset($_GET["kurs"])){
+      $kurse = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
+      }
       ?>
       <table class="table table-striped">
       <thead>
@@ -52,7 +52,6 @@ require_once 'header.php';
     </table>
         </div>
 </div>
-
 <?php
 
 require_once 'footer.php';
