@@ -18,6 +18,7 @@ require_once 'header.php';
 <div class="row">
     <div class="kurs col-md-12">
     <?php
+	
       if (isset($_GET["kurs"])){
       $kurse = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
       }
@@ -38,8 +39,8 @@ require_once 'header.php';
 
         <?php
       foreach($kurse as $kurs){ ?>
-        <tr>
-          <td><?= $kurs["name"] ?></td>
+        <tr >
+          <td><a href= interessenten.php?anmeldung=<?= $kurs["anmeldung_id"]?>><?= $kurs["name"] ?></td>
           <td><?= $kurs["vorname"] ?></td>
           <td><?= $kurs["adresse"] ?></td>
           <td><?= $kurs["plz"] ?></td>

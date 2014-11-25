@@ -151,7 +151,45 @@ class anmeldungen {
         $result->close();
     }
   }
+  //Start MVG 25.11.14
+  public function getUser($id){
+      $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit
+      FROM `tbl_anmeldungen_2014_2`
+      WHERE anmeldung_id = ? ";  
+      if ($stmt = $this->ebas->db->prepare($SQL)) {
 
+        /* bind parameters for markers */
+        $stmt->bind_param("i", $id);
+
+        /* execute query */
+        $stmt->execute();
+
+        /* bind result */
+        $stmt->bind_result($id, $kurs, $gutschein, $name, $vorname, $adresse, $plz, $ort, $email, $sprache, $zeit);
+
+        // Daten zuweisen
+        while ($stmt->fetch()) {
+          $anmeldungen[] = array(
+            'anmeldung_id' => $id,
+            'bezeichnung_de' => $kurs,
+            'gutschein' => $gutschein,
+            'name' => $name,
+            'vorname' => $vorname,
+            'adresse' => $adresse,
+            'plz' => $plz,
+            'ort' => $ort,
+            'email' => $email,
+            'sprache' => $sprache,
+            'zeit' => $zeit
+          );
+        }
+
+        // Schliessen
+        $stmt->close();
+        return $anmeldungen;
+      }
+  }
+  //Ende MvG
   public function getAnmeldungen($id){
       $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit
       FROM `tbl_anmeldungen_2014_2`
