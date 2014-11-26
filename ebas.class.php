@@ -209,7 +209,7 @@ class anmeldungen {
         while ($stmt->fetch()) {
           $anmeldungen[] = array(
             'anmeldung_id' => $id,
-            'bezeichnung_de' => $kurs,
+            'kurs' => $kurs,
             'gutschein' => $gutschein,
             'name' => $name,
             'vorname' => $vorname,
@@ -265,6 +265,14 @@ class anmeldungen {
     $this->ebas->db->query($SQL);
   }
 
+  public function neueAnmeldung($data){
+
+    $SQL = "INSERT INTO ebas.tbl_anmeldungen_2014_2 (kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache)
+    VALUES
+    ("."'".$data['kurs']."'".", "."'".$data['gutschein']."'".", "."'".$data['name']."'".", "."'".$data['vorname']."'".", "."'".$data['adresse']."'"
+    .", "."'".$data['plz']."'".", "."'".$data['ort']."'".", "."'".$data['email']."'".", "."'".$data['sprache']."'".")";
+    $this->ebas->db->query($SQL);
+  }
 }
 
 class interessenten {
