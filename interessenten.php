@@ -5,6 +5,11 @@ ini_set('display_errors', 'On');
 
 require_once 'ebas.class.php';
 require_once 'session.php';
+if(isset($_POST) && !empty($_POST)){
+  $ebas->anmeldungen->updateAnmeldungen($_POST,$_GET["anmeldung"]);
+  header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
+}
+
 require_once 'header.php';
 
 ?>
@@ -18,61 +23,102 @@ require_once 'header.php';
 <div class="row">
     <div class="anmeldung col-md-12">
     <?php
-	
+
+
+      if(!is_numeric($_GET["anmeldung"])){
+        die();
+      }
+
       if (isset($_GET["anmeldung"])){
-      $kurse = $ebas->anmeldungen->getUser($_GET["anmeldung"]);	  
-      }	  
+      $kurse = $ebas->anmeldungen->getUser($_GET["anmeldung"]);
+      }
       ?>
-      <table class="table table-striped">
+      <form method="POST" action="#">
+      <table class="max-width-table table table-striped">
       <thead>
-	  
         <tr>
-          <th>Name</th>
-          <th>Vorname</th>
-          <th>Adresse</th>
-          <th>PLZ</th>
-          <th>Ort</th>
-          <th>E-Mail</th>
-          <th>Sprache</th>
+        <tr>
+          <th>Kurs</th>
         </tr>
       </thead>
       <tbody>
 
        <?php
 	   foreach($kurse as $kurs){ ?>
-        <tr >
-          <td><input type="text" name="name" value=<?= $kurs["name"] ?> size="18" ></td>
-          <td><input type="text" name="name" value=<?= $kurs["vorname"] ?> size="18"></td>
-          <td><input type="text" name="name" value=<?= $kurs["adresse"] ?> size="18"></td>
-          <td><input type="text" name="name" value=<?= $kurs["plz"] ?> size="4"></td>
-          <td><input type="text" name="name" value=<?= $kurs["ort"] ?> size="6"></td>
-          <td><input type="text" name="name" value=<?= $kurs["email"] ?> size="25"></td>
-          <td><input type="text" name="name" value=<?= $kurs["sprache"] ?> size="4"></td>
+        <tr>
+          <td><select name="kurs">
+              <?php
+              $kurseX = $ebas->kurse->getAlleKurse();
+              foreach($kurseX as $kursX){
+                if($kurs["kurs"] == $kursX["kurs_id"]){
+                  $selected = "selected";
+                }else{
+                  $selected = "";
+                }
+                echo '<option value="'.$kursX["kurs_id"].'" '.$selected.'>'.$kursX["bezeichnung_de"].'</option>';
+              }
+              ?>
+            </select>
+          </td>
         </tr>
-		
+        <tr>
+          <th>Name</th>
+        </tr>
+          <tr>
+            <td><input type="text" name="name" value=<?= $kurs["name"] ?> ></td>
+          </tr>
+        <tr>
+          <th>Vorname</th>
+        </tr>
+          <tr>
+            <td><input type="text" name="vorname" value=<?= $kurs["vorname"] ?> ></td>
+          </tr>
+        <tr>
+          <th>Adresse</th>
+        </tr>
+          <tr>
+            <td><input type="text" name="adresse" value=<?= $kurs["adresse"] ?> ></td>
+          </tr>
+        <tr>
+          <th>PLZ</th>
+        </tr>
+          <tr>
+            <td><input type="text" name="plz" value=<?= $kurs["plz"] ?> ></td>
+          </tr>
+        <tr>
+          <th>Ort</th>
+        </tr>
+          <tr>
+            <td><input type="text" name="ort" value=<?= $kurs["ort"] ?> ></td>
+          </tr>
+        <tr>
+          <th>E-Mail</th>
+        </tr>
+          <tr>
+            <td><input type="text" name="email" value=<?= $kurs["email"] ?> ></td>
+          </tr>
+        <tr>
+          <th>Sprache</th>
+        </tr>
+          <tr>
+            <td><input type="text" name="sprache" value=<?= $kurs["sprache"] ?> ></td>
+          </tr>
+        <tr>
+          <th>Gutschein</th>
+        </tr>
+          <tr>
+            <td><input type="text" name="gutschein" value=<?= $kurs["sprache"] ?> ></td>
+          </tr>
         <?php } ?>
-	   
+
       </tbody>
     </table>
-	
-	<button onclick="saveDialog()">Speichern</button>
-	<p id="demo"></p>
-	
-	<script>
-function saveDialog() {
-    var x;
-    if (confirm("Wollen sie die Teilnehmer Daten Updaten?") == true) {
-        x = "Code Blabla für Updaten";
-    } else {
-        x = "auf die Vorletzte seite zurück navigieren. / Muss noch imblementiert werden";
-    }
-    document.getElementById("demo").innerHTML = x;
-}
-</script>
+    <input type="submit" value="Speichern">
+  </form>
      </div>
 </div>
 <?php
 
-require_once 'footer.php';	
+require_once 'footer.php';
 
 ?>

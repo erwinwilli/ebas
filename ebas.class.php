@@ -171,7 +171,7 @@ class anmeldungen {
         while ($stmt->fetch()) {
           $anmeldungen[] = array(
             'anmeldung_id' => $id,
-            'bezeichnung_de' => $kurs,
+            'kurs' => $kurs,
             'gutschein' => $gutschein,
             'name' => $name,
             'vorname' => $vorname,
