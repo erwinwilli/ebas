@@ -155,7 +155,7 @@ class anmeldungen {
   public function getUser($id){
       $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit
       FROM `tbl_anmeldungen_2014_2`
-      WHERE anmeldung_id = ? ";  
+      WHERE anmeldung_id = ? ";
       if ($stmt = $this->ebas->db->prepare($SQL)) {
 
         /* bind parameters for markers */
@@ -257,8 +257,12 @@ class anmeldungen {
     return $anmeldungen;
   }
 
-  public function updateAnmeldungen($id){
-
+  public function updateAnmeldungen($data,$id){
+    $SQL = "UPDATE ebas.tbl_anmeldungen_2014_2 SET kurs ='".$data['kurs']."',name ='".$data['name']."',vorname ='".$data['vorname'].
+    "',adresse ='".$data['adresse']."',plz ='".$data['plz']."',ort='".$data['ort']."',email='".$data['email'].
+    "',sprache='".$data['sprache']."',gutschein='".$data['gutschein'].
+    "' WHERE tbl_anmeldungen_2014_2.anmeldung_id =".$id;
+    $this->ebas->db->query($SQL);
   }
 
 }

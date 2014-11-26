@@ -18,7 +18,7 @@ require_once 'header.php';
 <div class="row">
     <div class="kurs col-md-12">
     <?php
-	
+
       if (isset($_GET["kurs"])){
       $kurse = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
       }
