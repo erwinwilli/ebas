@@ -107,7 +107,7 @@ require_once 'header.php';
           <th>Gutschein</th>
         </tr>
           <tr>
-            <td><input type="text" name="gutschein" value=<?= $kurs["sprache"] ?> ></td>
+            <td><input type="text" name="gutschein" value=<?= $kurs["gutschein"] ?> ></td>
           </tr>
         <?php } ?>
 
