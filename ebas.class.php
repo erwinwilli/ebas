@@ -1,5 +1,5 @@
 <?php
-
+//Hauptklasse Ebas; Zugriff auf DB
 class ebas{
 
   public $session;
@@ -30,6 +30,7 @@ class ebas{
 
 }
 
+
 class session{
 
   public $ebas;
@@ -38,16 +39,124 @@ class session{
     $this->ebas = $ebas;
   }
 
-  function check(){
-    session_start();
-    if (!$_SESSION["user"]){
-      // User not logged in, redirect to login page
-      Header("Location: login.php");
+  //Session authentification
+  public function set($username,$password){
+    $password = hash('sha256', $password);
+    $SQL = "SELECT * FROM tbl_login_2014_2 WHERE '$username' = username AND '$password' = password";
+
+    /* Select queries return a resultset */
+    if ($result = $this->ebas->db->query($SQL)) {
+        while($row = $result->fetch_assoc()){
+            $role = $row["role"];
+            $userID = $row["username_id"];
+        }
+        /* free result set */
+        $result->close();
+
+        $this->ebas->user->name = $username;
+        $this->ebas->user->role = $role;
+        $this->ebas->user->id = $userID;
+
+        //Token erstellen für Session
+        $session = $this->rand_char(255);
+        setcookie("session",$session,time()+(90*24*60*60));
+        setcookie("user",$userID,time()+(90*24*60*60));
+        $SQL = "INSERT INTO tbl_session_2014_2 (session_value,session_active,session_expire,session_user)
+        VALUES('$session',1,NOW() + INTERVAL 90 DAY,$userID)";
+        $this->ebas->db->query($SQL);
+        return TRUE;
+    }else{
+      return FALSE;
     }
+
+  }
+
+  public function delete($hash){
+    setcookie("session","_",time()-1);
+    setcookie("user","_",time()-1);
+    $SQL = "UPDATE tbl_session_2014_2
+            SET session_active=0
+            WHERE session_value='$hash'";
+    $this->ebas->db->query($SQL);
+  }
+
+  //Session überprüfen
+  public function validate($hash,$id){
+    $SQL = "SELECT * FROM tbl_session_2014_2 WHERE '$hash' = session_value AND '$id' = session_user";
+
+    /* Select queries return a resultset */
+    if ($result = $this->ebas->db->query($SQL)) {
+        while($row = $result->fetch_assoc()){
+            $id = $row["session_id"];
+            $value = $row["session_value"];
+            $active = $row["session_active"];
+            $expire = $row["session_expire"];
+            $user = $row["session_user"];
+        }
+        /* free result set */
+        $result->close();
+
+        if($active == 1){
+          $datetime1 = date_create(date('Y-m-d'));
+          $datetime2 = date_create($expire);
+          $interval = date_diff($datetime1, $datetime2);
+          if($interval->format("%R%a") <= 0){
+            setcookie("session","_",time()-1);
+            setcookie("user","_",time()-1);
+            $SQL = "UPDATE tbl_session_2014_2
+                    SET session_active=0
+                    WHERE session_id='$id'";
+            $this->ebas->db->query($SQL);
+            return FALSE;
+          }
+        }else{
+          return FALSE;
+        }
+
+
+        $SQL = "SELECT * FROM tbl_login_2014_2 WHERE '$user' = username_id";
+
+        /* Select queries return a resultset */
+        if ($result = $this->ebas->db->query($SQL)) {
+            while($row = $result->fetch_assoc()){
+                $role = $row["role"];
+                $username = $row["username"];
+            }
+        }
+        $this->ebas->user->name = $username;
+        $this->ebas->user->role = $role;
+        $this->ebas->user->id = $id;
+        return TRUE;
+    }else{
+      return FALSE;
+    }
+  }
+
+  private function rand_char($length) {
+    $random = '';
+    for ($i = 0; $i < $length; $i++) {
+      $random .= chr(mt_rand(64, 95));
+    }
+    return $random;
   }
 
 }
 
+//user für Login Details
+class user {
+
+  public $ebas;
+  public $name;
+  public $role;
+  public $id;
+
+  public function __construct($ebas){
+    $this->ebas = $ebas;
+  }
+
+}
+
+//Details für Zugriffe auf Tabelle tbl_kurse_2014_2
 class kurse {
 
   public $ebas;
@@ -140,7 +249,7 @@ class kurse {
   }
 
 }
-
+//Details für Zugriffe auf Tabelle tbl_anmeldungen_2014_2
 class anmeldungen {
 
   public $ebas;
@@ -354,22 +463,6 @@ class interessenten {
 
 }
 
-class user {
-
-  public $ebas;
-
-  public function __construct($ebas){
-    $this->ebas = $ebas;
-  }
-
-  public $name;
-  public $role;
-
-  public function getUser($id){
-
-  }
-
-}
 
 /*
 

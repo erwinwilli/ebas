@@ -77,15 +77,10 @@
         <div class="form-group">
           <input type="text" class="search form-control" placeholder="Search">
         </div>
-        </form>
+      </form>
       <li><a href="help.php">Help</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Benutzer<span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-          <li><a><?=$_SESSION["user"]?></a></li>
-          <li class="divider"></li>
-          <li><a href="login.php?mode=logoff">Abmelden</a></li>
-        </ul>
+      <li><a href="logout.php">Ausloggen</a></li>
+      </ul>
     </div>
   </nav>
   <div class="container">

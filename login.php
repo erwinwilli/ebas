@@ -1,15 +1,32 @@
-<div class="container">
+<?php
 
-      <form class="form-signin" role="form">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="email" class="form-control" placeholder="Email address" required="" autofocus="">
-        <input type="password" class="form-control" placeholder="Password" required="">
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
+error_reporting( E_ALL );
+ini_set('display_errors', 'On');
 
-    </div>
+require_once 'ebas.class.php';
+require_once 'session.php';
+require_once 'header.php';
+
+if(isset($_POST) && !empty($_POST)){
+  if($ebas->session->set($_POST["username"],$_POST["password"])){
+    header('Location: index.php');
+  }
+}
+
+?>
+
+<div class="row">
+    <div class="anmeldung col-md-12">
+        <form action="<?php echo basename($_SERVER['PHP_SELF']); ?>" method="POST" class="form-signin" role="form">
+          <h2 class="form-signin-heading">Bitte loggen Sie sich ein.</h2>
+          <input name="username" type="name" class="form-control" placeholder="Benutzername" required="" autofocus=""><br />
+          <input name="password" type="password" class="form-control" placeholder="Passwort" required=""><br />
+          <input class="btn btn-lg btn-primary btn-block" type="submit" value="Einloggen">
+        </form>
+     </div>
+</div>
+<?php
+
+require_once 'footer.php';
+
+?>

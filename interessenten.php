@@ -10,8 +10,10 @@ if(isset($_POST) && !empty($_POST)){
   header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
 }
 
+if($ebas->user->role > 1){
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
 require_once 'header.php';
-
 ?>
 <div class="row">
   <div class="col-md-3">
