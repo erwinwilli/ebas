@@ -40,7 +40,7 @@ require_once 'header.php';
         <?php
       foreach($kurse as $kurs){ ?>
         <tr >
-          <td><a href= interessenten.php?anmeldung=<?= $kurs["anmeldung_id"]?>><?= $kurs["name"] ?></td>
+          <td><a href= anmeldungen.php?anmeldung=<?= $kurs["anmeldung_id"]?>><?= $kurs["name"] ?></td>
           <td><?= $kurs["vorname"] ?></td>
           <td><?= $kurs["adresse"] ?></td>
           <td><?= $kurs["plz"] ?></td>
