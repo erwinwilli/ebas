@@ -421,7 +421,9 @@ class interessenten {
   }
 
   public function getInteressent($id){
-    $SQL = "SELECT interessent_id, name, vorname, adresse, plz, ort, email, kursort, sprache, zeit FROM `tbl_interessenten_2014_2` WHERE interessent = ? ORDER BY name ASC";
+    $SQL = "SELECT interessent_id, name, vorname, adresse, plz, ort, email, kursort, sprache, zeit
+    FROM `tbl_interessenten_2014_2`
+    WHERE interessent = ? ORDER BY name ASC";
     if ($stmt = $this->ebas->db->prepare($SQL)) {
 
       /* bind parameters for markers */
