@@ -60,12 +60,22 @@ class kurse {
     $SQL = "SELECT * FROM `tbl_kurse_2014_2` ORDER BY 'bezeichnung_de' ASC";
     /* Select queries return a resultset */
     if ($result = $this->ebas->db->query($SQL)) {
-        printf("Select returned %d rows.\n", $result->num_rows);
         while($row = $result->fetch_assoc()){
             $kurse[] = $row;
         }
         /* free result set */
         $result->close();
+    }
+    foreach($kurse as &$kurs){
+      $SQL = "SELECT count(*) AS count FROM `tbl_anmeldungen_2014_2` WHERE
+      ".$kurs['kurs_id']." = kurs";
+       if ($result = $this->ebas->db->query($SQL)) {
+           while($row = $result->fetch_assoc()){
+               $kurs['count'] = $row['count'];
+           }
+           /* free result set */
+           $result->close();
+       }
     }
 
     return $kurse;

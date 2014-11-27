@@ -26,7 +26,7 @@ require_once 'header.php';
           <th>Sprache</th>
           <th>Ort</th>
           <th>Datum</th>
-          <th>Max Teilnehmer</th>
+          <th>Teilnehmer</th>
         </tr>
       </thead>
       <tbody>
@@ -41,7 +41,7 @@ require_once 'header.php';
 			$datum = date("d.m.Y", strtotime($datum));
 			?>
           <td><?= $datum?></td>
-          <td><?= $kurs["max_teilnehmer"] ?></td>
+          <td><?= $kurs["count"] ?> / <?= $kurs["max_teilnehmer"] ?> </td>
         </tr>
 
         <?php } ?>
