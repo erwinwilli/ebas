@@ -70,7 +70,7 @@ class session{
     }
 
   }
-
+  //session Eintrag DB löschen
   public function delete($hash){
     setcookie("session","_",time()-1);
     setcookie("user","_",time()-1);
@@ -96,6 +96,7 @@ class session{
         /* free result set */
         $result->close();
 
+        //löschen expired Cookies
         if($active == 1){
           $datetime1 = date_create(date('Y-m-d'));
           $datetime2 = date_create($expire);
@@ -175,6 +176,7 @@ class kurse {
         /* free result set */
         $result->close();
     }
+    //Anzahl User für Kurs
     foreach($kurse as &$kurs){
       $SQL = "SELECT count(*) AS count FROM `tbl_anmeldungen_2014_2` WHERE
       ".$kurs['kurs_id']." = kurs";
@@ -310,41 +312,41 @@ class anmeldungen {
   }
   //Ende MvG
   public function getAnmeldungen($id){
-      $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit
-      FROM `tbl_anmeldungen_2014_2`
-      WHERE kurs = ? ORDER BY name ASC";
-      if ($stmt = $this->ebas->db->prepare($SQL)) {
+        $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit
+        FROM `tbl_anmeldungen_2014_2`
+        WHERE kurs = ? ORDER BY name ASC";
+        if ($stmt = $this->ebas->db->prepare($SQL)) {
 
-        /* bind parameters for markers */
-        $stmt->bind_param("i", $id);
+          /* bind parameters for markers */
+          $stmt->bind_param("i", $id);
 
-        /* execute query */
-        $stmt->execute();
+          /* execute query */
+          $stmt->execute();
 
-        /* bind result */
-        $stmt->bind_result($id, $kurs, $gutschein, $name, $vorname, $adresse, $plz, $ort, $email, $sprache, $zeit);
+          /* bind result */
+          $stmt->bind_result($id, $kurs, $gutschein, $name, $vorname, $adresse, $plz, $ort, $email, $sprache, $zeit);
 
-        // Daten zuweisen
-        while ($stmt->fetch()) {
-          $anmeldungen[] = array(
-            'anmeldung_id' => $id,
-            'kurs' => $kurs,
-            'gutschein' => $gutschein,
-            'name' => $name,
-            'vorname' => $vorname,
-            'adresse' => $adresse,
-            'plz' => $plz,
-            'ort' => $ort,
-            'email' => $email,
-            'sprache' => $sprache,
-            'zeit' => $zeit
-          );
+          // Daten zuweisen
+          while ($stmt->fetch()) {
+            $anmeldungen[] = array(
+              'anmeldung_id' => $id,
+              'kurs' => $kurs,
+              'gutschein' => $gutschein,
+              'name' => $name,
+              'vorname' => $vorname,
+              'adresse' => $adresse,
+              'plz' => $plz,
+              'ort' => $ort,
+              'email' => $email,
+              'sprache' => $sprache,
+              'zeit' => $zeit
+            );
+          }
+
+          // Schliessen
+          $stmt->close();
+          return $anmeldungen;
         }
-
-        // Schliessen
-        $stmt->close();
-        return $anmeldungen;
-      }
   }
 
   public function searchAnmeldungen($q){

@@ -18,42 +18,45 @@ require_once 'header.php';
 <div class="row">
     <div class="kurs col-md-12">
     <?php
+      if(!empty($_GET["kurs"])){
+        if (isset($_GET["kurs"])){
+        $kurse = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
+        }
+        ?>
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Vorname</th>
+            <th>Adresse</th>
+            <th>PLZ</th>
+            <th>Ort</th>
+            <th>E-Mail</th>
+            <th>Sprache</th>
+          </tr>
+        </thead>
+        <tbody>
 
-      if (isset($_GET["kurs"])){
-      $kurse = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
-      }
-      ?>
-      <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Vorname</th>
-          <th>Adresse</th>
-          <th>PLZ</th>
-          <th>Ort</th>
-          <th>E-Mail</th>
-          <th>Sprache</th>
-        </tr>
-      </thead>
-      <tbody>
+          <?php
+        foreach($kurse as $kurs){ ?>
+          <tr >
+            <td><a href= anmeldungen.php?anmeldung=<?= $kurs["anmeldung_id"]?>><?= $kurs["name"] ?></td>
+            <td><?= $kurs["vorname"] ?></td>
+            <td><?= $kurs["adresse"] ?></td>
+            <td><?= $kurs["plz"] ?></td>
+            <td><?= $kurs["ort"] ?></td>
+            <td><?= $kurs["email"] ?></td>
+            <td><?= $kurs["sprache"] ?></td>
+          </tr>
 
-        <?php
-      foreach($kurse as $kurs){ ?>
-        <tr >
-          <td><a href= anmeldungen.php?anmeldung=<?= $kurs["anmeldung_id"]?>><?= $kurs["name"] ?></td>
-          <td><?= $kurs["vorname"] ?></td>
-          <td><?= $kurs["adresse"] ?></td>
-          <td><?= $kurs["plz"] ?></td>
-          <td><?= $kurs["ort"] ?></td>
-          <td><?= $kurs["email"] ?></td>
-          <td><?= $kurs["sprache"] ?></td>
-        </tr>
-
-        <?php } ?>
-      </tbody>
-    </table>
-        </div>
-</div>
+          <?php }
+        }else{
+              header('Location: index.php');
+              }?>
+        </tbody>
+      </table>
+          </div>
+  </div>
 <?php
 
 require_once 'footer.php';

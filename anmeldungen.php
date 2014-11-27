@@ -10,6 +10,7 @@ if(isset($_POST) && !empty($_POST)){
   header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
 }
 
+//check Role
 if($ebas->user->role > 1){
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
