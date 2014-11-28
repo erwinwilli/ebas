@@ -10,7 +10,6 @@ require_once 'header.php';
 ?>
 <div class="row">
         <div class="col-md-3">
-			<input type="text" class="search form-control" size="12" placeholder="Search">
 			</p>
 		</div>
 </div>

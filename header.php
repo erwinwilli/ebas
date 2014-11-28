@@ -46,25 +46,6 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Daten<span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
 
-        <?php
-          foreach ($Config["tables"] as $table) {
-            if(array_key_exists('options', $table)){
-              $options=$table["options"];
-            }else{
-              $options="";
-            }
-            if(!(substr_count($options, 'hide') > 0)){
-              if(!(substr_count($options, 'adminonly') > 0) || ($_SESSION["isadmin"]==1)){
-                echo '<li><a href="index.php?view=';
-                echo $table["name"];
-                echo '">';
-                echo $table["name"];
-                echo '</a></li>';
-              }
-            }
-          };
-        ?>
-
         </ul>
       </li>
 

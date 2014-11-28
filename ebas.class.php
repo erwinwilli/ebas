@@ -261,7 +261,7 @@ class anmeldungen {
   }
 
   public function getAlleAnmeldungen(){
-    $SQL = "SELECT * FROM 'tbl_anmeldungen_2014_2' ORDER BY name ASC";
+    $SQL = "SELECT * FROM  `tbl_anmeldungen_2014_2` ORDER BY name ASC";
     /* Select queries return a resultset */
     if ($result = $this->ebas->db->query($SQL)) {
         printf("Select returned %d rows.\n", $result->num_rows);
@@ -271,6 +271,7 @@ class anmeldungen {
         /* free result set */
         $result->close();
     }
+    return $anmeldungen;
   }
   //Start MVG 25.11.14
   public function getUser($id){
@@ -342,7 +343,6 @@ class anmeldungen {
               'zeit' => $zeit
             );
           }
-
           // Schliessen
           $stmt->close();
           return $anmeldungen;
@@ -350,22 +350,21 @@ class anmeldungen {
   }
 
   public function searchAnmeldungen($q){
+    //Eingabe Filtern
     if(filter_var($q, FILTER_VALIDATE_EMAIL)){
       $email = $q;
     }else{
       $email = 'FALSE';
     }
     $q = preg_replace("/[^a-zA-Z0-9-öäüÖÄÜéàèÉÀÈÂâ]+/", "", $q);
+    //SQL Statement
     $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, zeit
      FROM `tbl_anmeldungen_2014_2`
-     WHERE name LIKE '%$q%' OR vorname LIKE '%$q%' OR adresse LIKE '%$q%' OR plz LIKE '%$q%' OR ort LIKE '%$q%' OR email LIKE '%$email%'
-     UNION
-     SELECT interessent_id, name, vorname, adresse, plz, ort, email, kursort, sprache, zeit
-     FROM `tbl_interessenten_2014_2`
-     WHERE name LIKE '%$q%' OR vorname LIKE '%$q%' OR adresse LIKE '%$q%' OR plz LIKE '%$q%' OR ort LIKE '%$q%' OR email LIKE '%$email%' OR kursort LIKE '%$q%'
+     WHERE name LIKE '%$q%' OR vorname LIKE '%$q%' OR adresse LIKE '%$q%' OR plz LIKE '%$q%' OR ort LIKE '%$q%' OR email LIKE '%$email%'  OR kurs LIKE '%$q%'
      ORDER BY name ASC";
+
     /* Select queries return a resultset */
-    if ($result = $this->ebas->db->query($SQL)) {
+    if($result = $this->ebas->db->query($SQL)){
       $anmeldungen = array();
         while($row = $result->fetch_assoc()){
             $anmeldungen[] = $row;
@@ -406,7 +405,7 @@ class interessenten {
   }
 
   public function getAlleInteressenten(){
-    $SQL = "SELECT * FROM 'tbl_interessenten_2014_2' ORDER BY 'name' ASC";
+    $SQL = "SELECT * FROM `tbl_interessenten_2014_2` ORDER BY 'name' ASC";
     /* Select queries return a resultset */
     if ($result = $this->ebas->db->query($SQL)) {
         printf("Select returned %d rows.\n", $result->num_rows);
@@ -416,11 +415,10 @@ class interessenten {
         /* free result set */
         $result->close();
     }
-
     return $interessenten;
   }
 
-  public function getInteressent($id){
+  public function getInteressenten($id){
     $SQL = "SELECT interessent_id, name, vorname, adresse, plz, ort, email, kursort, sprache, zeit
     FROM `tbl_interessenten_2014_2`
     WHERE interessent = ? ORDER BY name ASC";
@@ -456,6 +454,32 @@ class interessenten {
       }
     }
   }
+  public function searchInteressenten($q){
+    //Eingabe Filtern
+    if(filter_var($q, FILTER_VALIDATE_EMAIL)){
+      $email = $q;
+    }else{
+      $email = 'FALSE';
+    }
+    $q = preg_replace("/[^a-zA-Z0-9-öäüÖÄÜéàèÉÀÈÂâ]+/", "", $q);
+    //SQL Statement
+    $SQL = "SELECT interessent_id, kurs, name, vorname, adresse, plz, ort, email, kursort, sprache, zeit
+    FROM `tbl_interessenten_2014_2`
+    WHERE name LIKE '%$q%' OR vorname LIKE '%$q%' OR adresse LIKE '%$q%' OR plz LIKE '%$q%' OR ort LIKE '%$q%' OR email LIKE '%$email%' OR kursort LIKE '%$q%'
+    ORDER BY name ASC";
+   /* Select queries return a resultset */
+   if($result = $this->ebas->db->query($SQL)) {
+     $anmeldungen = array();
+       while($row = $result->fetch_assoc()){
+           $anmeldungen[] = $row;
+       }
+       /* free result set */
+       $result->close();
+   }else {
+     $anmeldungen = array();
+   }
+   return $anmeldungen;
+ }
 
   public function updateInteressent($id){
 

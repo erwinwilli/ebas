@@ -20,7 +20,7 @@ require_once 'header.php';
 <div class="row">
     <div class="kurs col-md-12">
     <?php
-      $kurse = $ebas->interessenten->getAlleInteressenten();
+      $kurse = $ebas->anmeldungen->getAlleAnmeldungen();
     ?>
       <table class="table table-striped">
       <thead>
@@ -31,20 +31,20 @@ require_once 'header.php';
           <th>PLZ</th>
           <th>Ort</th>
           <th>EMail</th>
-          <th>Kursort</th>
+          <th>Gutschein</th>
         </tr>
       </thead>
       <tbody>
 
         <?php foreach($kurse as $kurs){ ?>
         <tr>
-          <td><a href= anmeldungen.php?anmeldung=<?= $kurs["interessent_id"]?>> <?= $kurs["name"] ?></td>
+          <td><a href= anmeldungen.php?anmeldung=<?= $kurs["anmeldung_id"]?>> <?= $kurs["name"] ?></td>
           <td><?= $kurs["vorname"] ?></td>
           <td><?= $kurs["adresse"] ?></td>
           <td><?= $kurs["plz"] ?></td>
           <td><?= $kurs["ort"] ?></td>
           <td><?= $kurs["email"] ?></td>
-          <td><?= $kurs["kursort"] ?></td>
+          <td><?= $kurs["gutschein"] ?></td>
         </tr>
 
         <?php } ?>
