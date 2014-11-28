@@ -43,13 +43,12 @@
       <ul class="nav navbar-nav">
 
       <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Aufgaben <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a href="anmeldungen-liste.php">Alle Anmeldungen</a></li>
+            <li><a href="interessenten-liste.php">Alle Interessenten</a></li>
             <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a href="neuanmeldung.php">Neuer User erstellen</a></li>
             <li class="divider"></li>
             <li><a href="#">One more separated link</a></li>
           </ul>
