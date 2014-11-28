@@ -9,8 +9,8 @@ require_once 'header.php';
 
 ?>
 <div class="row">
-        <div class="col-md-3">
-          <form action="<?php $_PHP_SELF ?>" method="POST">
+    <div class="col-md-3">
+          <form method="POST" action="#">
           <input type="text" class="search form-control" size="12" placeholder="Search">
           <input type="submit" value="Suchen">
         </form>

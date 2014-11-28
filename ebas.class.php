@@ -264,7 +264,6 @@ class anmeldungen {
     $SQL = "SELECT * FROM  `tbl_anmeldungen_2014_2` ORDER BY name ASC";
     /* Select queries return a resultset */
     if ($result = $this->ebas->db->query($SQL)) {
-        printf("Select returned %d rows.\n", $result->num_rows);
         while($row = $result->fetch_assoc()){
             $anmeldungen [] = $row;
         }
@@ -408,7 +407,6 @@ class interessenten {
     $SQL = "SELECT * FROM `tbl_interessenten_2014_2` ORDER BY 'name' ASC";
     /* Select queries return a resultset */
     if ($result = $this->ebas->db->query($SQL)) {
-        printf("Select returned %d rows.\n", $result->num_rows);
         while($row = $result->fetch_assoc()){
             $interessenten[] = $row;
         }
