@@ -9,8 +9,24 @@ if(isset($_POST) && !empty($_POST)){
 Header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
 }
 require_once 'header.php';
-
 ?>
+
+<script language="javascript" type="text/javascript">          
+    function checkPLZ() 
+     { 	 
+		var eingabe = document.getElementById("plz").value;    
+        var postleitzahl = /[0-9]{4}/; 
+        var ergebnis = postleitzahl.test(eingabe);  
+		
+		if(ergebnis == false && document.getElementById("plz").value.length >= 4  )  
+       { 
+       alert("Die eingegebene PLZ ist fehlerhaft"); 
+       return true; 
+       }  
+     
+     } 
+	
+   </script> 
 <div class="row">
   <div class="col-md-3">
       <input type="text" class="search form-control" size="12" placeholder="Search">
@@ -23,7 +39,9 @@ require_once 'header.php';
       <?php
       $anmeldung = $ebas->anmeldungen->neueAnmeldung($_POST);
       ?>
-      <form method="POST" action="#">
+      <form method="POST" action="#" >
+	  
+	 
       <table class="max-width-table table table-striped">
       <thead>
         <tr>
@@ -66,7 +84,8 @@ require_once 'header.php';
         <th>PLZ</th>
       </tr>
         <tr>
-          <td><input type="text" name="plz" ></td>
+          <td><input type="text" name="plz" id="plz" onkeyup="checkPLZ()" >
+		</td>
         </tr>
       <tr>
         <th>Ort</th>
@@ -78,13 +97,19 @@ require_once 'header.php';
         <th>E-Mail</th>
       </tr>
         <tr>
-          <td><input type="text" name="email" ></td>
+          <td><input type="text" name="email"> </td>
         </tr>
       <tr>
         <th>Sprache</th>
       </tr>
         <tr>
-          <td><input type="text" name="sprache" ></td>
+          <td>
+			<select name="sprache" style="width: 100px">
+				<option value=" "> </option>
+				<option value="de">de</option>
+				<option value="fr">fr</option>
+			</select>
+		  </td>
         </tr>
       <tr>
         <th>Gutschein</th>
@@ -95,7 +120,8 @@ require_once 'header.php';
 
       </tbody>
     </table>
-    <input type="submit" value="Speichern">
+    <input type="submit" value="Speichern" >
+	
   </form>
      </div>
 </div>
@@ -104,3 +130,5 @@ require_once 'header.php';
 require_once 'footer.php';
 
 ?>
+
+
