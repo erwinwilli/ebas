@@ -1,6 +1,6 @@
 <?php
 $GLOBALS['strGlobAlleAnmel'] = "*";
-$GLOBALS['strGlobAlleintre'] = "*";	
+$GLOBALS['strGlobAlleintre'] = "*";
 
 //Hauptklasse Ebas; Zugriff auf DB
 class ebas{
@@ -420,9 +420,9 @@ class interessenten {
   }
 
   public function getInteressenten($id){
-    $SQL = "SELECT interessent_id, name, vorname, adresse, plz, ort, email, kursort, sprache, zeit
+    $SQL = "SELECT interessent_id, kurs, name, vorname, adresse, plz, ort, email, kursort, sprache, zeit
     FROM `tbl_interessenten_2014_2`
-    WHERE interessent = ? ORDER BY name ASC";
+    WHERE interessent_id = ? ORDER BY name ASC";
     if ($stmt = $this->ebas->db->prepare($SQL)) {
 
       /* bind parameters for markers */
@@ -432,12 +432,13 @@ class interessenten {
       $stmt->execute();
 
       /* bind result */
-      $stmt->bind_result($id, $name, $vorname, $adresse, $plz, $ort, $email, $kursort, $sprache, $zeit);
+      $stmt->bind_result($id, $kurs, $name, $vorname, $adresse, $plz, $ort, $email, $kursort, $sprache, $zeit);
 
       // Daten zuweisen
       while ($stmt->fetch()) {
         $interessenten[] = array(
           'interessent_id' => $id,
+          'kurs' => $kurs,
           'name' => $name,
           'vorname' => $vorname,
           'adresse' => $adresse,
@@ -451,7 +452,7 @@ class interessenten {
 
         // Schliessen
         $stmt->close();
-        return $interessent;
+        return $interessenten;
       }
     }
   }
@@ -482,8 +483,12 @@ class interessenten {
    return $anmeldungen;
  }
 
-  public function updateInteressent($id){
-
+  public function updateInteressent($data, $id){
+    $SQL = "UPDATE ebas.tbl_interessenten_2014_2 SET name ='".$data['name']."',vorname ='".$data['vorname'].
+    "',adresse ='".$data['adresse']."',plz ='".$data['plz']."',ort='".$data['ort']."',email='".$data['email'].
+    "',kursort='".$data['kursort']."',sprache='".$data['sprache'].
+    "' WHERE tbl_interessenten_2014_2.interessent_id =".$id;
+    $this->ebas->db->query($SQL);
   }
 
   public function interessentToAnmeldung($id){
