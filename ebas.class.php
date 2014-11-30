@@ -1,5 +1,6 @@
 <?php
 $GLOBALS['strGlobAlleAnmel'] = "*";
+$GLOBALS['strGlobAlleintre'] = "*";	
 
 //Hauptklasse Ebas; Zugriff auf DB
 class ebas{
