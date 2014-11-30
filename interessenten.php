@@ -6,8 +6,14 @@ ini_set('display_errors', 'On');
 require_once 'ebas.class.php';
 require_once 'session.php';
 if(isset($_POST) && !empty($_POST)){
-  $ebas->interessenten->updateInteressent($_POST,$_GET["interessent"]);
-  header('Location: '."interessenten-liste.php");
+  if($_POST['sub']=="Speichern"){
+    $ebas->interessenten->updateInteressent($_POST,$_GET["interessent"]);
+    header('Location: '."interessenten-liste.php");
+  }elseif($_POST['sub']=="toAnmeldung"){
+    $ebas->anmeldungen->neueAnmeldung($_POST);
+    header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
+  }
+  //$ebas->interessenten->updateInteressent($_POST,$_GET["interessent"]);
 }
 
 //check Role
@@ -116,7 +122,7 @@ require_once 'header.php';
 
       </tbody>
     </table>
-    <input type="submit" value="Speichern">
+    <input type="submit" name="sub" value="Speichern"> <input type="submit" name="sub" value="toAnmeldung">
   </form>
      </div>
 </div>
