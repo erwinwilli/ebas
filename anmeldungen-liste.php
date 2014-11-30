@@ -8,12 +8,11 @@ require_once 'session.php';
 require_once 'header.php';
 
 ?>
-
 <div class="row">
         <div class="col-md-3">
           <form action="<?php $_PHP_SELF ?>" method="POST">
-          <input type="text" class="search form-control" size="12" name="searchText" id="searchText">
-          <input type="submit" value="Suchen" onclick=<?php $GLOBALS['strGlobAlleAnmel'] = $_POST['searchText'];?>;"reload()">
+          <input type="text" class="search form-control" size="12" name="searchText" id="searchText" >
+          <input type="submit" value="Suchen" onclick=<?php $GLOBALS['strGlobAlleAnmel'] = @$_POST['searchText'];?>>
         </form>
       </p>
     </div>
