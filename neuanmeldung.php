@@ -38,26 +38,49 @@ require_once 'header.php';
 			document.getElementById("txtErrorVorname").innerHTML = " Bitte Vorname ausfüllen!";
 			x=false;
 		}
+		else{
+			document.getElementById("txtErrorVorname").innerHTML = "";
+		}
 		if(name==""){
 			document.getElementById("txtErrorName").innerHTML = " Bitte Name ausfüllen!";
 			x=false;
+		}
+		else{
+			document.getElementById("txtErrorName").innerHTML = "";
 		}
 		if(adresse==""){
 			document.getElementById("txtErrorAdresse").innerHTML = " Bitte Strasse ausfüllen!";
 			x=false;
 		}
+		else{	
+			document.getElementById("txtErrorAdresse").innerHTML = "";
+		}
 		if(plz==""){
 			document.getElementById("txtErrorPlz").innerHTML = " Bitte PLZ ausfüllen!";
 			x=false;
+		}
+		else{
+			document.getElementById("txtErrorPlz").innerHTML = "";
 		}
 		if(ort==""){
 			document.getElementById("txtErrorOrt").innerHTML = " Bitte Ort ausfüllen!";
 			x=false;
 		}
-		if(email==""){
+		else{
+			document.getElementById("txtErrorOrt").innerHTML = "";
+		}
+		if(email==""){	
 			document.getElementById("txtErrorEmail").innerHTML = " Bitte E-Mail ausfüllen!";
 			x=false;
 		}
+		else if (!validEmail(email)) {
+			document.getElementById("txtErrorEmail").innerHTML = " Die E-Mail entspricht keinem Gültigen Format!";
+			x=false;
+		}
+		else{
+			document.getElementById("txtErrorEmail").innerHTML = " ";
+		}
+		
 		if(!(Boolean(x))){
 		
 		return false;
@@ -65,12 +88,16 @@ require_once 'header.php';
 		//document.sendButton.submit();
 		
 	  }
-	  
+	  function validEmail(email) {
+		  var strReg = "^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$";
+		  var regex = new RegExp(strReg);
+		  return(regex.test(email));
+		}
 	 
    </script> 
 <div class="row">
   <div class="col-md-3">
-      <input type="text" class="search form-control" size="12" placeholder="Search">
+      
       </p>
     </div>
 </div>
