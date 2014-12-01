@@ -35,6 +35,8 @@ require_once 'header.php';
             }
         }
         ?>
+        <form method="POST" action="neuanmeldung.php">
+
         <table class="table table-striped">
         <thead>
           <tr>
@@ -67,6 +69,8 @@ require_once 'header.php';
               }?>
         </tbody>
       </table>
+      <input type="submit" onSubmit="formtest()" value="neuer User" >
+    </form>
           </div>
   </div>
 <?php
