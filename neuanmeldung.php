@@ -59,6 +59,10 @@ require_once 'header.php';
 			document.getElementById("txtErrorPlz").innerHTML = " Bitte PLZ ausfüllen!";
 			x=false;
 		}
+		else if(plz.length<4){
+			document.getElementById("txtErrorPlz").innerHTML = " Bitte PLZ ausfüllen!";
+			x=false;
+		}
 		else{
 			document.getElementById("txtErrorPlz").innerHTML = "";
 		}
