@@ -170,7 +170,7 @@ class kurse {
   }
 
   public function getAlleKurse(){
-    $SQL = "SELECT * FROM `tbl_kurse_2014_2` ORDER BY 'bezeichnung_de' ASC";
+    $SQL = "SELECT * FROM `tbl_kurse_2014_2` ORDER BY `tbl_kurse_2014_2`.`datum` ASC";
     /* Select queries return a resultset */
     if ($result = $this->ebas->db->query($SQL)) {
         while($row = $result->fetch_assoc()){
@@ -479,7 +479,7 @@ class interessenten {
     }
     $q = preg_replace("/[^a-zA-Z0-9-öäüÖÄÜéàèÉÀÈÂâ]+/", "", $q);
     //SQL Statement
-    $SQL = "SELECT interessent_id, kurs, name, vorname, adresse, plz, ort, email, kursort, sprache, zeit
+    $SQL = "SELECT interessent_id, name, vorname, adresse, plz, ort, email, kursort, sprache, zeit
     FROM `tbl_interessenten_2014_2`
     WHERE name LIKE '%$q%' OR vorname LIKE '%$q%' OR adresse LIKE '%$q%' OR plz LIKE '%$q%' OR ort LIKE '%$q%' OR email LIKE '%$email%' OR kursort LIKE '%$q%'
     ORDER BY name ASC";
