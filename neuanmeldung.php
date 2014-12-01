@@ -11,18 +11,18 @@ Header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
 require_once 'header.php';
 ?>
 
-<script language="javascript" type="text/javascript">        
-	
+<script language="javascript" type="text/javascript">
+
 	function formtest (){
 		//document.getElementById("txtErrorEmail").innerHTML = "New text!";
 		var x = true;
-		
-   
+
+
 		var name, vorname, adresse, plz, ort, email, sprache;
-		name=document.getElementById("name").value;	
+		name=document.getElementById("name").value;
 		//alert(name);
-		vorname=document.getElementById("vorname").value;	 
-		//alert(vorname);		
+		vorname=document.getElementById("vorname").value;
+		//alert(vorname);
 		adresse=document.getElementById("adresse").value;
 		//alert(adresse);
 		plz=document.getElementById("plz").value;
@@ -30,10 +30,10 @@ require_once 'header.php';
 		ort=document.getElementById("ort").value;
 		//alert(ort);
 		email=document.getElementById("email").value;
-		//alert(email);	
+		//alert(email);
 		sprache=document.getElementById("sprache").value;
 		//alert(sprache);
-	  
+
 		if(vorname==""){
 			document.getElementById("txtErrorVorname").innerHTML = " Bitte Vorname ausfüllen!";
 			x=false;
@@ -52,7 +52,7 @@ require_once 'header.php';
 			document.getElementById("txtErrorAdresse").innerHTML = " Bitte Strasse ausfüllen!";
 			x=false;
 		}
-		else{	
+		else{
 			document.getElementById("txtErrorAdresse").innerHTML = "";
 		}
 		if(plz==""){
@@ -73,7 +73,7 @@ require_once 'header.php';
 		else{
 			document.getElementById("txtErrorOrt").innerHTML = "";
 		}
-		if(email==""){	
+		if(email==""){
 			document.getElementById("txtErrorEmail").innerHTML = " Bitte E-Mail ausfüllen!";
 			x=false;
 		}
@@ -84,24 +84,24 @@ require_once 'header.php';
 		else{
 			document.getElementById("txtErrorEmail").innerHTML = " ";
 		}
-		
+
 		if(!(Boolean(x))){
-		
+
 		return false;
 		}
 		//document.sendButton.submit();
-		
+
 	  }
 	  function validEmail(email) {
 		  var strReg = "^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$";
 		  var regex = new RegExp(strReg);
 		  return(regex.test(email));
 		}
-	 
-   </script> 
+
+   </script>
 <div class="row">
   <div class="col-md-3">
-      
+
       </p>
     </div>
 </div>
@@ -112,8 +112,8 @@ require_once 'header.php';
       $anmeldung = $ebas->anmeldungen->neueAnmeldung($_POST);
       ?>
       <form onSubmit="return formtest()" method="POST" action="#" >
-	  
-	 
+
+
       <table class="max-width-table table table-striped">
       <thead>
         <tr>
@@ -128,7 +128,11 @@ require_once 'header.php';
               <?php
               $kurse = $ebas->kurse->getAlleKurse();
               foreach($kurse as $kurs){
-                echo '<option value="'.$kurs["kurs_id"].'">'.$kurs["bezeichnung_de"].'</option>';
+								if($_GET["kurs"] == $kurs["kurs_id"]){
+									echo '<option value="'.$kurs["kurs_id"].'" selected="selected">'.$kurs["bezeichnung_de"].'</option>';
+								}else{
+									echo '<option value="'.$kurs["kurs_id"].'">'.$kurs["bezeichnung_de"].'</option>';
+								}
               }
               ?>
             </select>
@@ -178,9 +182,9 @@ require_once 'header.php';
 			<select name="sprache" id="sprache" style="width: 100px">
 				<option value="de">de</option>
 				<option value="de">it</option>
-				<option value="fr">fr</option>				
+				<option value="fr">fr</option>
 			</select>
-			
+
 		  </td>
         </tr>
       <tr>
@@ -192,8 +196,7 @@ require_once 'header.php';
 
       </tbody>
     </table>
-    <input type="submit" onSubmit="formtest()" id="sendButton" value="Speichern" >
-	
+    <input class="btn btn-lg btn-primary" type="submit" onSubmit="formtest()" id="sendButton" value="Speichern" >
   </form>
      </div>
 </div>
@@ -202,5 +205,3 @@ require_once 'header.php';
 require_once 'footer.php';
 
 ?>
-
-

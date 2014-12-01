@@ -31,11 +31,10 @@ require_once 'header.php';
         $kurse = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
           if(!empty($kurse)){
           }else{
-            header('Location: '."neuanmeldung.php");
+            header('Location: '."neuanmeldung.php?kurs=". $_GET["kurs"]);
             }
         }
         ?>
-        <form method="POST" action="neuanmeldung.php">
 
         <table class="table table-striped">
         <thead>
@@ -69,8 +68,7 @@ require_once 'header.php';
               }?>
         </tbody>
       </table>
-      <input type="submit" onSubmit="formtest()" value="neuer User" >
-    </form>
+      <a class="btn btn-lg btn-primary" href="neuanmeldung.php?kurs=<?php echo $_GET["kurs"]; ?>">neuer User</a>
           </div>
   </div>
 <?php

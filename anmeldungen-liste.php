@@ -12,7 +12,7 @@ require_once 'header.php';
         <div class="col-md-3">
           <form action="<?php $_PHP_SELF ?>" method="POST">
           <input type="text" class="search form-control" size="12" name="searchText" id="searchText" value= <?php echo @$_POST['searchText']?> >
-          <input type="submit" value="Suchen" onclick=<?php $GLOBALS['strGlobAlleAnmel'] = @$_POST['searchText'];?>>
+          <input class="btn btn-lg btn-primary" type="submit" value="Suchen" onclick=<?php $GLOBALS['strGlobAlleAnmel'] = @$_POST['searchText'];?>>
         </form>
       </p>
     </div>
@@ -51,6 +51,7 @@ require_once 'header.php';
 
       </tbody>
     </table>
+    <a class="btn btn-lg btn-primary" href="neuanmeldung.php?kurs=<?php echo $_GET["kurs"]; ?>">neuer User</a>
         </div>
 </div>
 
