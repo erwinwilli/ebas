@@ -13,7 +13,6 @@ if(isset($_POST) && !empty($_POST)){
     $ebas->anmeldungen->neueAnmeldung($_POST);
     header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
   }
-  //$ebas->interessenten->updateInteressent($_POST,$_GET["interessent"]);
 }
 
 //check Role

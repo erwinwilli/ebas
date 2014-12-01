@@ -396,6 +396,20 @@ class anmeldungen {
     $this->ebas->db->query($SQL);
     }
   }
+
+  public function toInteressent($data, $id){
+    if (!empty($data)){
+    $SQL = "INSERT INTO ebas.tbl_interessenten_2014_2 (name, vorname, adresse, plz, ort, email, kursort, sprache)
+    VALUES
+    ("."'".$data['name']."'".", "."'".$data['vorname']."'".", "."'".$data['adresse']."'".", "."'".$data['plz']."'".", "."'".$data['ort']."'"
+    .", "."'".$data['email']."'".", "."'".$data['kursort']."'".", "."'".$data['sprache']."'".")";
+    $this->ebas->db->query($SQL);
+    print_r($SQL);
+
+    $SQL2 = "DELETE FROM `ebas`.`tbl_anmeldungen_2014_2` WHERE `tbl_anmeldungen_2014_2`.`anmeldung_id` =".$id;
+    $this->ebas->db->query($SQL2);
+    }
+  }
 }
 
 class interessenten {
