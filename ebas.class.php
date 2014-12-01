@@ -33,7 +33,7 @@ class ebas{
 
 }
 
-
+// Session Handling
 class session{
 
   public $ebas;
@@ -374,7 +374,7 @@ class anmeldungen {
           }
           // Schliessen
           $stmt->close();
-          return $anmeldungen;
+          return @$anmeldungen;
         }
   }
 
@@ -539,82 +539,4 @@ class interessenten {
 }
 
 
-/*
-
-// every php is only accessable with a valid session
-
-// returns array with json data
-function getConfig(){
-  $JsonData = file_get_contents("config.json");
-  $Config = json_decode($JsonData,true);
-  return $Config;
-}
-// returns db connect object
-?>
-
-
-
-
-<?php
-// returns html table
-function getTable($view){
-  $conn = DBConnect();
-  $Config = getConfig();
-  $sql = "";
-  $tables = $Config["tables"];
-  foreach ($tables as $table) {
-    // create sql query for selected table
-    if($table["name"] == $view){
-      if(array_key_exists('options', $table)){
-        $options=$table["options"];
-      }else{
-        $options="";
-      }
-      if(!(substr_count($options, 'hide') > 0)){
-      if(!(substr_count($options, 'adminonly') > 0) || ($_SESSION["isadmin"]==1)){
-        // sql query start
-        $sql = $table["sqlstart"];
-        $fields = $table["fields"];
-        // cycle through fields of the table
-        foreach ($fields as $field){
-          // check if the field contains a dropdown, execute the statement and save the result for the datatable
-          // change the header of the field
-          $sql = $sql.$field["sqlname"]." AS '".$field["name"]."'";
-          // seperate the definitons with commas
-          if($fields[count($fields) - 1]["name"] != $field["name"]){
-            $sql = $sql.", ";
-          }
-        };
-        // finish the sql statement
-        $sql = $sql.$table["sqlend"];
-      }}
-    }
-  }
-  $result = mysqli_query($conn, $sql);
-  if(! $result ){
-    die('Could not get data: ' . mysql_error());
-  }
-  $i = 0;
-  $i2 = 0;
-  // set headers for datatable
-  foreach ($fields as $field){
-    $data[$i][$i2] = utf8_encode($field["name"]);
-    ++$i2;
-  }
-  ++$i;
-  // set content for datatable
-  while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-    $i3 = 0;
-    // get the mysql data foreach row and header
-    foreach ($fields as $field){
-      $fieldname = $field["sqlname"];
-      // if the field is part of the dropdown query output the content as <select><option>
-      $data[$i][$i3] = utf8_encode($row[$field["name"]]);
-      ++$i3;
-    }
-    ++$i;
-  }
-  return $data;
-  mysqli_close($conn);
-}*/
 ?>
