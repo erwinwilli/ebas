@@ -16,7 +16,7 @@ require_once 'header.php';
 <div class="row">
     <div class="kurs col-md-12">
 		<?php
-			$kurse = $ebas->kurse->getAlleAktuellenKurse();
+			$kurse = $ebas->kurse->getAlleKurse();
     ?>
       <table class="table table-striped">
       <thead>
@@ -36,7 +36,7 @@ require_once 'header.php';
           <td><?= $kurs["sprache"] ?></td>
           <td><?= $kurs["kursort"] ?></td>
 		  <?php
-      $datum = $kurs["datum"];
+			$datum = $kurs["datum"];
 			$datum = date("d.m.Y", strtotime($datum));
 			?>
           <td><?= $datum?></td>
