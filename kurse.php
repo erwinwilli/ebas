@@ -31,7 +31,7 @@ require_once 'header.php';
         $kurse = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
           if(!empty($kurse)){
           }else{
-            header('Location: '."index.php");
+            header('Location: '."neuanmeldung.php");
             }
         }
         ?>
