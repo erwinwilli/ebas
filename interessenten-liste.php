@@ -16,7 +16,7 @@ require_once 'header.php';
     <div class="col-md-3">
           <form action="<?php $_PHP_SELF ?>" method="POST">
           <input type="text" class="search form-control" size="12" name="searchText2" id="searchText2" value= <?php echo @$_POST['searchText2']?>>
-          <input class="btn btn-lg btn-primary" type="submit" value="Suchen" onclick=<?php $GLOBALS['strGlobAlleintre'] = @$_POST['searchText2'];?>>
+          <input class="btn btn-primary" type="submit" value="Suchen" onclick=<?php $GLOBALS['strGlobAlleintre'] = @$_POST['searchText2'];?>>
         </form>
       </p>
     </div>
