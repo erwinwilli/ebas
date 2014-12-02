@@ -32,23 +32,26 @@ require_once 'header.php';
       </thead>
       <tbody>
 
-        <?php foreach($kurse as $kurs){ ?>
-        <tr>
-          <td><?= $kurs["name"] ?></td>
-          <td><?= $kurs["vorname"] ?></td>
-          <td><?= $kurs["adresse"] ?></td>
-          <td><?= $kurs["plz"] ?></td>
-          <td><?= $kurs["ort"] ?></td>
-          <td><?= $kurs["email"] ?></td>
-          <td><?= $kurs["kursort"] ?></td>
-          <td><?= $kurs["sprache"] ?></td>
-        </tr>
-
-        <?php } ?>
+        <?php
+        if(!empty($kurse)){
+          foreach($kurse as $kurs){
+              echo "<tr>";
+              echo "<td>".$kurs["vorname"]."</td>";
+              echo "<td>".$kurs["name"]."</td>";
+              echo "<td>".$kurs["adresse"]."</td>";
+              echo "<td>".$kurs["plz"]."</td>";
+              echo "<td>".$kurs["ort"]."</td>";
+              echo "<td>".$kurs["email"]."</td>";
+              echo "<td>".$kurs["kursort"]."</td>";
+              echo "<td>".$kurs["sprache"]."</td>";
+              echo "</tr>";
+          }
+        }
+        ?>
 
       </tbody>
     </table>
-    
+    <a class="btn btn-danger" href="bereinigung-blank.php">Bereinigung durchführen </a>
         </div>
 </div>
 
