@@ -6,12 +6,18 @@ ini_set('display_errors', 'On');
 require_once 'ebas.class.php';
 require_once 'session.php';
 if(isset($_POST) && !empty($_POST)){
+  //Ändern Anmeldung
   if($_POST['sub']=="Speichern"){
     $ebas->anmeldungen->updateAnmeldungen($_POST,$_GET["anmeldung"]);
     header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
-  }elseif($_POST['sub']=="Löschen"){
+  //Anmeldung zu Interessent verschieben
+  }elseif($_POST['sub']=="zu Interessent verschieben"){
     $ebas->anmeldungen->toInteressent($_POST,$_GET["anmeldung"]);
     header('Location: '."interessenten-liste.php");
+  //Anmeldung löschen
+  }elseif($_POST['sub']=="Löschen"){
+      $ebas->anmeldungen->deleteAnmeldung($_GET["anmeldung"]);
+      header('Location: '."anmeldungen-liste.php");
   }
 }
 
@@ -124,6 +130,7 @@ require_once 'header.php';
       </tbody>
     </table>
     <input class="btn btn-primary" type="submit" name="sub" value="Speichern">
+    <input class="btn btn-success" type="submit" name="sub" value="zu Interessent verschieben">
     <input class="btn btn-danger" type="submit" name="sub" value="Löschen">
   </form>
      </div>

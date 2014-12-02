@@ -6,16 +6,18 @@ ini_set('display_errors', 'On');
 require_once 'ebas.class.php';
 require_once 'session.php';
 if(isset($_POST) && !empty($_POST)){
+  //Ändern Interssent
   if($_POST['sub']=="Speichern"){
     $ebas->interessenten->updateInteressent($_POST,$_GET["interessent"]);
     header('Location: '."interessenten-liste.php");
+  //Interssent zur Anmeldung verschieben bzw. neu erfassen
+  }elseif($_POST['sub']=="Zu Anmeldung verschieben"){
+      $ebas->anmeldungen->neueAnmeldung($_POST);
+      header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
+  //löschen des Interssenten
   }elseif($_POST['sub']=="Löschen"){
     $ebas->interessenten->deleteInteressent($_GET["interessent"]);
     header('Location: '."interessenten-liste.php");
-  }elseif($_POST['sub']=="Zu Anmeldung verschieben"){
-    $ebas->anmeldungen->neueAnmeldung($_POST);
-    $ebas->interessenten->deleteInteressent($_GET["interessent"]);
-    header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
   }
 }
 

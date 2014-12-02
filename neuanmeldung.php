@@ -196,7 +196,7 @@ require_once 'header.php';
 
       </tbody>
     </table>
-    <input class="btn btn-lg btn-primary" type="submit" onSubmit="formtest()" id="sendButton" value="Speichern" >
+    <input class="btn btn-primary" type="submit" onSubmit="formtest()" id="sendButton" value="Speichern" >
   </form>
      </div>
 </div>
