@@ -11,6 +11,9 @@ require_once 'header.php';
 
 <div class="page-header">
   <h2><?php
+    if(!is_numeric($_GET["kurs"])){
+      die();
+    }
       if(!empty($_GET["kurs"])){
           if (isset($_GET["kurs"])){
           $kurseX = $ebas->kurse->getKurs($_GET["kurs"]);
@@ -19,7 +22,7 @@ require_once 'header.php';
               <tr >
                 <td><?= $kursX["bezeichnung_de"] ?></td>
               </tr>
-            <?php } }?>
+            <?php }}?>
   </h2>
 </div>
 

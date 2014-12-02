@@ -22,13 +22,6 @@ if($ebas->user->role > 1){
 require_once 'header.php';
 ?>
 <div class="row">
-  <div class="col-md-3">
-      <input type="text" class="search form-control" size="12" placeholder="Search">
-      </p>
-    </div>
-</div>
-
-<div class="row">
     <div class="anmeldung col-md-12">
     <?php
 
@@ -127,7 +120,7 @@ require_once 'header.php';
 
       </tbody>
     </table>
-    <input type="submit" name="sub" value="Speichern"> <input type="submit" name="sub" value="Löschen">
+    <input class="btn btn-lg btn-primary" type="submit" name="sub" value="Speichern"> <input class="btn btn-lg btn-danger" type="submit" name="sub" value="Löschen">
   </form>
      </div>
 </div>
