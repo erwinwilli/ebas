@@ -8,6 +8,9 @@ require_once 'session.php';
 require_once 'header.php';
 
 ?>
+<div class="page-header">
+  <h2>Alle Kurse</h2>
+</div>
 <div class="row">
         <div class="col-md-3">
 			</p>
