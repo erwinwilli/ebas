@@ -542,9 +542,22 @@ class interessenten {
   }
 
   //Bereinigungslauf
+  public function bereinigungInteressentenView(){
+    $SQL = "SELECT * FROM `tbl_interessenten_2014_2` WHERE email IN (SELECT email FROM `tbl_anmeldungen_2014_2`)";
+    /* Select queries return a resultset */
+    if ($result = $this->ebas->db->query($SQL)) {
+        while($row = $result->fetch_assoc()){
+            $interessenten[] = $row;
+        }
+        /* free result set */
+        $result->close();
+    }
+    return $interessenten;
+  }
+
   public function bereinigungInteressenten(){
-    $SQL="DELETE FROM `tbl_interessenten_2014_2` WHERE email IN (SELECT email FROM `tbl_anmeldungen_2014_2`)";
-    $this->ebas->db->query($SQL);
+    $SQL2 = "DELETE FROM `tbl_interessenten_2014_2` WHERE email IN (SELECT email FROM `tbl_anmeldungen_2014_2`)";
+    $this->ebas->db->query($SQL2);
   }
 }
 

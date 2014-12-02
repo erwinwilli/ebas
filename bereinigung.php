@@ -9,22 +9,13 @@ require_once 'header.php';
 
 ?>
 <div class="page-header">
-  <h2>Alle Anmeldungen</h2>
-</div>
-
-<div class="row">
-        <div class="col-md-3">
-          <form action="<?php $_PHP_SELF ?>" method="POST">
-          <input type="text" class="search form-control" size="12" name="searchText" id="searchText" value= <?php echo @$_POST['searchText']?> >
-          <input class="btn btn-primary" type="submit" value="Suchen" onclick=<?php $GLOBALS['strGlobAlleAnmel'] = @$_POST['searchText'];?>>
-        </form>
-      </p>
-    </div>
+  <h2>Bereinigungslauf</h2>
+  <h3>Folgende Interessenten sind schon angemolden: </h3>
 </div>
 <div class="row">
     <div class="kurs col-md-12">
     <?php
-      $kurse = $ebas->anmeldungen->searchAnmeldungen($GLOBALS['strGlobAlleAnmel']);
+      $kurse = $ebas->interessenten->bereinigungInteressentenView();
     ?>
       <table class="table table-striped">
       <thead>
@@ -35,27 +26,29 @@ require_once 'header.php';
           <th>PLZ</th>
           <th>Ort</th>
           <th>EMail</th>
-          <th>Gutschein</th>
+          <th>kursort</th>
+          <th>sprache</th>
         </tr>
       </thead>
       <tbody>
 
         <?php foreach($kurse as $kurs){ ?>
         <tr>
-          <td><a href= anmeldungen.php?anmeldung=<?= $kurs["anmeldung_id"]?>> <?= $kurs["name"] ?></td>
+          <td><?= $kurs["name"] ?></td>
           <td><?= $kurs["vorname"] ?></td>
           <td><?= $kurs["adresse"] ?></td>
           <td><?= $kurs["plz"] ?></td>
           <td><?= $kurs["ort"] ?></td>
           <td><?= $kurs["email"] ?></td>
-          <td><?= $kurs["gutschein"] ?></td>
+          <td><?= $kurs["kursort"] ?></td>
+          <td><?= $kurs["sprache"] ?></td>
         </tr>
 
         <?php } ?>
 
       </tbody>
     </table>
-    <a class="btn btn-primary" href="neuanmeldung.php?kurs=<?php echo $_GET["kurs"]; ?>">neuer User</a>
+    
         </div>
 </div>
 
