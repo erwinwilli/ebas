@@ -431,7 +431,6 @@ class anmeldungen {
     ("."'".$data['name']."'".", "."'".$data['vorname']."'".", "."'".$data['adresse']."'".", "."'".$data['plz']."'".", "."'".$data['ort']."'"
     .", "."'".$data['email']."'".", "."'".$data['kursort']."'".", "."'".$data['sprache']."'".")";
     $this->ebas->db->query($SQL);
-    print_r($SQL);
 
     $SQL2 = "DELETE FROM `ebas`.`tbl_anmeldungen_2014_2` WHERE `tbl_anmeldungen_2014_2`.`anmeldung_id` =".$id;
     $this->ebas->db->query($SQL2);
@@ -537,6 +536,11 @@ class interessenten {
     $this->ebas->db->query($SQL);
   }
 
+  //Bereinigungslauf
+  public function bereinigungInteressenten(){
+    $SQL="DELETE FROM `tbl_interessenten_2014_2` WHERE email IN (SELECT email FROM `tbl_anmeldungen_2014_2`)";
+    $this->ebas->db->query($SQL);
+  }
 }
 
 

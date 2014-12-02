@@ -26,9 +26,7 @@ if($ebas->user->role > 1){
 require_once 'header.php';
 ?>
 
-<div class="page-header">
-  <h2>Alle Interessenten</h2>
-</div>
+
 <div class="row">
     <div class="anmeldung col-md-12">
     <?php

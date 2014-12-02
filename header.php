@@ -51,7 +51,7 @@
             <li class="divider"></li>
             <li><a href="neuanmeldung.php">Neuer User erstellen</a></li>
             <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><a href="bereinigung.php">Bereinigungslauf</a></li>
           </ul>
       </li>
         <li><a href="task.php">Aufgaben</a></li>
