@@ -11,7 +11,7 @@ if(isset($_POST) && !empty($_POST)){
     $ebas->interessenten->updateInteressent($_POST,$_GET["interessent"]);
     header('Location: '."interessenten-liste.php");
   //Interssent zur Anmeldung verschieben bzw. neu erfassen
-  }elseif($_POST['sub']=="Zu Anmeldung verschieben"){
+}elseif($_POST['sub']=="Zur Anmeldung verschieben"){
       $ebas->anmeldungen->neueAnmeldung($_POST);
       header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
   //löschen des Interssenten
@@ -108,24 +108,30 @@ require_once 'header.php';
           <tr>
             <td><input type="text" name="email" value=<?= $kurs["email"] ?> ></td>
           </tr>
+          <tr>
+            <th>Kursort</th>
+          </tr>
+            <tr>
+              <td><input type="text" name="kursort" value=<?= $kurs["kursort"] ?> ></td>
+            </tr>
+            <tr>
+              <th>Gutschein</th>
+            </tr>
+              <tr>
+                <td><input type="text" name="gutschein" value=<?= @$kurs["gutschein"] ?> ></td>
+              </tr>
         <tr>
           <th>Sprache</th>
         </tr>
           <tr>
             <td><input type="text" name="sprache" value=<?= $kurs["sprache"] ?> ></td>
           </tr>
-        <tr>
-          <th>Kursort</th>
-        </tr>
-          <tr>
-            <td><input type="text" name="kursort" value=<?= $kurs["kursort"] ?> ></td>
-          </tr>
         <?php } ?>
 
       </tbody>
     </table>
     <input class="btn btn-primary" type="submit" name="sub" value="Speichern">
-    <input class="btn btn-success" type="submit" name="sub" value="Zu Anmeldung verschieben">
+    <input class="btn btn-success" type="submit" name="sub" value="Zur Anmeldung verschieben">
     <input class="btn btn-danger" type="submit" name="sub" value="Löschen">
   </form>
      </div>

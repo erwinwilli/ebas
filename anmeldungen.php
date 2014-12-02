@@ -62,6 +62,7 @@ require_once 'header.php';
               foreach($kurseX as $kursX){
                 if($kurs["kurs"] == $kursX["kurs_id"]){
                   $selected = "selected";
+                  $kursort = $kursX["kursort"];
                 }else{
                   $selected = "";
                 }
@@ -117,7 +118,7 @@ require_once 'header.php';
             <th>Kursort</th>
           </tr>
             <tr>
-              <td><input type="text" name="kursort" value=<?= $kursX["kursort"] ?> ></td>
+              <td><input type="text" name="kursort" value=<?= $kursort ?> ></td>
             </tr>
         <tr>
           <th>Gutschein</th>

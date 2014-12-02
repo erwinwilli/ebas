@@ -418,8 +418,8 @@ class anmeldungen {
     if (!empty($data)){
     $SQL = "INSERT INTO ebas.tbl_anmeldungen_2014_2 (kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache)
     VALUES
-    ("."'".$data['kurs']."'".", "."'".$data['gutschein']."'".", "."'".$data['name']."'".", "."'".$data['vorname']."'".", "."'".$data['adresse']."'"
-    .", "."'".$data['plz']."'".", "."'".$data['ort']."'".", "."'".$data['email']."'".", "."'".$data['sprache']."'".")";
+    ("."'".$data['kurs']."'".", "."'".$data['gutschein']."'".", "."'".$data['name']."'".", "."'".$data['vorname']."'".", "."'".$data['plz']."'"
+    .", "."'".$data['adresse']."'".", "."'".$data['ort']."'".", "."'".$data['email']."'".", "."'".$data['sprache']."'".")";
     $this->ebas->db->query($SQL);
     }
   }
