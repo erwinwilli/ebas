@@ -6,6 +6,7 @@ ini_set('display_errors', 'On');
 require_once 'ebas.class.php';
 require_once 'session.php';
 require_once 'header.php';
+echo $ebas->user->role;
 
 ?>
 <div class="page-header">

@@ -64,7 +64,11 @@
         </div>
       </form>
       <li><a href="help.php">Help</a></li>
-      <li><a href="logout.php">Ausloggen</a></li>
+      <?php
+        if(basename($_SERVER['PHP_SELF']) !== "login.php"){
+          echo '<li><a href="logout.php">Ausloggen</a></li>';
+        }
+      ?>
       </ul>
     </div>
   </nav>

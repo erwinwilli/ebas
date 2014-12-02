@@ -1,4 +1,6 @@
 <?php
+error_reporting( E_ALL );
+ini_set('display_errors', 'On');
 $GLOBALS['strGlobAlleAnmel'] = "*";
 $GLOBALS['strGlobAlleintre'] = "*";
 
@@ -45,15 +47,49 @@ class session{
   //Session authentification
   public function set($username,$password){
     $password = hash('sha256', $password);
-    $SQL = "SELECT * FROM tbl_login_2014_2 WHERE '$username' = username AND '$password' = password";
+    $SQL = "SELECT username_id, role FROM tbl_login_2014_2 WHERE username = ? AND password = ?";
+    if ($stmt = $this->ebas->db->prepare($SQL)) {
+
+      /* bind parameters for markers */
+      $stmt->bind_param("ss", $username, $password);
+
+      /* execute query */
+      $stmt->execute();
+
+      $stmt->store_result();
+
+      if($stmt->num_rows){
+        /* bind result */
+        $stmt->bind_result($id, $role);
+
+        // Daten zuweisen
+        while ($stmt->fetch()) {
+          $userRole = $role;
+          $userID = $id;
+        }
+
+        $this->ebas->user->name = $username;
+        $this->ebas->user->role = $userRole;
+        $this->ebas->user->id = $userID;
+
+        //Token erstellen für Session
+        $session = $this->rand_char(255);
+        setcookie("session",$session,time()+(90*24*60*60));
+        setcookie("user",$userID,time()+(90*24*60*60));
+        $SQL = "INSERT INTO tbl_session_2014_2 (session_value,session_active,session_expire,session_user)
+        VALUES('$session',1,NOW() + INTERVAL 90 DAY,$userID)";
+        $this->ebas->db->query($SQL);
+        return TRUE;
+      }
 
     /* Select queries return a resultset */
-    if ($result = $this->ebas->db->query($SQL)) {
+    /*if ($result = $this->ebas->db->query($SQL)) {
+      if($result->num_rows){
         while($row = $result->fetch_assoc()){
             $role = $row["role"];
             $userID = $row["username_id"];
         }
-        /* free result set */
+        /* free result set
         $result->close();
 
         $this->ebas->user->name = $username;
@@ -67,8 +103,11 @@ class session{
         $SQL = "INSERT INTO tbl_session_2014_2 (session_value,session_active,session_expire,session_user)
         VALUES('$session',1,NOW() + INTERVAL 90 DAY,$userID)";
         $this->ebas->db->query($SQL);
-        return TRUE;
+        return TRUE;*
+      }*/
     }else{
+      echo "TEST";
+      echo $stmt->error;
       return FALSE;
     }
 
