@@ -9,8 +9,12 @@ if(isset($_POST) && !empty($_POST)){
   if($_POST['sub']=="Speichern"){
     $ebas->interessenten->updateInteressent($_POST,$_GET["interessent"]);
     header('Location: '."interessenten-liste.php");
-  }elseif($_POST['sub']=="toAnmeldung"){
+  }elseif($_POST['sub']=="Löschen"){
+    $ebas->interessenten->deleteInteressent($_GET["interessent"]);
+    header('Location: '."interessenten-liste.php");
+  }elseif($_POST['sub']=="Zu Anmeldung verschieben"){
     $ebas->anmeldungen->neueAnmeldung($_POST);
+    $ebas->interessenten->deleteInteressent($_GET["interessent"]);
     header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
   }
 }
@@ -116,6 +120,7 @@ require_once 'header.php';
     </table>
     <input class="btn btn-lg btn-primary" type="submit" name="sub" value="Speichern">
     <input class="btn btn-lg btn-success" type="submit" name="sub" value="Zu Anmeldung verschieben">
+    <input class="btn btn-lg btn-danger" type="submit" name="sub" value="Löschen">
   </form>
      </div>
 </div>

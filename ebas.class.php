@@ -532,8 +532,9 @@ class interessenten {
     $this->ebas->db->query($SQL);
   }
 
-  public function interessentToAnmeldung($id){
-
+  public function deleteInteressent($id){
+    $SQL = "DELETE FROM `ebas`.`tbl_interessenten_2014_2` WHERE `tbl_interessenten_2014_2`.`interessent_id` =".$id;
+    $this->ebas->db->query($SQL);
   }
 
 }
