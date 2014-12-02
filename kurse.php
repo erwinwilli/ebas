@@ -72,6 +72,21 @@ require_once 'header.php';
         </tbody>
       </table>
       <a class="btn btn-lg btn-primary" href="neuanmeldung.php?kurs=<?php echo $_GET["kurs"]; ?>">neuer User</a>
+	  </br> </br>
+	  <a class="btn btn-lg btn-primary" href="kurseDruckvorschau.php?kurs=<?php echo $_GET["kurs"]; ?>">Druckvorschau</a>
+	 <a class="btn btn-lg btn-primary" href="kurseDruckvorschauKompakt.php?kurs=<?php echo $_GET["kurs"]; ?>">Druckvorschau Kompakt</a>
+	 
+	
+
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
           </div>
   </div>
 <?php
