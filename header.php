@@ -12,9 +12,9 @@
     <title>eBanking - aber sicher!</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
-    <link href="bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <!-- link href="theme.css" rel="stylesheet" -->
