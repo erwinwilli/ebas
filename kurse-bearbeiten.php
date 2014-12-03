@@ -28,19 +28,14 @@ require_once 'header.php';
 <div class="row">
     <div class="kurs col-md-12">
     <?php
-
-
-      //if(!is_numeric($_GET["kurs_id"])){
-      //  die();
-     // }
-		 
-		
+      if(!is_numeric($_GET["kurs"])){
+      die();
+     }
       if (isset($_GET["kurs"])){
-		; 
-		$kurse = $ebas->kurse->getKurs($_GET["kurs"]);
-		
+		      $kurse = $ebas->kurse->getKurs($_GET["kurs"]);
       }
       ?>
+
       <form method="POST" action="#">
       <table class="max-width-table table table-striped">
       <thead>
@@ -52,9 +47,9 @@ require_once 'header.php';
       <tbody>
 
        <?php
-	   
+
 	   foreach($kurse as $kurs){ ?>
-		
+
         <tr>
           <th>Kurs Bezeichnung DE </th>
         </tr>
@@ -115,7 +110,7 @@ require_once 'header.php';
             <tr>
               <td><input type="text" name="datum" value=<?= $kurs["datum"] ?> ></td>
             </tr>
-        
+
         <?php } ?>
 
       </tbody>

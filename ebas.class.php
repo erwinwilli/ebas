@@ -303,9 +303,8 @@ class kurse {
     $this->ebas->db->query($SQL);
   }
   public function deleteKurs($id){
-	$SQL = "DELETE FROM 'ebas'.'tbl_kurse_2014_2' WHERE 'tbl_kurse_2014_2'.'kurs_id'=".$id;
-
-    $this->ebas->db->query($SQL);
+	$SQL = "DELETE FROM `ebas`.`tbl_kurse_2014_2` WHERE `tbl_kurse_2014_2`.`kurs_id`=".$id;
+  $this->ebas->db->query($SQL);
   }
 
 }
