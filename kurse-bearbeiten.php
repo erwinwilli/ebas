@@ -84,7 +84,14 @@ require_once 'header.php';
 			<th>Sprache</th>
         </tr>
             <tr>
-              <td><input type="text" name="sprache" value=<?= $kurs["sprache"] ?> ></td>
+				<td>
+				  <select name="sprache" style="width: 100px" >               
+					<option value="de" <?php if( $kurs['sprache']=="de")echo ' selected="selected"'; ?>  >de</option>
+					<option value="fr" <?php if( $kurs['sprache']=="fr")echo " selected='selected'"; ?> >fr</option>
+					<option value="it" <?php if( $kurs['sprache']=="it")echo ' selected="selected"'; ?> >it</option>
+					<option value="en" <?php if( $kurs['sprache']=="en")echo ' selected="selected"'; ?> >en</option>
+					</select>
+				</td>
             </tr>
         <tr>
           <th>max. Teilnehmer</th>
