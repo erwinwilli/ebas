@@ -81,30 +81,6 @@ class session{
         $this->ebas->db->query($SQL);
         return TRUE;
       }
-
-    /* Select queries return a resultset */
-    /*if ($result = $this->ebas->db->query($SQL)) {
-      if($result->num_rows){
-        while($row = $result->fetch_assoc()){
-            $role = $row["role"];
-            $userID = $row["username_id"];
-        }
-        /* free result set
-        $result->close();
-
-        $this->ebas->user->name = $username;
-        $this->ebas->user->role = $role;
-        $this->ebas->user->id = $userID;
-
-        //Token erstellen für Session
-        $session = $this->rand_char(255);
-        setcookie("session",$session,time()+(90*24*60*60));
-        setcookie("user",$userID,time()+(90*24*60*60));
-        $SQL = "INSERT INTO tbl_session_2014_2 (session_value,session_active,session_expire,session_user)
-        VALUES('$session',1,NOW() + INTERVAL 90 DAY,$userID)";
-        $this->ebas->db->query($SQL);
-        return TRUE;*
-      }*/
     }else{
       echo "TEST";
       echo $stmt->error;
