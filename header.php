@@ -50,6 +50,8 @@
             <li><a href="interessenten-liste.php">Alle Interessenten</a></li>
             <li class="divider"></li>
             <li><a href="neuanmeldung.php">Neuer User erstellen</a></li>
+			<li><a href="neuerkurs.php">Neuen Kurs erstellen</a></li>
+			<li><a href="kurse-bearbeiten-liste.php">Kurse bearbeiten</a></li>
             <li class="divider"></li>
             <li><a href="bereinigung.php">Bereinigungslauf</a></li>
           </ul>
