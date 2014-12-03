@@ -181,8 +181,9 @@ require_once 'header.php';
           <td>
 			<select name="sprache" id="sprache" style="width: 100px">
 				<option value="de">de</option>
-				<option value="de">it</option>
-				<option value="fr">fr</option>
+				<option value="fr">it</option>
+				<option value="it">fr</option>
+				<option value="en">fr</option>
 			</select>
 
 		  </td>

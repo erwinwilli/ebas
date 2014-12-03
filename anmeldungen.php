@@ -112,7 +112,17 @@ require_once 'header.php';
           <th>Sprache</th>
         </tr>
           <tr>
-            <td><input type="text" name="sprache" value=<?= $kurs["sprache"] ?> ></td>
+            <td>
+              <select name="sprache" style="width: 100px">
+                <?php
+                echo '<option value="'.$kurs["sprache"].'" selected="selected">'.$kurs["sprache"].'</option>';
+                ?>
+                <option value="de">de</option>
+                <option value="fr">fr</option>
+                <option value="it">it</option>
+                <option value="en">en</option>
+                </select>
+            </td>
           </tr>
           <tr>
             <th>Kursort</th>

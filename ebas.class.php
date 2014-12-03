@@ -293,7 +293,7 @@ class kurse {
     $kurse = array();
   }
   return $kurse;
-}
+  }
 
   public function updateKurs($data,$id){
     $SQL = "UPDATE ebas.tbl_kurse_2014_2 SET bezeichnung_de ='".$data['bezeichnung_de']."',bezeichnung_fr ='".$data['bezeichnung_fr']."',bezeichnung_it ='".$data['bezeichnung_it']."', bezeichnung_en ='".$data['bezeichnung_en'].
@@ -307,6 +307,16 @@ class kurse {
   $this->ebas->db->query($SQL);
   }
 
+  public function neuerKurs($data){
+    if (!empty($data)){
+    $SQL = "INSERT INTO ebas.tbl_kurse_2014_2 (bezeichnung_de, bezeichnung_fr, bezeichnung_it, bezeichnung_en, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, kursort, datum)
+    VALUES
+    ("."'".$data['bezeichnung_de']."'".", "."'".$data['bezeichnung_fr']."'".", "."'".$data['bezeichnung_it']."'".", "."'".$data['bezeichnung_en']."'".", "."'".$data['sortierung']."'".
+    ", "."'".$data['sprache']."'".", "."'".$data['max_teilnehmer']."'".", "."'".$data['max_teilnehmer_PF']."'".", "."'".$data['kursort']."'".", "."'".$data['datum']."'".")";
+
+    $this->ebas->db->query($SQL);
+    }
+  }
 }
 //Details für Zugriffe auf Tabelle tbl_anmeldungen_2014_2
 class anmeldungen {
