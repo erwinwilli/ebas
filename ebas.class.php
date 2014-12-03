@@ -296,15 +296,16 @@ class kurse {
 }
 
   public function updateKurs($data,$id){
-    $SQL = "UPDATE ebas.tbl_anmeldungen_2014_2 SET kurs ='".$data['kurs']."',name ='".$data['name']."',vorname ='".$data['vorname'].
-    "',adresse ='".$data['adresse']."',plz ='".$data['plz']."',ort='".$data['ort']."',email='".$data['email'].
-    "',sprache='".$data['sprache']."',gutschein='".$data['gutschein'].
-    "' WHERE tbl_anmeldungen_2014_2.anmeldung_id =".$id;
+    $SQL = "UPDATE ebas.tbl_kurse_2014_2 SET bezeichnung_de ='".$data['bezeichnung_de']."',bezeichnung_fr ='".$data['bezeichnung_fr']."',bezeichnung_it ='".$data['bezeichnung_it']."', bezeichnung_en ='".$data['bezeichnung_en'].
+    "',sortierung ='".$data['sortierung']."',sprache ='".$data['sprache']."',max_teilnehmer='".$data['max_teilnehmer']."',max_teilnehmer_PF='".$data['max_teilnehmer_PF'].
+    "',kursort='".$data['kursort']."',datum='".$data['datum'].
+    "' WHERE tbl_kurse_2014_2.kurs_id =".$id;
     $this->ebas->db->query($SQL);
-
   }
   public function deleteKurs($id){
+	$SQL = "DELETE FROM 'ebas'.'tbl_kurse_2014_2' WHERE 'tbl_kurse_2014_2'.'kurs_id'=".$id;
 
+    $this->ebas->db->query($SQL);
   }
 
 }
