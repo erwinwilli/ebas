@@ -99,7 +99,22 @@ require_once 'header.php';
 						<th>Datum</th>
 					</tr>
 						<tr>
-							<td><input type="text" name="datum" id="datum" ></td>
+							<td>
+								<link href="css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+								<script src="js/jquery.js"></script>
+								<script src="js/jquery-ui.custom.js"></script>
+								<script src="js/modernizr.js"></script>
+								<script>
+								Modernizr.load({
+									test: Modernizr.inputtypes.date,
+									nope: "js/jquery-ui.custom.js",
+									callback: function() {
+									  $("input[type=date]").datepicker();
+									}
+								  });
+								</script>
+								<input type="date" name="datum"  style="width: 260px"  ng-model="value" placeholder="dd-MM-yyyy" min="2013-01-01" value=<?= $kurs["datum"] ?> >
+							</td>
 						</tr>
 
 			</tbody>
