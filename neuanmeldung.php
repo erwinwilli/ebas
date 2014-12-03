@@ -183,7 +183,7 @@ require_once 'header.php';
 				<option value="de">de</option>
 				<option value="fr">it</option>
 				<option value="it">fr</option>
-				<option value="en">fr</option>
+				<option value="en">en</option>
 			</select>
 
 		  </td>
