@@ -113,14 +113,12 @@ require_once 'header.php';
         </tr>
           <tr>
             <td>
-              <select name="sprache" style="width: 100px">
-                <?php
-                echo '<option value="'.$kurs["sprache"].'" selected="selected">'.$kurs["sprache"].'</option>';
-                ?>
-                <option value="de">de</option>
-                <option value="fr">fr</option>
-                <option value="it">it</option>
-                <option value="en">en</option>
+			 
+              <select name="sprache" style="width: 100px" >               
+                <option value="de" <?php if( $kurs['sprache']=="de")echo ' selected="selected"'; ?>  >de</option>
+                <option value="fr" <?php if( $kurs['sprache']=="fr")echo " selected='selected'"; ?> >fr</option>
+                <option value="it" <?php if( $kurs['sprache']=="it")echo ' selected="selected"'; ?> >it</option>
+                <option value="en" <?php if( $kurs['sprache']=="en")echo ' selected="selected"'; ?> >en</option>
                 </select>
             </td>
           </tr>
