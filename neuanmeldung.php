@@ -13,7 +13,7 @@ require_once 'header.php';
 
 <script language="javascript" type="text/javascript">
 
-	function formtest (){
+	function formTestAnmeldung (){
 		//document.getElementById("txtErrorEmail").innerHTML = "New text!";
 		var x = true;
 
@@ -111,7 +111,7 @@ require_once 'header.php';
       <?php
       $anmeldung = $ebas->anmeldungen->neueAnmeldung($_POST);
       ?>
-      <form onSubmit="return formtest()" method="POST" action="#" >
+      <form onSubmit="return formTestAnmeldung()" method="POST" action="#" >
 
 
       <table class="max-width-table table table-striped">
@@ -128,11 +128,11 @@ require_once 'header.php';
               <?php
               $kurse = $ebas->kurse->getAlleKurse();
               foreach($kurse as $kurs){
-								if($_GET["kurs"] == $kurs["kurs_id"]){
-									echo '<option value="'.$kurs["kurs_id"].'" selected="selected">'.$kurs["bezeichnung_de"].'</option>';
-								}else{
-									echo '<option value="'.$kurs["kurs_id"].'">'.$kurs["bezeichnung_de"].'</option>';
-								}
+				if($_GET["kurs"] == $kurs["kurs_id"]){
+					echo '<option value="'.$kurs["kurs_id"].'" selected="selected">'.$kurs["bezeichnung_de"].'</option>';
+				}else{
+					echo '<option value="'.$kurs["kurs_id"].'">'.$kurs["bezeichnung_de"].'</option>';
+				}
               }
               ?>
             </select>
@@ -197,7 +197,7 @@ require_once 'header.php';
 
       </tbody>
     </table>
-    <input class="btn btn-primary" type="submit" onSubmit="formtest()" id="sendButton" value="Speichern" >
+    <input class="btn btn-primary" type="submit" onSubmit="formTestAnmeldung()" id="sendButton" value="Speichern" >
   </form>
      </div>
 </div>
