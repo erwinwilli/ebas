@@ -97,31 +97,36 @@
             ?>
           </ul>
       </li>
-
       <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bereinigungen <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
+            <li>
             <?php
               if(basename($_SERVER['PHP_SELF']) == "index.php"){
-              echo '<li><a href="Web/Interessenten/bereinigung.php">Bereinigungslauf</a></li>';
+              echo '<a href="Web/Interessenten/bereinigung-interessenten.php">Interessenten Bereinigung </a>';
+              echo '<a href="Web/Kurse/bereinigung-kurse.php">Kurse Bereinigung </a>';
             }else{
-              echo '<li><a href="../Interessenten/bereinigung.php">Bereinigungslauf</a></li>';
+              echo '<a href="../Interessenten/bereinigung-interessenten.php">Interessenten Bereinigung</a>';
+              echo '<a href="../Kurse/bereinigung-kurse.php">Kurse Bereinigung</a>';
               }
             ?>
+            </li>
           </ul>
       </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
+      <li>
       <?php
         if(basename($_SERVER['PHP_SELF']) !== "login.php"){
           if(basename($_SERVER['PHP_SELF']) == "index.php"){
-          echo '<li><a href="logout.php">Ausloggen</a></li>';
+          echo '<a href="logout.php">Ausloggen</a>';
         }else{
-          echo '<li><a href="../../logout.php">Ausloggen</a></li>';
+          echo '<a href="../../logout.php">Ausloggen</a>';
           }
         }
       ?>
+      </li>
       </ul>
     </div>
   </nav>
