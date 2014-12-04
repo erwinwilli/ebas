@@ -3,8 +3,9 @@
 error_reporting( E_ALL );
 ini_set('display_errors', 'On');
 
-require_once 'ebas.class.php';
-require_once 'session.php';
+require_once '../../ebas.class.php';
+require_once '../../session.php';
+
 if(isset($_POST) && !empty($_POST)){
   //Ändern Kurs
   if($_POST['sub']=="Speichern"){
@@ -12,9 +13,9 @@ if(isset($_POST) && !empty($_POST)){
     header('Location: '."kurse-bearbeiten-liste.php");
   //Kurs löschen
   }elseif($_POST['sub']=="Löschen"){
-	 
+
 	$ebas->anmeldungen->deleteAnmeldungWithKurs($_GET["kurs"]);//Löscht alle dazugehörigen User auch mit.
-		
+
     $ebas->kurse->deleteKurs($_GET["kurs"]);
     header('Location: '."kurse-bearbeiten-liste.php");
   }
@@ -23,7 +24,7 @@ if(isset($_POST) && !empty($_POST)){
 if($ebas->user->role > 1){
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
-require_once 'header.php';
+require_once '../../header.php';
 ?>
 <div class="page-header">
   <h2>Kurs bearbeiten</h2>
@@ -88,7 +89,7 @@ require_once 'header.php';
         </tr>
             <tr>
 				<td>
-				  <select name="sprache" style="width: 100px" >               
+				  <select name="sprache" style="width: 100px" >
 					<option value="de" <?php if( $kurs['sprache']=="de")echo ' selected="selected"'; ?>  >de</option>
 					<option value="fr" <?php if( $kurs['sprache']=="fr")echo " selected='selected'"; ?> >fr</option>
 					<option value="it" <?php if( $kurs['sprache']=="it")echo ' selected="selected"'; ?> >it</option>
@@ -120,13 +121,13 @@ require_once 'header.php';
             <tr>
               <td>
 				<link href="css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
-				<script src="js/jquery.js"></script>
-				<script src="js/jquery-ui.custom.js"></script>
-				<script src="js/modernizr.js"></script>
+				<script src="../../js/jquery.js"></script>
+				<script src="../../s/jquery-ui.custom.js"></script>
+				<script src="../../js/modernizr.js"></script>
 				<script>
 				Modernizr.load({
 					test: Modernizr.inputtypes.date,
-					nope: "js/jquery-ui.custom.js",
+					nope: "../../js/jquery-ui.custom.js",
 					callback: function() {
 					  $("input[type=date]").datepicker();
 					}
@@ -147,6 +148,6 @@ require_once 'header.php';
 </div>
 <?php
 
-require_once 'footer.php';
+require_once '../../footer.php';
 
 ?>

@@ -256,10 +256,10 @@ class kurse {
         $kurse[] = array(
           'kurs_id' => $id,
           'bezeichnung_de' => $bezeichnung_de,
-		  'bezeichnung_fr' => $bezeichnung_fr,
-		  'bezeichnung_it' => $bezeichnung_it,
-		  'bezeichnung_en' => $bezeichnung_en,
-		  'sortierung' => $sortierung,
+    		  'bezeichnung_fr' => $bezeichnung_fr,
+    		  'bezeichnung_it' => $bezeichnung_it,
+    		  'bezeichnung_en' => $bezeichnung_en,
+    		  'sortierung' => $sortierung,
           'sprache' => $sprache,
           'kursort' => $kursort,
           'max_teilnehmer' => $max_teilnehmer,
@@ -598,8 +598,8 @@ class interessenten {
   }
 
   public function bereinigungInteressenten(){
-    $SQL2 = "DELETE FROM `tbl_interessenten_2014_2` WHERE email IN (SELECT email FROM `tbl_anmeldungen_2014_2`)";
-    $this->ebas->db->query($SQL2);
+    $SQL = "DELETE FROM `tbl_interessenten_2014_2` WHERE email IN (SELECT email FROM `tbl_anmeldungen_2014_2`)";
+    $this->ebas->db->query($SQL);
   }
 }
 

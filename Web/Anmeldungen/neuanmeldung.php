@@ -3,12 +3,13 @@
 error_reporting( E_ALL );
 ini_set('display_errors', 'On');
 
-require_once 'ebas.class.php';
-require_once 'session.php';
+require_once '../../ebas.class.php';
+require_once '../../session.php';
+
 if(isset($_POST) && !empty($_POST)){
-Header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
+Header('Location: '."../Kurse/kurse.php?kurs=".$_POST["kurs"]);
 }
-require_once 'header.php';
+require_once '../../header.php';
 ?>
 
 <div class="row">
@@ -115,6 +116,6 @@ require_once 'header.php';
 </div>
 <?php
 
-require_once 'footer.php';
+require_once '../../footer.php';
 
 ?>

@@ -3,9 +3,9 @@
 error_reporting( E_ALL );
 ini_set('display_errors', 'On');
 
-require_once 'ebas.class.php';
-require_once 'session.php';
-require_once 'header.php';
+require_once '../../ebas.class.php';
+require_once '../../session.php';
+require_once '../../header.php';
 echo $ebas->user->role;
 
 ?>
@@ -58,6 +58,6 @@ echo $ebas->user->role;
 
 <?php
 
-require_once 'footer.php';
+require_once '../../footer.php';
 
 ?>

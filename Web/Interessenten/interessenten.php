@@ -3,8 +3,8 @@
 error_reporting( E_ALL );
 ini_set('display_errors', 'On');
 
-require_once 'ebas.class.php';
-require_once 'session.php';
+require_once '../../ebas.class.php';
+require_once '../../session.php';
 if(isset($_POST) && !empty($_POST)){
   //Ändern Interssent
   if($_POST['sub']=="Speichern"){
@@ -13,7 +13,7 @@ if(isset($_POST) && !empty($_POST)){
   //Interssent zur Anmeldung verschieben bzw. neu erfassen
 }elseif($_POST['sub']=="Zur Anmeldung verschieben"){
       $ebas->anmeldungen->neueAnmeldung($_POST);
-      header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
+      header('Location: '."../Kurse/kurse.php?kurs=".$_POST["kurs"]);
   //löschen des Interssenten
   }elseif($_POST['sub']=="Löschen"){
     $ebas->interessenten->deleteInteressent($_GET["interessent"]);
@@ -25,7 +25,7 @@ if(isset($_POST) && !empty($_POST)){
 if($ebas->user->role > 1){
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
-require_once 'header.php';
+require_once '../../header.php';
 ?>
 <div class="page-header">
   <h2>Interessent bearbeiten</h2>
@@ -138,6 +138,6 @@ require_once 'header.php';
 </div>
 <?php
 
-require_once 'footer.php';
+require_once '../../footer.php';
 
 ?>

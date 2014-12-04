@@ -3,8 +3,8 @@
 error_reporting( E_ALL );
 ini_set('display_errors', 'On');
 
-require_once 'ebas.class.php';
-require_once 'session.php';
+require_once '../../ebas.class.php';
+require_once '../../session.php';
 if(isset($_POST) && !empty($_POST)){
 	//Ändern Kurs
 	//if($_POST['sub']=="Speichern"){
@@ -18,13 +18,13 @@ if(isset($_POST) && !empty($_POST)){
 require_once 'header.php';
 ?>
 <!-- Java Scripte weden eingebunden. -->
-<script src="js/ebas.js"></script>
-<script src="js/jquery.js"></script>
-<script src="js/jquery-ui.custom.js"></script>
-<script src="js/modernizr.js"></script>
-	  
+<script src="../../js/ebas.js"></script>
+<script src="../../js/jquery.js"></script>
+<script src="../../js/jquery-ui.custom.js"></script>
+<script src="../../js/modernizr.js"></script>
 
-  
+
+
 <div class="page-header">
 	<h2>Kurs erstellen</h2>
 </div>
@@ -108,12 +108,12 @@ require_once 'header.php';
 					</tr>
 						<tr>
 							<td>
-								<link href="css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
-								
+								<link href="../../css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+
 								<script>
 								Modernizr.load({
 									test: Modernizr.inputtypes.date,
-									nope: "js/jquery-ui.custom.js",
+									nope: "../../js/jquery-ui.custom.js",
 									callback: function() {
 									  $("input[type=date]").datepicker();
 									}
@@ -131,6 +131,6 @@ require_once 'header.php';
 </div>
 <?php
 
-require_once 'footer.php';
+require_once '../../footer.php';
 
 ?>

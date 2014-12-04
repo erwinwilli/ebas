@@ -3,9 +3,9 @@
 error_reporting( E_ALL );
 ini_set('display_errors', 'On');
 
-require_once 'ebas.class.php';
-require_once 'session.php';
-require_once 'header.php';
+require_once '../../ebas.class.php';
+require_once '../../session.php';
+require_once '../../header.php';
 
 ?>
 
@@ -34,7 +34,7 @@ require_once 'header.php';
         $kurse = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
           if(!empty($kurse)){
           }else{
-            header('Location: '."neuanmeldung.php?kurs=". $_GET["kurs"]);
+            header('Location: '."../Anmeldungen/neuanmeldung.php?kurs=". $_GET["kurs"]);
             }
         }
         ?>
@@ -69,17 +69,17 @@ require_once 'header.php';
 
           <?php }
         }else{
-              header('Location: '."index.php");
+              header('Location: '."../../index.php");
               }?>
         </tbody>
       </table>
       <script>window.onload= function () { window.print();window.history.back();   }  </script>
-	  
-	  
+
+
           </div>
   </div>
 <?php
 
-require_once 'footer.php';
+require_once '../../footer.php';
 
 ?>

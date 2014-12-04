@@ -3,9 +3,9 @@
 error_reporting( E_ALL );
 ini_set('display_errors', 'On');
 
-require_once 'ebas.class.php';
-require_once 'session.php';
-require_once 'header.php';
+require_once '../../ebas.class.php';
+require_once '../../session.php';
+require_once '../../header.php';
 
 ?>
 
@@ -34,7 +34,7 @@ require_once 'header.php';
         $kurse = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
           if(!empty($kurse)){
           }else{
-            header('Location: '."neuanmeldung.php?kurs=". $_GET["kurs"]);
+            header('Location: '."../Anmeldungen/neuanmeldung.php?kurs=". $_GET["kurs"]);
             }
         }
         ?>
@@ -67,19 +67,19 @@ require_once 'header.php';
 
           <?php }
         }else{
-              header('Location: '."index.php");
+              header('Location: '."../../index.php");
               }?>
         </tbody>
       </table>
-      <a class="btn btn-primary" href="neuanmeldung.php?kurs=<?php echo $_GET["kurs"]; ?>">neuer User</a>
+      <a class="btn btn-primary" href="../Anmeldungen/neuanmeldung.php?kurs=<?php echo $_GET["kurs"]; ?>">neuer User</a>
 	  </br> </br>
 	  <a class="btn btn-info" href="kurseDruckvorschau.php?kurs=<?php echo $_GET["kurs"]; ?>">Druckvorschau</a>
 	 <a class="btn btn-info" href="kurseDruckvorschauKompakt.php?kurs=<?php echo $_GET["kurs"]; ?>">Druckvorschau Kompakt</a>
-   
+
           </div>
   </div>
 <?php
 
-require_once 'footer.php';
+require_once '../../footer.php';
 
 ?>

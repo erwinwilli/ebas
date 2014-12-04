@@ -32,7 +32,7 @@ require_once 'header.php';
 
         <?php foreach($kurse as $kurs){ ?>
         <tr>
-          <td><a href= kurse.php?kurs=<?= $kurs["kurs_id"]?>><?= $kurs["bezeichnung_de"] ?></td>
+          <td><a href= Web/Kurse/kurse.php?kurs=<?= $kurs["kurs_id"]?>><?= $kurs["bezeichnung_de"] ?></td>
           <td><?= $kurs["sprache"] ?></td>
           <td><?= $kurs["kursort"] ?></td>
 		  <?php
@@ -47,7 +47,7 @@ require_once 'header.php';
 
       </tbody>
     </table>
-	<a class="btn btn-lg btn-primary" href="AnmeldestandDruckvorschau.php?kurs=<?php echo $_GET["kurs"]; ?>">Druckvorschau</a>
+	<a class="btn btn-lg btn-primary" href="Web/Anmeldungen/anmeldestandDruckvorschau.php?kurs=<?php echo $_GET["kurs"]; ?>">Druckvorschau</a>
         </div>
 </div>
 

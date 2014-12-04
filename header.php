@@ -45,15 +45,15 @@
       <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Aufgaben <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="kurse-liste.php">Alle Kurse</a></li>
-            <li><a href="anmeldungen-liste.php">Alle Anmeldungen</a></li>
-            <li><a href="interessenten-liste.php">Alle Interessenten</a></li>
+            <li><a href="Web/Kurse/kurse-liste.php">Alle Kurse</a></li>
+            <li><a href="Web/Anmeldungen/anmeldungen-liste.php">Alle Anmeldungen</a></li>
+            <li><a href="Web/Interessenten/interessenten-liste.php">Alle Interessenten</a></li>
             <li class="divider"></li>
-            <li><a href="neuanmeldung.php">Neuer User erstellen</a></li>
-			<li><a href="neuerkurs.php">Neuen Kurs erstellen</a></li>
-			<li><a href="kurse-bearbeiten-liste.php">Kurse bearbeiten</a></li>
+            <li><a href="Web/Anmeldungen/neuanmeldung.php">Neuer User erstellen</a></li>
+			<li><a href="Web/Kurse/neuerkurs.php">Neuen Kurs erstellen</a></li>
+			<li><a href="Web/Kurse/kurse-bearbeiten-liste.php">Kurse bearbeiten</a></li>
             <li class="divider"></li>
-            <li><a href="bereinigung.php">Bereinigungslauf</a></li>
+            <li><a href="Web/Interessenten/bereinigung.php">Bereinigungslauf</a></li>
           </ul>
       </li>
         <li><a href="task.php">Aufgaben</a></li>

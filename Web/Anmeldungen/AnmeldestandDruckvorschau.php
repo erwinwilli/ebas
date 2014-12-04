@@ -3,9 +3,9 @@
 error_reporting( E_ALL );
 ini_set('display_errors', 'On');
 
-require_once 'ebas.class.php';
-require_once 'session.php';
-require_once 'header.php';
+require_once '../../ebas.class.php';
+require_once '../../session.php';
+require_once '../../header.php';
 
 ?>
 <div class="row">
@@ -48,13 +48,13 @@ require_once 'header.php';
       </tbody>
     </table>
 	 </br> </br>
-	  
+
 	<script>window.onload= function () { window.print();window.history.back();   }  </script>
         </div>
 </div>
 
 <?php
 
-//require_once 'footer.php';
+require_once '../../footer.php';
 
 ?>

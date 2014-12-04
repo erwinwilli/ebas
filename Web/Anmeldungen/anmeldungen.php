@@ -3,17 +3,18 @@
 error_reporting( E_ALL );
 ini_set('display_errors', 'On');
 
-require_once 'ebas.class.php';
-require_once 'session.php';
+require_once '../../ebas.class.php';
+require_once '../../session.php';
+
 if(isset($_POST) && !empty($_POST)){
   //Ändern Anmeldung
   if($_POST['sub']=="Speichern"){
     $ebas->anmeldungen->updateAnmeldungen($_POST,$_GET["anmeldung"]);
-    header('Location: '."kurse.php?kurs=".$_POST["kurs"]);
+    header('Location: '."../Kurse/kurse.php?kurs=".$_POST["kurs"]);
   //Anmeldung zu Interessent verschieben
   }elseif($_POST['sub']=="zu Interessent verschieben"){
     $ebas->anmeldungen->toInteressent($_POST,$_GET["anmeldung"]);
-    header('Location: '."interessenten-liste.php");
+    header('Location: '."../Interessenten/interessenten-liste.php");
   //Anmeldung löschen
   }elseif($_POST['sub']=="Löschen"){
       $ebas->anmeldungen->deleteAnmeldung($_GET["anmeldung"]);
@@ -25,7 +26,7 @@ if(isset($_POST) && !empty($_POST)){
 if($ebas->user->role > 1){
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
-require_once 'header.php';
+require_once '../../header.php';
 ?>
 <div class="page-header">
   <h2>Anmeldungen bearbeiten</h2>
@@ -113,8 +114,8 @@ require_once 'header.php';
         </tr>
           <tr>
             <td>
-			 
-              <select name="sprache" style="width: 100px" >               
+
+              <select name="sprache" style="width: 100px" >
                 <option value="de" <?php if( $kurs['sprache']=="de")echo ' selected="selected"'; ?>  >de</option>
                 <option value="fr" <?php if( $kurs['sprache']=="fr")echo " selected='selected'"; ?> >fr</option>
                 <option value="it" <?php if( $kurs['sprache']=="it")echo ' selected="selected"'; ?> >it</option>
@@ -146,6 +147,6 @@ require_once 'header.php';
 </div>
 <?php
 
-require_once 'footer.php';
+require_once '../../footer.php';
 
 ?>
