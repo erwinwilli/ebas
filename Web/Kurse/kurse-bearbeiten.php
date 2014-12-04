@@ -18,7 +18,7 @@ if(isset($_POST) && !empty($_POST)){
 		
 		foreach ($kurse2 as $kurs2){	
 		
-		echo $kurs2['name'];
+		
 		$ebas->kurse->KurstoInteressent($kurs2['name'],$kurs2['vorname'],$kurs2['adresse'],$kurs2['plz'],$kurs2['ort'],$kurs2['email'],$_POST["kursort"],$kurs2['sprache'],$kurs2['anmeldung_id']);
 		}		
 		echo $_GET["kurs"];
