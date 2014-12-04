@@ -256,7 +256,7 @@ class kurse {
         $kurse[] = array(
           'kurs_id' => $id,
           'bezeichnung_de' => $bezeichnung_de,
-    		  'bezeichnung_fr' => $bezeichnung_fr,
+			'bezeichnung_fr' => $bezeichnung_fr,
     		  'bezeichnung_it' => $bezeichnung_it,
     		  'bezeichnung_en' => $bezeichnung_en,
     		  'sortierung' => $sortierung,
@@ -316,6 +316,18 @@ class kurse {
 
     $this->ebas->db->query($SQL);
     }
+  }
+   public function KurstoInteressent($name, $vname, $adr, $plz, $ort, $email, $kursOrt, $sprache, $id){
+    
+    $SQL = "INSERT INTO ebas.tbl_interessenten_2014_2 ( name, vorname, adresse, plz, ort, email, kursort, sprache)
+    VALUES
+    ("."'".$name."'".", "."'". $vname."'".", "."'".$adr."'".", "."'".$plz."'".", "."'". $ort."'"
+    .", "."'". $email."'".", "."'".$kursOrt."'".", "."'".$sprache."'".")";	
+	
+    $this->ebas->db->query($SQL);
+    $SQL2 = "DELETE FROM `ebas`.`tbl_anmeldungen_2014_2` WHERE `tbl_anmeldungen_2014_2`.`anmeldung_id` =".$id;
+	$this->ebas->db->query($SQL2);
+    
   }
 }
 //Details für Zugriffe auf Tabelle tbl_anmeldungen_2014_2

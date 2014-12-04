@@ -13,19 +13,23 @@ if(isset($_POST) && !empty($_POST)){
     header('Location: '."kurse-bearbeiten-liste.php");
   //Kurs löschen
   }elseif($_POST['sub']=="Löschen"){
-  
-	  
-			
+	if($_POST["datum"] > date("yyyy.mm.dd")){ //Event ist noch nicht vorbei. Alle Kunden zu den Intresenten
+		$kurse2 = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
 		
-	if($_POST["datum"] > date("yyyy.mm.dd")){
-		echo "dieser event kommt erst noch"; 
+		foreach ($kurse2 as $kurs2){	
+		
+		echo $kurs2['name'];
+		$ebas->kurse->KurstoInteressent($kurs2['name'],$kurs2['vorname'],$kurs2['adresse'],$kurs2['plz'],$kurs2['ort'],$kurs2['email'],$_POST["kursort"],$kurs2['sprache'],$kurs2['anmeldung_id']);
+		}		
+		echo $_GET["kurs"];
+		$ebas->kurse->deleteKurs($_GET["kurs"]);
 	}
-	else{
-		echo "dieser event ist vorbei";
+	else{//event ist vorbei. Alle Kunden löschen
+		$ebas->anmeldungen->deleteAnmeldungWithKurs($_GET["kurs"]);//Löscht alle dazugehörigen User auch mit.
+		$ebas->kurse->deleteKurs($_GET["kurs"]);
 	}
-	//$ebas->anmeldungen->deleteAnmeldungWithKurs($_GET["kurs"]);//Löscht alle dazugehörigen User auch mit.
-    //$ebas->kurse->deleteKurs($_GET["kurs"]);
-   // header('Location: '."kurse-bearbeiten-liste.php");
+	
+    Sheader('Location: '."kurse-bearbeiten-liste.php");
 	
 	
   }
