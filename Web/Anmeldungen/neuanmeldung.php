@@ -6,6 +6,11 @@ ini_set('display_errors', 'On');
 require_once '../../ebas.class.php';
 require_once '../../session.php';
 
+//check Role
+if($ebas->user->role >= 1){
+  header('Location: ' .$loginUrl);
+}
+
 if(isset($_POST) && !empty($_POST)){
 Header('Location: '."../Kurse/kurse.php?kurs=".$_POST["kurs"]);
 }

@@ -6,6 +6,11 @@ ini_set('display_errors', 'On');
 require_once '../../ebas.class.php';
 require_once '../../session.php';
 
+//check Role
+if($ebas->user->role >= 1){
+  header('Location: '.$loginUrl);
+}
+
 if(isset($_POST) && !empty($_POST)){
   //Ändern Anmeldung
   if($_POST['sub']=="Speichern"){
@@ -20,11 +25,6 @@ if(isset($_POST) && !empty($_POST)){
       $ebas->anmeldungen->deleteAnmeldung($_GET["anmeldung"]);
       header('Location: '."anmeldungen-liste.php");
   }
-}
-
-//check Role
-if($ebas->user->role > 1){
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 require_once '../../header.php';
 ?>

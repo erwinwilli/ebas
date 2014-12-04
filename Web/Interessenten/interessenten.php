@@ -22,7 +22,7 @@ if(isset($_POST) && !empty($_POST)){
 }
 
 //check Role
-if($ebas->user->role > 1){
+if($ebas->user->role >= 1){
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 require_once '../../header.php';

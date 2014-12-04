@@ -6,6 +6,11 @@ ini_set('display_errors', 'On');
 require_once '../../ebas.class.php';
 require_once '../../session.php';
 
+//check Role
+if($ebas->user->role >= 1){
+  header('Location: ' .$loginUrl);
+}
+
 if(isset($_POST) && !empty($_POST)){
   //Ändern Kurs
   if($_POST['sub']=="Speichern"){
@@ -15,12 +20,12 @@ if(isset($_POST) && !empty($_POST)){
   }elseif($_POST['sub']=="Löschen"){
 	if($_POST["datum"] > date("yyyy.mm.dd")){ //Event ist noch nicht vorbei. Alle Kunden zu den Intresenten
 		$kurse2 = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
-		
-		foreach ($kurse2 as $kurs2){	
-		
-		
+
+		foreach ($kurse2 as $kurs2){
+
+
 		$ebas->kurse->KurstoInteressent($kurs2['name'],$kurs2['vorname'],$kurs2['adresse'],$kurs2['plz'],$kurs2['ort'],$kurs2['email'],$_POST["kursort"],$kurs2['sprache'],$kurs2['anmeldung_id']);
-		}		
+		}
 		echo $_GET["kurs"];
 		$ebas->kurse->deleteKurs($_GET["kurs"]);
 	}
@@ -28,10 +33,10 @@ if(isset($_POST) && !empty($_POST)){
 		$ebas->anmeldungen->deleteAnmeldungWithKurs($_GET["kurs"]);//Löscht alle dazugehörigen User auch mit.
 		$ebas->kurse->deleteKurs($_GET["kurs"]);
 	}
-	
+
     Sheader('Location: '."kurse-bearbeiten-liste.php");
-	
-	
+
+
   }
 }
 //check Role

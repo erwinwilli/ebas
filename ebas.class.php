@@ -1,6 +1,7 @@
 <?php
 error_reporting( E_ALL );
 ini_set('display_errors', 'On');
+
 $GLOBALS['strGlobAlleAnmel'] = "*";
 $GLOBALS['strGlobAlleintre'] = "*";
 
@@ -82,8 +83,6 @@ class session{
         return TRUE;
       }
     }else{
-      echo "TEST";
-      echo $stmt->error;
       return FALSE;
     }
 
@@ -115,6 +114,9 @@ class session{
         $result->close();
 
         //löschen expired Cookies
+        if(empty($active)){
+            $active = "";
+        }
         if($active == 1){
           $datetime1 = date_create(date('Y-m-d'));
           $datetime2 = date_create($expire);
@@ -222,6 +224,11 @@ class kurse {
       /* free result set */
       $result->close();
   }
+
+  //Exception Handling falls keine Daten vorhanden sind
+  if(!isset($kurse)){
+    $kurse = array();
+  }
   //Anzahl User für Kurs
   foreach($kurse as &$kurs){
     $SQL = "SELECT count(*) AS count FROM `tbl_anmeldungen_2014_2` WHERE
@@ -249,6 +256,9 @@ class kurse {
       }
       /* free result set */
       $result->close();
+  }
+  if(!isset($kurse)){
+    $kurse = array();
   }
   //Anzahl User für Kurs
   foreach($kurse as &$kurs){
