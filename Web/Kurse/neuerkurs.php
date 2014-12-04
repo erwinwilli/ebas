@@ -15,7 +15,7 @@ if(isset($_POST) && !empty($_POST)){
 //if($ebas->user->role > 1){
 //	header('Location: ' . $_SERVER['HTTP_REFERER']);
 //}
-require_once 'header.php';
+require_once '../../header.php';
 ?>
 <!-- Java Scripte weden eingebunden. -->
 <script src="../../js/ebas.js"></script>
@@ -38,7 +38,7 @@ require_once 'header.php';
 			<thead>
 				<tr>
 				<tr>
-					<th>Kurs</th>
+					<th>Bitte Kursdetails angeben</th>
 				</tr>
 			</thead>
 			<tbody>
