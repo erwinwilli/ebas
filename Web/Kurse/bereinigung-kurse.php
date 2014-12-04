@@ -15,38 +15,38 @@ require_once '../../header.php';
 <div class="row">
     <div class="kurs col-md-12">
     <?php
-      $kurse = $ebas->kurse->bereinigungKurseView();
+    $kurse = $ebas->kurse->getAlleVergangenenKurse();
     ?>
       <table class="table table-striped">
       <thead>
         <tr>
           <th>Kursort und Datum</th>
+          <th>Kursort</th>
           <th>Sprache</th>
-          <th>Ort</th>
           <th>Datum</th>
           <th>Teilnehmer</th>
         </tr>
       </thead>
       <tbody>
-
-        <?php foreach($kurse as $kurs){ ?>
-        <tr>
-          <td><a href= kurse.php?kurs=<?= $kurs["kurs_id"]?>><?= $kurs["bezeichnung_de"] ?></td>
-          <td><?= $kurs["sprache"] ?></td>
-          <td><?= $kurs["kursort"] ?></td>
-      <?php
-      $datum = $kurs["datum"];
-      $datum = date("d.m.Y", strtotime($datum));
-      ?>
-          <td><?= $datum?></td>
-          <td><?= $kurs["count"] ?> / <?= $kurs["max_teilnehmer"] ?> </td>
-        </tr>
-
-        <?php } ?>
+        <?php
+        if(!empty($kurse)){
+          foreach($kurse as $kurs){
+              echo "<tr>";
+              echo "<td>".$kurs["bezeichnung_de"]."</td>";
+              echo "<td>".$kurs["kursort"]."</td>";
+              echo "<td>".$kurs["sprache"]."</td>";
+              $datum = $kurs["datum"];
+              $datum = date("d.m.Y", strtotime($datum));
+              echo "<td>".$datum."</td>";
+              echo "<td>".$kurs["count"]."/".$kurs["max_teilnehmer"]."</td>";
+              echo "</tr>";
+          }
+        }
+        ?>
 
       </tbody>
     </table>
-    <a class="btn btn-danger" href="bereinigung-kurse-blank.php">Bereinigung Interessenten </a>
+    <a class="btn btn-danger" href="bereinigung-blank.php">Bereinigung Kurse </a>
         </div>
 </div>
 

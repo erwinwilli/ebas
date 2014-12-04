@@ -211,6 +211,7 @@ class kurse {
 
   }
 
+  //Alle Aktuellen Kurse
   public function getAlleAktuellenKurse(){
     $SQL = "SELECT * FROM `tbl_kurse_2014_2` WHERE `datum`>= Curdate() ORDER BY `tbl_kurse_2014_2`.`datum` ASC";
     /* Select queries return a resultset */
@@ -237,6 +238,34 @@ class kurse {
   return $kurse;
 
 }
+
+  //Alle Vergangenen Kurse
+  public function getAlleVergangenenKurse(){
+    $SQL = "SELECT * FROM `tbl_kurse_2014_2` WHERE `datum`<= Curdate() ORDER BY `tbl_kurse_2014_2`.`datum` ASC";
+    /* Select queries return a resultset */
+  if ($result = $this->ebas->db->query($SQL)) {
+      while($row = $result->fetch_assoc()){
+          $kurse[] = $row;
+      }
+      /* free result set */
+      $result->close();
+  }
+  //Anzahl User für Kurs
+  foreach($kurse as &$kurs){
+    $SQL = "SELECT count(*) AS count FROM `tbl_anmeldungen_2014_2` WHERE
+    ".$kurs['kurs_id']." = kurs";
+     if ($result = $this->ebas->db->query($SQL)) {
+         while($row = $result->fetch_assoc()){
+             $kurs['count'] = $row['count'];
+         }
+         /* free result set */
+         $result->close();
+     }
+  }
+
+  return $kurse;
+
+  }
 
   public function getKurs($id){
     $SQL = "SELECT kurs_id, bezeichnung_de, bezeichnung_fr, bezeichnung_it, bezeichnung_en, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, kursort, datum FROM `tbl_kurse_2014_2` WHERE kurs_id = ? ORDER BY bezeichnung_de ASC";
@@ -318,16 +347,16 @@ class kurse {
     }
   }
    public function KurstoInteressent($name, $vname, $adr, $plz, $ort, $email, $kursOrt, $sprache, $id){
-    
+
     $SQL = "INSERT INTO ebas.tbl_interessenten_2014_2 ( name, vorname, adresse, plz, ort, email, kursort, sprache)
     VALUES
     ("."'".$name."'".", "."'". $vname."'".", "."'".$adr."'".", "."'".$plz."'".", "."'". $ort."'"
-    .", "."'". $email."'".", "."'".$kursOrt."'".", "."'".$sprache."'".")";	
-	
+    .", "."'". $email."'".", "."'".$kursOrt."'".", "."'".$sprache."'".")";
+
     $this->ebas->db->query($SQL);
     $SQL2 = "DELETE FROM `ebas`.`tbl_anmeldungen_2014_2` WHERE `tbl_anmeldungen_2014_2`.`anmeldung_id` =".$id;
 	$this->ebas->db->query($SQL2);
-    
+
   }
 }
 //Details für Zugriffe auf Tabelle tbl_anmeldungen_2014_2

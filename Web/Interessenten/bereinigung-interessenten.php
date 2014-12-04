@@ -51,7 +51,7 @@ require_once '../../header.php';
 
       </tbody>
     </table>
-    <a class="btn btn-danger" href="bereinigung-interessenten-blank.php">Bereinigung Interessenten </a>
+    <a class="btn btn-danger" href="bereinigung-blank.php">Bereinigung Interessenten </a>
         </div>
 </div>
 
