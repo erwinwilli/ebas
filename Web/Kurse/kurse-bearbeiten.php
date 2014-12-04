@@ -13,11 +13,21 @@ if(isset($_POST) && !empty($_POST)){
     header('Location: '."kurse-bearbeiten-liste.php");
   //Kurs löschen
   }elseif($_POST['sub']=="Löschen"){
-
-	$ebas->anmeldungen->deleteAnmeldungWithKurs($_GET["kurs"]);//Löscht alle dazugehörigen User auch mit.
-
-    $ebas->kurse->deleteKurs($_GET["kurs"]);
-    header('Location: '."kurse-bearbeiten-liste.php");
+  
+	  
+			
+		
+	if($_POST["datum"] > date("yyyy.mm.dd")){
+		echo "dieser event kommt erst noch"; 
+	}
+	else{
+		echo "dieser event ist vorbei";
+	}
+	//$ebas->anmeldungen->deleteAnmeldungWithKurs($_GET["kurs"]);//Löscht alle dazugehörigen User auch mit.
+    //$ebas->kurse->deleteKurs($_GET["kurs"]);
+   // header('Location: '."kurse-bearbeiten-liste.php");
+	
+	
   }
 }
 //check Role
