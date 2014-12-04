@@ -478,6 +478,10 @@ class anmeldungen {
     $SQL = "DELETE FROM `ebas`.`tbl_anmeldungen_2014_2` WHERE `tbl_anmeldungen_2014_2`.`anmeldung_id` =".$id;
     $this->ebas->db->query($SQL);
   }
+  public function deleteAnmeldungWithKurs($id){
+    $SQL = "DELETE FROM `ebas`.`tbl_anmeldungen_2014_2` WHERE `tbl_anmeldungen_2014_2`.`kurs` =".$id;
+    $this->ebas->db->query($SQL);
+  }
 }
 
 class interessenten {
