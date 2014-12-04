@@ -76,10 +76,10 @@
             <?php
               if(basename($_SERVER['PHP_SELF']) == "index.php"){
               echo '<li><a href="Web/Anmeldungen/anmeldungen-liste.php">Alle Anmeldungen</a></li>';
-              echo '<li><a href="Web/Anmeldungen/neuanmeldung.php">Neuer User erstellen</a></li>';
+              echo '<li><a href="Web/Anmeldungen/neuanmeldung.php">Neue Anmeldung erstellen</a></li>';
             }else{
               echo '<li><a href="../Anmeldungen/anmeldungen-liste.php">Alle Anmeldungen</a></li>';
-              echo '<li><a href="../Anmeldungen/neuanmeldung.php">Neuer User erstellen</a></li>';
+              echo '<li><a href="../Anmeldungen/neuanmeldung.php">Neue Anmeldung erstellen</a></li>';
               }
             ?>
           </ul>

@@ -12,11 +12,8 @@ Header('Location: '."../Kurse/kurse.php?kurs=".$_POST["kurs"]);
 require_once '../../header.php';
 ?>
 
-<div class="row">
-  <div class="col-md-3">
-
-      </p>
-    </div>
+<div class="page-header">
+  <h2>Neue Anmeldung</h2>
 </div>
 
 <div class="row">

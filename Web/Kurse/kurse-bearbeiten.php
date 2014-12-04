@@ -52,12 +52,6 @@ require_once '../../header.php';
 
       <form method="POST" action="#">
       <table class="max-width-table table table-striped">
-      <thead>
-        <tr>
-        <tr>
-          <th>Kurs</th>
-        </tr>
-      </thead>
       <tbody>
 
        <?php

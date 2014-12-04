@@ -35,12 +35,6 @@ require_once '../../header.php';
 			?>
 			<form onSubmit="return formTestKurs()" method="POST" action="#" >
 			<table class="max-width-table table table-striped">
-			<thead>
-				<tr>
-				<tr>
-					<th>Bitte Kursdetails angeben</th>
-				</tr>
-			</thead>
 			<tbody>
 				<tr>
 					<th>Kurs Bezeichnung DE </th>
