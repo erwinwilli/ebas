@@ -38,7 +38,13 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../../index.php">ebas</a>
+      <?php
+        if(basename($_SERVER['PHP_SELF']) == "index.php"){
+          echo '<a class="navbar-brand" href="index.php">ebas</a>';
+        }else{
+          echo '<a class="navbar-brand" href="../../index.php">ebas</a>';
+        }
+      ?>
     </div>
 
     <?php
@@ -48,43 +54,65 @@
       <ul class="nav navbar-nav">
 
       <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Aufgaben <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Kurse <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <?php
               if(basename($_SERVER['PHP_SELF']) == "index.php"){
-              echo '<li><a href="Web/Kurse/kurse-liste.php">Alle Kurse</a></li>';
+                echo '<li><a href="Web/Kurse/kurse-liste.php">Alle Kurse</a></li>';
+                echo '<li><a href="Web/Kurse/neuerkurs.php">Neuen Kurs erstellen</a></li>';
+                echo '<li><a href="Web/Kurse/kurse-bearbeiten-liste.php">Kurse bearbeiten</a></li>';
+              }else{
+                echo '<li><a href="../Kurse/kurse-liste.php">Alle Kurse</a></li>';
+                echo '<li><a href="../Kurse/neuerkurs.php">Neuen Kurs erstellen</a></li>';
+                echo '<li><a href="../Kurse/kurse-bearbeiten-liste.php">Kurse bearbeiten</a></li>';
+              }
+            ?>
+          </ul>
+      </li>
+
+      <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Anmeldungen <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <?php
+              if(basename($_SERVER['PHP_SELF']) == "index.php"){
               echo '<li><a href="Web/Anmeldungen/anmeldungen-liste.php">Alle Anmeldungen</a></li>';
-              echo ' <li><a href="Web/Interessenten/interessenten-liste.php">Alle Interessenten</a></li>';
-              echo '<li class="divider"></li>';
               echo '<li><a href="Web/Anmeldungen/neuanmeldung.php">Neuer User erstellen</a></li>';
-              echo '<li><a href="Web/Kurse/neuerkurs.php">Neuen Kurs erstellen</a></li>';
-              echo '<li><a href="Web/Kurse/kurse-bearbeiten-liste.php">Kurse bearbeiten</a></li>';
-              echo '<li class="divider"></li>';
+            }else{
+              echo '<li><a href="../Anmeldungen/anmeldungen-liste.php">Alle Anmeldungen</a></li>';
+              echo '<li><a href="../Anmeldungen/neuanmeldung.php">Neuer User erstellen</a></li>';
+              }
+            ?>
+          </ul>
+      </li>
+
+      <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Interessenten <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <?php
+              if(basename($_SERVER['PHP_SELF']) == "index.php"){
+              echo ' <li><a href="Web/Interessenten/interessenten-liste.php">Alle Interessenten</a></li>';
+            }else{
+              echo ' <li><a href="../Interessenten/interessenten-liste.php">Alle Interessenten</a></li>';
+              }
+            ?>
+          </ul>
+      </li>
+
+      <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bereinigungen <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <?php
+              if(basename($_SERVER['PHP_SELF']) == "index.php"){
               echo '<li><a href="Web/Interessenten/bereinigung.php">Bereinigungslauf</a></li>';
             }else{
-              echo '<li><a href="../Kurse/kurse-liste.php">Alle Kurse</a></li>';
-              echo '<li><a href="../Anmeldungen/anmeldungen-liste.php">Alle Anmeldungen</a></li>';
-              echo ' <li><a href="../Interessenten/interessenten-liste.php">Alle Interessenten</a></li>';
-              echo '<li class="divider"></li>';
-              echo '<li><a href="../Anmeldungen/neuanmeldung.php">Neuer User erstellen</a></li>';
-              echo '<li><a href="../Kurse/neuerkurs.php">Neuen Kurs erstellen</a></li>';
-              echo '<li><a href="../Kurse/kurse-bearbeiten-liste.php">Kurse bearbeiten</a></li>';
-              echo '<li class="divider"></li>';
               echo '<li><a href="../Interessenten/bereinigung.php">Bereinigungslauf</a></li>';
               }
             ?>
           </ul>
       </li>
-        <li><a href="task.php">Aufgaben</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="search form-control" placeholder="Search">
-        </div>
-      </form>
-      <li><a href="help.php">Help</a></li>
       <?php
         if(basename($_SERVER['PHP_SELF']) !== "login.php"){
           if(basename($_SERVER['PHP_SELF']) == "index.php"){
