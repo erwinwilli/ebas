@@ -2701,7 +2701,7 @@ $.extend(Datepicker.prototype, {
 	/* Standard date formats. */
 	ATOM: "yy-mm-dd", // RFC 3339 (ISO 8601)
 	COOKIE: "D, dd M yy",
-	ISO_8601: "yy-mm-dd",
+	ISO_8601: "dd-mm-yy",
 	RFC_822: "D, d M y",
 	RFC_850: "DD, dd-M-y",
 	RFC_1036: "D, d M y",

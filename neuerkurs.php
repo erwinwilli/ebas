@@ -17,103 +17,14 @@ if(isset($_POST) && !empty($_POST)){
 //}
 require_once 'header.php';
 ?>
-<script language="javascript" type="text/javascript">
-
-	function formTestKurs (){
-		//document.getElementById("txtErrorEmail").innerHTML = "New text!";
-		var x = true;
-
-
-		var bezeichnung_de, bezeichnung_fr, bezeichnung_it, bezeichnung_en, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF,kursort,datum;
-		bezeichnung_de=document.getElementById("bezeichnung_de").value;
-		//alert(bezeichnung_de);
-		bezeichnung_fr=document.getElementById("bezeichnung_fr").value;
-		//alert(bezeichnung_fr);
-		bezeichnung_it=document.getElementById("bezeichnung_it").value;
-		//alert(bezeichnung_it);
-		bezeichnung_en=document.getElementById("bezeichnung_en").value;
-		//alert(bezeichnung_en);
-		sortierung=document.getElementById("sortierung").value;
-		//alert(sortierung);
-		sprache=document.getElementById("sprache").value;
-		//alert(sprache);
-		max_teilnehmer=document.getElementById("max_teilnehmer").value;
-		//alert(max_teilnehmer);
-		max_teilnehmer_PF=document.getElementById("max_teilnehmer_PF").value;
-		//alert(max_teilnehmer_PF);
-		kursort=document.getElementById("kursort").value;
-		//alert(kursort);
-		datum=document.getElementById("datum").value;
-		//alert(datum);
-
-		if(bezeichnung_de==""){
-			document.getElementById("txtErrorBezeichnung_de").innerHTML = " Bitte Bezeichnung ausfüllen!";
-			x=false;
-		}
-		else{
-			document.getElementById("txtErrorBezeichnung_de").innerHTML = "";
-		}
-		if(bezeichnung_fr==""){
-			document.getElementById("txtErrorBezeichnung_fr").innerHTML = " Bitte Bezeichnung ausfüllen!";
-			x=false;
-		}
-		else{
-			document.getElementById("txtErrorBezeichnung_fr").innerHTML = "";
-		}
-		if(bezeichnung_it==""){
-			document.getElementById("txtErrorBezeichnung_it").innerHTML = " Bitte Bezeichnung ausfüllen!";
-			x=false;
-		}
-		else{
-			document.getElementById("txtErrorBezeichnung_it").innerHTML = "";
-		}
-		if(bezeichnung_en==""){
-			document.getElementById("txtErrorBezeichnung_en").innerHTML = " Bitte Bezeichnung ausfüllen!";
-			x=false;
-		}
-		else{
-			document.getElementById("txtErrorBezeichnung_en").innerHTML = "";
-		}
-		if(sortierung ==""){
-			document.getElementById("txtErrorSortierung").innerHTML = " Bitte Feld ausfüllen!";
-			x=false;
-		}
-		else{
-			document.getElementById("txtErrorSortierung").innerHTML = "";
-		}
-		
-		if(max_teilnehmer==""){
-			document.getElementById("txtErrorMax_teilnehmer").innerHTML = " Bitte Feld ausfüllen!";
-			x=false;
-		}
-		else{
-			document.getElementById("txtErrorMax_teilnehmer").innerHTML = " ";
-		}
-		if(max_teilnehmer_PF==""){
-			document.getElementById("txtErrorMax_teilnehmer_PF").innerHTML = " Bitte Feld ausfüllen!";
-			x=false;
-		}
-		else{
-			document.getElementById("txtErrorMax_teilnehmer_PF").innerHTML = " ";
-		}
-		if(kursort==""){
-			document.getElementById("txtErrorKursort").innerHTML = " Bitte Feld ausfüllen!";
-			x=false;
-		}
-		else{
-			document.getElementById("txtErrorKursort").innerHTML = " ";
-		}
-
-		if(!(Boolean(x))){
-
-		return false;
-		}
-		//document.sendButton.submit();
-
-	  }
+<!-- Java Scripte weden eingebunden. -->
+<script src="js/ebas.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui.custom.js"></script>
+<script src="js/modernizr.js"></script>
 	  
 
-   </script>
+  
 <div class="page-header">
 	<h2>Kurs erstellen</h2>
 </div>
@@ -198,9 +109,7 @@ require_once 'header.php';
 						<tr>
 							<td>
 								<link href="css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
-								<script src="js/jquery.js"></script>
-								<script src="js/jquery-ui.custom.js"></script>
-								<script src="js/modernizr.js"></script>
+								
 								<script>
 								Modernizr.load({
 									test: Modernizr.inputtypes.date,
@@ -210,7 +119,7 @@ require_once 'header.php';
 									}
 								  });
 								</script>
-								<input type="date" name="datum" id="datum"  style="width: 260px"  ng-model="value" placeholder="dd-MM-yyyy" min="2013-01-01" value=<?= $kurs["datum"] ?> >
+								<input type="date" name="datum" id="datum" date_format="dd/mm/yyyy" style="width: 260px"  ng-model="value" placeholder="dd-MM-yyyy" min="2013-01-01" value=<?= $kurs["datum"] ?> >
 							</td>
 						</tr>
 
