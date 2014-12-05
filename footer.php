@@ -4,7 +4,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 
   <?php
-      if(basename($_SERVER['PHP_SELF']) == "index.php" ){
+      if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) == "login.php" ){
         echo '<script src="js/bootstrap.min.js"></script>';
         echo '<script src="js/ebas.js"></script>';
         echo '<script src="js/jquery-ui.custom.js"></script>';

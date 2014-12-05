@@ -14,7 +14,7 @@
     <!-- Bootstrap core CSS -->
 
     <?php
-        if(basename($_SERVER['PHP_SELF']) == "index.php" ){
+        if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) =="login.php"){
           echo '<link href="css/bootstrap.min.css" rel="stylesheet">';
         }else{
           echo '<link href="../../css/bootstrap.min.css" rel="stylesheet">';
