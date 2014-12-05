@@ -4,8 +4,8 @@ function formTestAnmeldung (){
 	Diese Funktion überprüft ob alle Felder in der Seite neueAnmeldung.php ausgefüllt sind.
 	Wenn diese Felder Leer sind, wird eine Fehlermeldung bei dem betreffenden Feld ausgegeben
 	und der SQL Insert befehl wird abgebrochen da der return wert FALSE ist.
-	
-	
+
+
 	*/
 	var x = true; //Booleanscher wert
 
@@ -83,8 +83,8 @@ function formTestAnmeldung (){
 	}
 	//document.sendButton.submit();
 
-  }  
-  
+  }
+
   function validEmail(email) {
   /*
   Diese Funktion überprüft ob der Übergebene String der einer Email entspricht.
@@ -96,15 +96,15 @@ function formTestAnmeldung (){
 	  var regex = new RegExp(strReg);
 	  return(regex.test(email));
 	}
-	
+
 function formTestKurs (){
 	/*
 	Diese Funktion überprüft ob alle Felder in der Seite neuerkurs.php ausgefüllt sind.
 	Wenn diese Felder Leer sind, wird eine Fehlermeldung bei dem betreffenden Feld ausgegeben
 	und der SQL Insert befehl wird abgebrochen da der return wert FALSE ist.
-	
+
 	*/
-	
+
 	var x = true;
 
 
@@ -165,7 +165,7 @@ function formTestKurs (){
 	else{
 		document.getElementById("txtErrorSortierung").innerHTML = "";
 	}
-	
+
 	if(max_teilnehmer==""){
 		document.getElementById("txtErrorMax_teilnehmer").innerHTML = " Bitte Feld ausfüllen!";
 		x=false;
@@ -194,5 +194,103 @@ function formTestKurs (){
 	}
 	//document.sendButton.submit();
 
-  }	
+  }
 
+	$.fn.table2CSV = function(options){
+
+  // get function options
+  var options = $.extend({
+    separator: ',',
+    header: [],
+    delivery: 'showCSV'
+  },
+  options);
+
+  // arrays of csv rows
+  var csvData = [];
+
+  // this table
+  var table = this;
+  //header
+  var headerRow = [];
+
+  // construct header avalible array
+  $(table).filter(':visible').find('th').each(function(){
+    headerRow[headerRow.length] = formatData($(this).html());
+  });
+  // add to row to csv
+  row2CSV(headerRow);
+
+  // actual data
+  $(table).find('tr').each(function(){
+    var dataRow = [];
+    $(this).filter(':visible').find('td').each(function(){
+      // get select id
+      if($(this).find('select').length){
+        content = $(this).find('select').val();
+      }else{
+        content = $(this).html();
+      }
+      if($(this).css('display') != 'none'){
+        dataRow[dataRow.length] = formatData(content);
+      }
+    });
+    row2CSV(dataRow);
+  });
+
+  if(options.delivery == 'showCSV'){
+    var data = csvData.join('\n');
+    return showCSV(data);
+  }else{
+    var data = csvData.join('\n');
+    return data;
+  }
+
+  // function to generate csv from different rows
+  function row2CSV(dataRow){
+    var tmp = dataRow.join('');
+    // to remove any blank rows
+    if (dataRow.length > 0 && tmp != '') {
+      var csvrow = dataRow.join(options.separator);
+      csvData[csvData.length] = csvrow;
+    }
+  }
+
+  // remove invalid characters
+  function formatData(input) {
+    // replace " with â€œ
+    var regexp = new RegExp(/["]/g);
+    var output = input.replace(regexp, "â€œ");
+    //HTML
+    var regexp = new RegExp(/\<[^\<]+\>/g);
+    var output = output.replace(regexp, "");
+    if (output == "") return '';
+    return '"' + output + '"';
+  }
+
+  // add link to csv file
+  function showCSV(data) {
+    // add link to csv file to page
+    var blob = new Blob([data], { type: 'text/csv;charset=utf-8;' });
+    if (navigator.msSaveBlob) { // IE 10+
+      navigator.msSaveBlob(blob, document.title+".csv");
+    }else{
+      var link = document.createElement("a");
+      if (link.download !== undefined) { // feature detection
+        // Browsers that support HTML5 download attribute
+        var url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", document.title+".csv");
+        link.style = "visibility:hidden";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
+  }
+}
+
+// csv export
+$("button.export-csv").click(function(){
+  $('table').table2CSV();
+});

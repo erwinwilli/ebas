@@ -333,7 +333,7 @@ class kurse {
   }
   return $kurse;
   }
-
+  //Kurse Infos aktualiesieren
   public function updateKurs($data,$id){
     $SQL = "UPDATE ebas.tbl_kurse_2014_2 SET bezeichnung_de ='".$data['bezeichnung_de']."',bezeichnung_fr ='".$data['bezeichnung_fr']."',bezeichnung_it ='".$data['bezeichnung_it']."', bezeichnung_en ='".$data['bezeichnung_en'].
     "',sortierung ='".$data['sortierung']."',sprache ='".$data['sprache']."',max_teilnehmer='".$data['max_teilnehmer']."',max_teilnehmer_PF='".$data['max_teilnehmer_PF'].
@@ -341,11 +341,13 @@ class kurse {
     "' WHERE tbl_kurse_2014_2.kurs_id =".$id;
     $this->ebas->db->query($SQL);
   }
+  //Kurs löschen
   public function deleteKurs($id){
 	$SQL = "DELETE FROM `ebas`.`tbl_kurse_2014_2` WHERE `tbl_kurse_2014_2`.`kurs_id`=".$id;
   $this->ebas->db->query($SQL);
   }
 
+  //Neuer Kurs erstellen
   public function neuerKurs($data){
     if (!empty($data)){
     $SQL = "INSERT INTO ebas.tbl_kurse_2014_2 (bezeichnung_de, bezeichnung_fr, bezeichnung_it, bezeichnung_en, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, kursort, datum)
@@ -356,6 +358,8 @@ class kurse {
     $this->ebas->db->query($SQL);
     }
   }
+
+  //Alle Anmeldungen von Kurs zu den Interessenten verschieben
    public function KurstoInteressent($name, $vname, $adr, $plz, $ort, $email, $kursOrt, $sprache, $id){
 
     $SQL = "INSERT INTO ebas.tbl_interessenten_2014_2 ( name, vorname, adresse, plz, ort, email, kursort, sprache)
@@ -390,7 +394,8 @@ class anmeldungen {
     }
     return $anmeldungen;
   }
-  //Start MVG 25.11.14
+
+  //bestimmter User anzeigen
   public function getUser($id){
       $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit
       FROM `tbl_anmeldungen_2014_2`
@@ -428,7 +433,8 @@ class anmeldungen {
         return $anmeldungen;
       }
   }
-  //Ende MvG
+
+  //Anmeldungen für bestimmten Kurs
   public function getAnmeldungen($id){
         $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit
         FROM `tbl_anmeldungen_2014_2`
@@ -466,6 +472,7 @@ class anmeldungen {
         }
   }
 
+  //Durchsuchen der Anmeldungen
   public function searchAnmeldungen($q){
     //Eingabe Filtern
     if(filter_var($q, FILTER_VALIDATE_EMAIL)){
@@ -494,6 +501,7 @@ class anmeldungen {
     return $anmeldungen;
   }
 
+  //Anmeldung bearbeiten
   public function updateAnmeldungen($data,$id){
     $SQL = "UPDATE ebas.tbl_anmeldungen_2014_2 SET kurs ='".$data['kurs']."',name ='".$data['name']."',vorname ='".$data['vorname'].
     "',adresse ='".$data['adresse']."',plz ='".$data['plz']."',ort='".$data['ort']."',email='".$data['email'].
@@ -502,6 +510,7 @@ class anmeldungen {
     $this->ebas->db->query($SQL);
   }
 
+  //Neue Anmeldung erstellen
   public function neueAnmeldung($data){
     if (!empty($data)){
     $SQL = "INSERT INTO ebas.tbl_anmeldungen_2014_2 (kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache)
@@ -512,6 +521,7 @@ class anmeldungen {
     }
   }
 
+  //Anmeldung den Interessenten hinzufügen
   public function toInteressent($data, $id){
     if (!empty($data)){
     $SQL = "INSERT INTO ebas.tbl_interessenten_2014_2 (name, vorname, adresse, plz, ort, email, kursort, sprache)
@@ -525,6 +535,7 @@ class anmeldungen {
     }
   }
 
+  //Anmeldunge löschen
   public function deleteAnmeldung($id){
     $SQL = "DELETE FROM `ebas`.`tbl_anmeldungen_2014_2` WHERE `tbl_anmeldungen_2014_2`.`anmeldung_id` =".$id;
     $this->ebas->db->query($SQL);
@@ -535,6 +546,7 @@ class anmeldungen {
   }
 }
 
+// Klasse für Interessenten
 class interessenten {
 
   public $ebas;
@@ -543,6 +555,7 @@ class interessenten {
     $this->ebas = $ebas;
   }
 
+  //Alle Interessenten anzeigen
   public function getAlleInteressenten(){
     $SQL = "SELECT * FROM `tbl_interessenten_2014_2` ORDER BY 'name' ASC";
     /* Select queries return a resultset */
@@ -556,6 +569,7 @@ class interessenten {
     return $interessenten;
   }
 
+  //bestimmten Interessent anzeigen
   public function getInteressenten($id){
     $SQL = "SELECT interessent_id, kurs, name, vorname, adresse, plz, ort, email, kursort, sprache, zeit
     FROM `tbl_interessenten_2014_2`
@@ -593,6 +607,8 @@ class interessenten {
       }
     }
   }
+
+  //Interessenten durchsuchen
   public function searchInteressenten($q){
     //Eingabe Filtern
     if(filter_var($q, FILTER_VALIDATE_EMAIL)){
@@ -620,6 +636,7 @@ class interessenten {
    return $anmeldungen;
  }
 
+  //Interessenten bearbeiten
   public function updateInteressent($data, $id){
     $SQL = "UPDATE ebas.tbl_interessenten_2014_2 SET name ='".$data['name']."',vorname ='".$data['vorname'].
     "',adresse ='".$data['adresse']."',plz ='".$data['plz']."',ort='".$data['ort']."',email='".$data['email'].
@@ -628,12 +645,13 @@ class interessenten {
     $this->ebas->db->query($SQL);
   }
 
+  //Interessetnen löschen
   public function deleteInteressent($id){
     $SQL = "DELETE FROM `ebas`.`tbl_interessenten_2014_2` WHERE `tbl_interessenten_2014_2`.`interessent_id` =".$id;
     $this->ebas->db->query($SQL);
   }
 
-  //Bereinigungslauf
+  //Anzeige von den zu löschenden Interessenten
   public function bereinigungInteressentenView(){
     $SQL = "SELECT * FROM `tbl_interessenten_2014_2` WHERE email IN (SELECT email FROM `tbl_anmeldungen_2014_2`)";
     /* Select queries return a resultset */
@@ -648,6 +666,7 @@ class interessenten {
     return $interessenten;
   }
 
+  //Interessenten Bereinigen
   public function bereinigungInteressenten(){
     $SQL = "DELETE FROM `tbl_interessenten_2014_2` WHERE email IN (SELECT email FROM `tbl_anmeldungen_2014_2`)";
     $this->ebas->db->query($SQL);

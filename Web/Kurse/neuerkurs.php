@@ -12,24 +12,11 @@ if($ebas->user->role >= 1){
 }
 
 if(isset($_POST) && !empty($_POST)){
-	//Ändern Kurs
-	//if($_POST['sub']=="Speichern"){
 		header('Location: '."kurse-liste.php");
-	//}
 }
-//check Role
-//if($ebas->user->role > 1){
-//	header('Location: ' . $_SERVER['HTTP_REFERER']);
-//}
+
 require_once '../../header.php';
 ?>
-<!-- Java Scripte weden eingebunden. -->
-<script src="../../js/ebas.js"></script>
-<script src="../../js/jquery.js"></script>
-<script src="../../js/jquery-ui.custom.js"></script>
-<script src="../../js/modernizr.js"></script>
-
-
 
 <div class="page-header">
 	<h2>Kurs erstellen</h2>

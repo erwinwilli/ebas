@@ -12,11 +12,14 @@
     <title>eBanking - aber sicher!</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="../../css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-	<link href="../../css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <?php
+        if(basename($_SERVER['PHP_SELF']) == "index.php" ){
+          echo '<link href="css/bootstrap.min.css" rel="stylesheet">';
+        }else{
+          echo '<link href="../../css/bootstrap.min.css" rel="stylesheet">';
+        }
+      ?>
 
   </head>
 

@@ -39,10 +39,6 @@ if(isset($_POST) && !empty($_POST)){
 
   }
 }
-//check Role
-if($ebas->user->role > 1){
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
-}
 require_once '../../header.php';
 ?>
 <div class="page-header">
@@ -133,10 +129,9 @@ require_once '../../header.php';
           </tr>
             <tr>
               <td>
+
+        <!-- Kalenderfunktion -->
 				<link href="css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
-				<script src="../../js/jquery.js"></script>
-				<script src="../../s/jquery-ui.custom.js"></script>
-				<script src="../../js/modernizr.js"></script>
 				<script>
 				Modernizr.load({
 					test: Modernizr.inputtypes.date,

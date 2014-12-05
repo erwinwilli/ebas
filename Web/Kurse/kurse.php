@@ -62,7 +62,7 @@ require_once '../../header.php';
         <?php
         foreach($kurse as $kurs){ ?>
           <tr >
-            <td><a href= anmeldungen.php?anmeldung=<?= $kurs["anmeldung_id"]?>><?= $kurs["name"] ?></td>
+            <td><a href= ../Anmeldungen/anmeldungen.php?anmeldung=<?= $kurs["anmeldung_id"]?>><?= $kurs["name"] ?></td>
             <td><?= $kurs["vorname"] ?></td>
             <td><?= $kurs["adresse"] ?></td>
             <td><?= $kurs["plz"] ?></td>
@@ -81,6 +81,7 @@ require_once '../../header.php';
 	  </br> </br>
 	  <a class="btn btn-info" href="kurseDruckvorschau.php?kurs=<?php echo $_GET["kurs"]; ?>">Druckvorschau</a>
 	 <a class="btn btn-info" href="kurseDruckvorschauKompakt.php?kurs=<?php echo $_GET["kurs"]; ?>">Druckvorschau Kompakt</a>
+   <button class="btn btn-info export-csv">Export in CSV</button>
 
           </div>
   </div>
