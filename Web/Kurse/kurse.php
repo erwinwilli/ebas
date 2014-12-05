@@ -67,7 +67,7 @@ require_once '../../header.php';
             <td><?= $kurs["adresse"] ?></td>
             <td><?= $kurs["plz"] ?></td>
             <td><?= $kurs["ort"] ?></td>
-            <td><?= $kurs["email"] ?></td>
+            <td><a href='mailto: <?= $kurs["email"]?>'><?= $kurs["email"] ?></td>
             <td><?= $kurs["sprache"] ?></td>
           </tr>
 
