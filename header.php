@@ -34,7 +34,7 @@
       <span class="icon-bar"></span>
       </button>
       <?php
-        if(basename($_SERVER['PHP_SELF']) == "index.php"){
+        if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) =="login.php"){
           echo '<a class="navbar-brand" href="index.php">ebas</a>';
         }else{
           echo '<a class="navbar-brand" href="../../index.php">ebas</a>';
@@ -52,7 +52,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Kurse <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <?php
-              if(basename($_SERVER['PHP_SELF']) == "index.php"){
+              if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) =="login.php"){
                 echo '<li><a href="Web/Kurse/kurse-liste.php">Alle Kurse</a></li>';
                 echo '<li><a href="Web/Kurse/neuerkurs.php">Neuen Kurs erstellen</a></li>';
                 echo '<li><a href="Web/Kurse/kurse-bearbeiten-liste.php">Kurse bearbeiten</a></li>';
@@ -69,7 +69,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Anmeldungen <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <?php
-              if(basename($_SERVER['PHP_SELF']) == "index.php"){
+              if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) =="login.php"){
               echo '<li><a href="Web/Anmeldungen/anmeldungen-liste.php">Alle Anmeldungen</a></li>';
               echo '<li><a href="Web/Anmeldungen/neuanmeldung.php">Neue Anmeldung erstellen</a></li>';
             }else{
@@ -84,7 +84,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Interessenten <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <?php
-              if(basename($_SERVER['PHP_SELF']) == "index.php"){
+              if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) =="login.php"){
               echo ' <li><a href="Web/Interessenten/interessenten-liste.php">Alle Interessenten</a></li>';
             }else{
               echo ' <li><a href="../Interessenten/interessenten-liste.php">Alle Interessenten</a></li>';
@@ -97,7 +97,7 @@
           <ul class="dropdown-menu" role="menu">
             <li>
             <?php
-              if(basename($_SERVER['PHP_SELF']) == "index.php"){
+              if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) =="login.php"){
               echo '<a href="Web/Interessenten/bereinigung-interessenten.php">Interessenten Bereinigung </a>';
               echo '<a href="Web/Kurse/bereinigung-kurse.php">Kurse Bereinigung </a>';
             }else{
@@ -113,7 +113,7 @@
       <ul class="nav navbar-nav navbar-right">
       <li>
       <?php
-        if(basename($_SERVER['PHP_SELF']) !== "login.php"){
+        if(basename($_SERVER['PHP_SELF']) !== "login.php" ){
           if(basename($_SERVER['PHP_SELF']) == "index.php"){
           echo '<a href="logout.php">Ausloggen</a>';
         }else{
