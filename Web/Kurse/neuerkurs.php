@@ -24,7 +24,7 @@ require_once '../../header.php';
 <div class="row">
 		<div class="kurs col-md-12">
 		<?php
-			$kurs = $ebas->kurse->neuerkurs($_POST);
+			$kurs = $ebas->kurse->neuerKurs($_POST);
 			?>
 			<form onSubmit="return formTestKurs()" method="POST" action="#" >
 			<table class="max-width-table table table-striped">

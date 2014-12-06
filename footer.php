@@ -2,6 +2,7 @@
 
 <script src="js/jquery.min.js"></script>
 <script src="../../js/jquery.min.js"></script>
+<script src="../../js/ebas.js"></script>
 <?php
       if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) == "login.php" ){
 

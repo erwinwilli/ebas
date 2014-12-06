@@ -521,7 +521,7 @@ class anmeldungen {
     }
   }
 
-  //Anmeldung den Interessenten hinzufügen
+//Anmeldung den Interessenten hinzufügen
   public function toInteressent($data, $id){
     if (!empty($data)){
     $SQL = "INSERT INTO ebas.tbl_interessenten_2014_2 (name, vorname, adresse, plz, ort, email, kursort, sprache)
@@ -644,6 +644,17 @@ class interessenten {
     "' WHERE tbl_interessenten_2014_2.interessent_id =".$id;
     $this->ebas->db->query($SQL);
   }
+
+  //Neuer Interessent hinzufügen
+    public function neuerInteressent($data){
+      if (!empty($data)){
+      $SQL = "INSERT INTO ebas.tbl_interessenten_2014_2 (name, vorname, adresse, plz, ort, email, kursort, sprache)
+      VALUES
+      ("."'".$data['name']."'".", "."'".$data['vorname']."'".", "."'".$data['adresse']."'".", "."'".$data['plz']."'".", "."'".$data['ort']."'"
+      .", "."'".$data['email']."'".", "."'".$data['kursort']."'".", "."'".$data['sprache']."'".")";
+      $this->ebas->db->query($SQL);
+      }
+    }
 
   //Interessetnen löschen
   public function deleteInteressent($id){

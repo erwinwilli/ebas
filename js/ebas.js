@@ -97,6 +97,113 @@ function formTestAnmeldung (){
 	  return(regex.test(email));
 	}
 
+function formTestInteressent (){
+	/*
+	Diese Funktion überprüft ob alle Felder in der Seite neuerinteressent.php ausgefüllt sind.
+	Wenn diese Felder Leer sind, wird eine Fehlermeldung bei dem betreffenden Feld ausgegeben
+	und der SQL Insert befehl wird abgebrochen da der return wert FALSE ist.
+
+
+	*/
+	var x = true; //Booleanscher wert
+
+
+	var name, vorname, adresse, plz, ort, kursort, email, sprache;
+	name=document.getElementById("name").value;
+	//alert(name);
+	vorname=document.getElementById("vorname").value;
+	//alert(vorname);
+	adresse=document.getElementById("adresse").value;
+	//alert(adresse);
+	plz=document.getElementById("plz").value;
+	//alert(plz);
+	ort=document.getElementById("ort").value;
+	//alert(ort);
+	kursort=document.getElementById("kursort").value;
+	//alert(kursort);
+	email=document.getElementById("email").value;
+	//alert(email);
+	sprache=document.getElementById("sprache").value;
+	//alert(sprache);
+
+	if(vorname==""){
+		document.getElementById("txtErrorVorname").innerHTML = " Bitte Vorname ausfüllen!";
+		x=false;
+	}
+	else{
+		document.getElementById("txtErrorVorname").innerHTML = "";
+	}
+	if(name==""){
+		document.getElementById("txtErrorName").innerHTML = " Bitte Name ausfüllen!";
+		x=false;
+	}
+	else{
+		document.getElementById("txtErrorName").innerHTML = "";
+	}
+	if(adresse==""){
+		document.getElementById("txtErrorAdresse").innerHTML = " Bitte Strasse ausfüllen!";
+		x=false;
+	}
+	else{
+		document.getElementById("txtErrorAdresse").innerHTML = "";
+	}
+	if(plz==""){
+		document.getElementById("txtErrorPlz").innerHTML = " Bitte PLZ ausfüllen!";
+		x=false;
+	}
+	else if(plz.length<4){
+		document.getElementById("txtErrorPlz").innerHTML = " Bitte PLZ ausfüllen!";
+		x=false;
+	}
+	else{
+		document.getElementById("txtErrorPlz").innerHTML = "";
+	}
+	if(ort==""){
+		document.getElementById("txtErrorOrt").innerHTML = " Bitte Ort ausfüllen!";
+		x=false;
+	}
+	else{
+		document.getElementById("txtErrorOrt").innerHTML = "";
+	}
+	if(kursort==""){
+		document.getElementById("txtErrorKursort").innerHTML = " Bitte Kursort ausfüllen!";
+		x=false;
+	}
+	else{
+		document.getElementById("txtErrorKursort").innerHTML = "";
+	}
+	if(email==""){
+		document.getElementById("txtErrorEmail").innerHTML = " Bitte E-Mail ausfüllen!";
+		x=false;
+	}
+	else if (!validEmail(email)) {
+		document.getElementById("txtErrorEmail").innerHTML = " Die E-Mail entspricht keinem Gültigen Format!";
+		x=false;
+	}
+	else{
+		document.getElementById("txtErrorEmail").innerHTML = " ";
+	}
+
+	if(!(Boolean(x))){
+
+	return false;
+	}
+	//document.sendButton.submit();
+
+	}
+
+	function validEmail(email) {
+	/*
+	Diese Funktion überprüft ob der Übergebene String der einer Email entspricht.
+	er wird geprüft ob auf eine bellibiglange Zeichenkette ein "@" zeichen folgt,
+	worafhin wieder auf eine belibiglange Zeichenkette ein "." folg
+	und nach dem Punkt zwischen 2 bis 4 Zeichen stehen,
+	*/
+		var strReg = "^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$";
+		var regex = new RegExp(strReg);
+		return(regex.test(email));
+}
+
 function formTestKurs (){
 	/*
 	Diese Funktion überprüft ob alle Felder in der Seite neuerkurs.php ausgefüllt sind.

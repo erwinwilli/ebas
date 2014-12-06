@@ -86,8 +86,10 @@
             <?php
               if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) =="login.php"){
               echo ' <li><a href="Web/Interessenten/interessenten-liste.php">Alle Interessenten</a></li>';
+              echo ' <li><a href="Web/Interessenten/neuerinteressent.php">Neuer Interessent erstellen</a></li>';
             }else{
               echo ' <li><a href="../Interessenten/interessenten-liste.php">Alle Interessenten</a></li>';
+              echo ' <li><a href="../Interessenten/neuerinteressent.php">Neuer Interessent erstellen</a></li>';
               }
             ?>
           </ul>
