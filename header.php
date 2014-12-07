@@ -7,20 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="<?php echo $rootUrl;?>favicon.ico">
 
     <title>eBanking - aber sicher!</title>
 
     <!-- Bootstrap core CSS -->
+    <link href="<?php echo $cssUrl;?>bootstrap.min.css" rel="stylesheet">
 
-    <?php
-        if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) =="login.php"){
-          echo '<link href="css/bootstrap.min.css" rel="stylesheet">';
-        }else{
-          echo '<link href="../../css/bootstrap.min.css" rel="stylesheet">';
-        }
-      ?>
-
+    <script type="text/javascript" src="<?php echo $jsUrl;?>bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo $jsUrl;?>ebas.js"></script>
+    <script type="text/javascript" src="<?php echo $jsUrl;?>jquery-ui.custom.js"></script>
+    <script type="text/javascript" src="<?php echo $jsUrl;?>jquery.js"></script>
+    <script type="text/javascript" src="<?php echo $jsUrl;?>jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo $jsUrl;?>modernizr.js"></script>
   </head>
 
 <body id="ebas">
@@ -33,97 +32,57 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       </button>
-      <?php
-        if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) =="login.php"){
-          echo '<a class="navbar-brand" href="index.php">ebas</a>';
-        }else{
-          echo '<a class="navbar-brand" href="../../index.php">ebas</a>';
-        }
-      ?>
+
+      <a class="navbar-brand" href="<?php echo $rootUrl;?>index.php">ebas</a>
     </div>
 
-    <?php
-
-    ?>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 
       <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Kurse <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <?php
-              if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) =="login.php"){
-                echo '<li><a href="Web/Kurse/kurse-liste.php">Alle Kurse</a></li>';
-                echo '<li><a href="Web/Kurse/neuerkurs.php">Neuen Kurs erstellen</a></li>';
-                echo '<li><a href="Web/Kurse/kurse-bearbeiten-liste.php">Kurse bearbeiten</a></li>';
-              }else{
-                echo '<li><a href="../Kurse/kurse-liste.php">Alle Kurse</a></li>';
-                echo '<li><a href="../Kurse/neuerkurs.php">Neuen Kurs erstellen</a></li>';
-                echo '<li><a href="../Kurse/kurse-bearbeiten-liste.php">Kurse bearbeiten</a></li>';
-              }
-            ?>
+            <li><a href="<?php echo $webKurseUrl;?>kurse-liste.php">Alle Kurse</a></li>
+            <li><a href="<?php echo $webKurseUrl;?>neuerkurs.php">Neuen Kurs erstellen</a></li>
+            <li><a href="<?php echo $webKurseUrl;?>kurse-bearbeiten-liste.php">Kurse bearbeiten</a></li>
           </ul>
       </li>
 
       <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Anmeldungen <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <?php
-              if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) =="login.php"){
-              echo '<li><a href="Web/Anmeldungen/anmeldungen-liste.php">Alle Anmeldungen</a></li>';
-              echo '<li><a href="Web/Anmeldungen/neuanmeldung.php">Neue Anmeldung erstellen</a></li>';
-            }else{
-              echo '<li><a href="../Anmeldungen/anmeldungen-liste.php">Alle Anmeldungen</a></li>';
-              echo '<li><a href="../Anmeldungen/neuanmeldung.php">Neue Anmeldung erstellen</a></li>';
-              }
-            ?>
+            <li><a href="<?php echo $webAnmeldungUrl;?>anmeldungen-liste.php">Alle Anmeldungen</a></li>
+            <li><a href="<?php echo $webAnmeldungUrl;?>neuanmeldung.php">Neue Anmeldung erstelle</a></li>
           </ul>
       </li>
 
       <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Interessenten <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <?php
-              if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) =="login.php"){
-              echo ' <li><a href="Web/Interessenten/interessenten-liste.php">Alle Interessenten</a></li>';
-              echo ' <li><a href="Web/Interessenten/neuerinteressent.php">Neuer Interessent erstellen</a></li>';
-            }else{
-              echo ' <li><a href="../Interessenten/interessenten-liste.php">Alle Interessenten</a></li>';
-              echo ' <li><a href="../Interessenten/neuerinteressent.php">Neuer Interessent erstellen</a></li>';
-              }
-            ?>
+            <li><a href="<?php echo $webInteressentenUrl;?>interessenten-liste.php">Alle Interessenten</a></li>
+            <li><a href="<?php echo $webInteressentenUrl;?>neuerinteressent.php">Neuer Interessent erstellen</a></li>
           </ul>
       </li>
       <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bereinigungen <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li>
-            <?php
-              if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) =="login.php"){
-              echo '<a href="Web/Interessenten/bereinigung-interessenten.php">Interessenten Bereinigung </a>';
-              echo '<a href="Web/Kurse/bereinigung-kurse.php">Kurse Bereinigung </a>';
-            }else{
-              echo '<a href="../Interessenten/bereinigung-interessenten.php">Interessenten Bereinigung</a>';
-              echo '<a href="../Kurse/bereinigung-kurse.php">Kurse Bereinigung</a>';
-              }
-            ?>
-            </li>
+            <li><a href="<?php echo $webInteressentenUrl;?>bereinigung-interessenten.php">Interessenten Bereinigung </a></li>
+            <li><a href="<?php echo $webKurseUrl;?>bereinigung-kurse.php">Kurse Bereinigung </a></li>
           </ul>
       </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-      <li>
       <?php
         if(basename($_SERVER['PHP_SELF']) !== "login.php" ){
-          if(basename($_SERVER['PHP_SELF']) == "index.php"){
-          echo '<a href="logout.php">Ausloggen</a>';
-        }else{
-          echo '<a href="../../logout.php">Ausloggen</a>';
-          }
+            if($ebas->user->role < 1){
+              echo '<li><a href="'.$webUserUrl.'neueruser.php">Neuer User erstellen</a></li>';
+              echo '<li><a href="'.$logoutUrl.'">Ausloggen</a></li>';
+            }else{
+              echo '<li><a href="logout.php">Ausloggen</a></li>';
+              }
         }
       ?>
-      </li>
       </ul>
     </div>
   </nav>

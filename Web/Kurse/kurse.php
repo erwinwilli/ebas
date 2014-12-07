@@ -28,7 +28,10 @@ require_once '../../header.php';
               <tr >
                 <td><?= $kursX["bezeichnung_de"] ?></td>
               </tr>
-            <?php }}?>
+            <?php }
+          }else{
+              die();
+            }?>
   </h2>
 </div>
 
@@ -40,7 +43,7 @@ require_once '../../header.php';
         $kurse = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
           if(!empty($kurse)){
           }else{
-            header('Location: '."../Anmeldungen/neuanmeldung.php?kurs=". $_GET["kurs"]);
+            header('Location: '.$webAnmeldungUrl."neuanmeldung.php?kurs=". $_GET["kurs"]);
             }
         }
         ?>
@@ -62,7 +65,7 @@ require_once '../../header.php';
         <?php
         foreach($kurse as $kurs){ ?>
           <tr >
-            <td><a href= ../Anmeldungen/anmeldungen.php?anmeldung=<?= $kurs["anmeldung_id"]?>><?= $kurs["name"] ?></td>
+            <td><a href=<?php echo $webAnmeldungUrl;?>anmeldungen.php?anmeldung=<?= $kurs["anmeldung_id"]?>><?= $kurs["name"] ?></td>
             <td><?= $kurs["vorname"] ?></td>
             <td><?= $kurs["adresse"] ?></td>
             <td><?= $kurs["plz"] ?></td>
@@ -73,14 +76,15 @@ require_once '../../header.php';
 
           <?php }
         }else{
-              header('Location: '."../../index.php");
+              header('Location: '.$rootUrl."index.php");
               }?>
+
         </tbody>
       </table>
 
       <textarea name="details" cols="40" rows="10"><?= $kursX["details"] ?></textarea>
       <br></br>
-      <a class="btn btn-primary" href="../Anmeldungen/neuanmeldung.php?kurs=<?php echo $_GET["kurs"]; ?>">neuer User</a>
+      <a class="btn btn-primary" href="<?php echo $webAnmeldungUrl;?>neuanmeldung.php?kurs=<?php echo $_GET["kurs"]; ?>">neuer User</a>
 	  </br> </br>
 	  <a class="btn btn-info" href="kurseDruckvorschau.php?kurs=<?php echo $_GET["kurs"]; ?>">Druckvorschau</a>
 	 <a class="btn btn-info" href="kurseDruckvorschauKompakt.php?kurs=<?php echo $_GET["kurs"]; ?>">Druckvorschau Kompakt</a>
