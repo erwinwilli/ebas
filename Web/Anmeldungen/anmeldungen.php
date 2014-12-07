@@ -15,11 +15,11 @@ if(isset($_POST) && !empty($_POST)){
   //Ändern Anmeldung
   if($_POST['sub']=="Speichern"){
     $ebas->anmeldungen->updateAnmeldungen($_POST,$_GET["anmeldung"]);
-    header('Location: '."../Kurse/kurse.php?kurs=".$_POST["kurs"]);
+    header('Location: '.$webKurseUrl."kurse.php?kurs=".$_POST["kurs"]);
   //Anmeldung zu Interessent verschieben
   }elseif($_POST['sub']=="zu Interessent verschieben"){
     $ebas->anmeldungen->toInteressent($_POST,$_GET["anmeldung"]);
-    header('Location: '."../Interessenten/interessenten-liste.php");
+    header('Location: '.$webInteressentenUrl."interessenten-liste.php");
   //Anmeldung löschen
   }elseif($_POST['sub']=="Löschen"){
       $ebas->anmeldungen->deleteAnmeldung($_GET["anmeldung"]);
