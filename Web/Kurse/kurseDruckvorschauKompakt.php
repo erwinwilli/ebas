@@ -70,6 +70,9 @@ require_once '../../header.php';
               }?>
         </tbody>
       </table>
+
+      <textarea name="details" cols="40" rows="10"><?= $kursX["details"] ?></textarea>
+      <br></br>
 	   <script>window.onload= function () { window.print();window.history.back();   }  </script>
 
           </div>

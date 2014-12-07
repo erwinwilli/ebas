@@ -149,7 +149,7 @@ require_once '../../header.php';
         </tr>
           <tr>
             <td>
-                <textarea name="details" cols="25" rows="5" value=<?= $kurs["details"] ?>><?= $kurs["details"] ?></textarea>
+                <textarea name="details" cols="40" rows="10" value=<?= $kurs["details"] ?>><?= $kurs["details"] ?></textarea>
             </td>
           </tr>
 

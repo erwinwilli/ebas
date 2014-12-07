@@ -114,7 +114,7 @@ require_once '../../header.php';
 						</tr>
 							<tr>
 								<td>
-										<textarea name="details" cols="25" rows="5">Hier können Sie die Details erfassen</textarea>
+										<textarea name="details" cols="40" rows="10">Hier können Sie die Kurs Details erfassen</textarea>
 								</td>
 							</tr>
 						</tr>

@@ -77,6 +77,9 @@ require_once '../../header.php';
               }?>
         </tbody>
       </table>
+
+      <textarea name="details" cols="40" rows="10"><?= $kursX["details"] ?></textarea>
+      <br></br>
       <a class="btn btn-primary" href="../Anmeldungen/neuanmeldung.php?kurs=<?php echo $_GET["kurs"]; ?>">neuer User</a>
 	  </br> </br>
 	  <a class="btn btn-info" href="kurseDruckvorschau.php?kurs=<?php echo $_GET["kurs"]; ?>">Druckvorschau</a>

@@ -1,8 +1,4 @@
 </div>
-
-<script src="js/jquery.min.js"></script>
-<script src="../../js/jquery.min.js"></script>
-<script src="../../js/ebas.js"></script>
 <?php
       if(basename($_SERVER['PHP_SELF']) == "index.php" || basename($_SERVER['PHP_SELF']) == "login.php" ){
 
@@ -15,7 +11,7 @@
       }else{
         echo '<script src="../../js/bootstrap.min.js"></script>';
         echo '<script src="../../js/ebas.js"></script>';
-        echo '<script src="../../js/jquery-ui.custom.js"></script>>';
+        echo '<script src="../../js/jquery-ui.custom.js"></script>';
         echo '<script src="../../js/jquery.js"></script>';
         echo '<script src="../../js/jquery.min.js"></script>';
         echo '<script src="../../js/modernizr.js"></script>';
