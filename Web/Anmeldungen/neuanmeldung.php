@@ -12,7 +12,7 @@ if($ebas->user->role >= 1){
 }
 
 if(isset($_POST) && !empty($_POST)){
-Header('Location: '."../Kurse/kurse.php?kurs=".$_POST["kurs"]);
+Header('Location: '.$webKurseUrl."kurse.php?kurs=".$_POST["kurs"]);
 }
 require_once '../../header.php';
 ?>

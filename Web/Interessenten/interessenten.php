@@ -19,7 +19,7 @@ if(isset($_POST) && !empty($_POST)){
   //Interssent zur Anmeldung verschieben bzw. neu erfassen
 }elseif($_POST['sub']=="Zur Anmeldung verschieben"){
       $ebas->anmeldungen->neueAnmeldung($_POST);
-      header('Location: '."../Kurse/kurse.php?kurs=".$_POST["kurs"]);
+      header('Location: '.$webKurseUrl."kurse.php?kurs=".$_POST["kurs"]);
   //löschen des Interssenten
   }elseif($_POST['sub']=="Löschen"){
     $ebas->interessenten->deleteInteressent($_GET["interessent"]);

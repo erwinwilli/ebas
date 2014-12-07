@@ -12,7 +12,7 @@ if($ebas->user->role >= 1){
 }
 
 if(isset($_POST) && !empty($_POST)){
-Header('Location: '."../Interessenten/interessenten-liste.php");
+Header('Location: '.$webInteressentenUrl."interessenten-liste.php");
 }
 require_once '../../header.php';
 ?>

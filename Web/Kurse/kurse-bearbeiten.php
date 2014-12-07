@@ -34,7 +34,7 @@ if(isset($_POST) && !empty($_POST)){
 		$ebas->kurse->deleteKurs($_GET["kurs"]);
 	}
 
-    Sheader('Location: '."kurse-bearbeiten-liste.php");
+    header('Location: '."kurse-bearbeiten-liste.php");
 
 
   }
@@ -135,7 +135,7 @@ require_once '../../header.php';
 				<script>
 				Modernizr.load({
 					test: Modernizr.inputtypes.date,
-					nope: "../../js/jquery-ui.custom.js",
+					nope: "<?php echo $jsUrl;?>jquery-ui.custom.js",
 					callback: function() {
 					  $("input[type=date]").datepicker();
 					}

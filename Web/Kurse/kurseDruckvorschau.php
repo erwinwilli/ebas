@@ -40,7 +40,7 @@ require_once '../../header.php';
         $kurse = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
           if(!empty($kurse)){
           }else{
-            header('Location: '."../Anmeldungen/neuanmeldung.php?kurs=". $_GET["kurs"]);
+            header('Location: '.$webAnmeldungUrl."neuanmeldung.php?kurs=". $_GET["kurs"]);
             }
         }
         ?>
@@ -75,7 +75,7 @@ require_once '../../header.php';
 
           <?php }
         }else{
-              header('Location: '."../../index.php");
+              header('Location: '.$rootUrl."index.php");
               }?>
         </tbody>
       </table>

@@ -13,6 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo $cssUrl;?>bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $cssUrl;?>ebas.css" rel="stylesheet">
 
     <script type="text/javascript" src="<?php echo $jsUrl;?>bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo $jsUrl;?>ebas.js"></script>

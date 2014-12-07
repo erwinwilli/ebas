@@ -95,12 +95,12 @@ require_once '../../header.php';
 					</tr>
 						<tr>
 							<td>
-								<link href="../../css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+								<link href="<?php echo $cssUrl;?>ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
 
 								<script>
 								Modernizr.load({
 									test: Modernizr.inputtypes.date,
-									nope: "../../js/jquery-ui.custom.js",
+									nope: "<?php echo $jsUrl;?>jquery-ui.custom.js",
 									callback: function() {
 									  $("input[type=date]").datepicker();
 									}
