@@ -35,6 +35,7 @@ require_once '../../header.php';
           <th>Ort</th>
           <th>Datum</th>
           <th>Teilnehmer</th>
+          <th>Kurs Details</th>
         </tr>
       </thead>
       <tbody>
@@ -50,6 +51,7 @@ require_once '../../header.php';
 			?>
           <td><?= $datum?></td>
           <td><?= $kurs["count"] ?> / <?= $kurs["max_teilnehmer"] ?> </td>
+          <td><?= $kurs["details"] ?></td>
         </tr>
 
         <?php } ?>

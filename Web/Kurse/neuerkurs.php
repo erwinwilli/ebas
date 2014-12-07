@@ -109,6 +109,15 @@ require_once '../../header.php';
 								<input type="date" name="datum" id="datum" date_format="dd/mm/yyyy" style="width: 260px"  ng-model="value" placeholder="dd-MM-yyyy" min="2013-01-01" value=<?= $kurs["datum"] ?> >
 							</td>
 						</tr>
+						<tr>
+							<th>Kurs Details</th>
+						</tr>
+							<tr>
+								<td>
+										<textarea name="details" cols="25" rows="5">Hier können Sie die Details erfassen</textarea>
+								</td>
+							</tr>
+						</tr>
 
 			</tbody>
 		</table>

@@ -278,7 +278,7 @@ class kurse {
   }
 
   public function getKurs($id){
-    $SQL = "SELECT kurs_id, bezeichnung_de, bezeichnung_fr, bezeichnung_it, bezeichnung_en, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, kursort, datum FROM `tbl_kurse_2014_2` WHERE kurs_id = ? ORDER BY bezeichnung_de ASC";
+    $SQL = "SELECT kurs_id, bezeichnung_de, bezeichnung_fr, bezeichnung_it, bezeichnung_en, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, kursort, datum, details FROM `tbl_kurse_2014_2` WHERE kurs_id = ? ORDER BY bezeichnung_de ASC";
     if ($stmt = $this->ebas->db->prepare($SQL)) {
 
       /* bind parameters for markers */
@@ -288,14 +288,14 @@ class kurse {
       $stmt->execute();
 
       /* bind result */
-      $stmt->bind_result($id, $bezeichnung_de, $bezeichnung_fr, $bezeichnung_it, $bezeichnung_en, $sortierung, $sprache, $max_teilnehmer, $max_teilnehmer_PF, $kursort, $datum);
+      $stmt->bind_result($id, $bezeichnung_de, $bezeichnung_fr, $bezeichnung_it, $bezeichnung_en, $sortierung, $sprache, $max_teilnehmer, $max_teilnehmer_PF, $kursort, $datum, $details);
 
       // Daten zuweisen
       while ($stmt->fetch()) {
         $kurse[] = array(
           'kurs_id' => $id,
           'bezeichnung_de' => $bezeichnung_de,
-			'bezeichnung_fr' => $bezeichnung_fr,
+			    'bezeichnung_fr' => $bezeichnung_fr,
     		  'bezeichnung_it' => $bezeichnung_it,
     		  'bezeichnung_en' => $bezeichnung_en,
     		  'sortierung' => $sortierung,
@@ -303,7 +303,8 @@ class kurse {
           'kursort' => $kursort,
           'max_teilnehmer' => $max_teilnehmer,
           'max_teilnehmer_PF' => $max_teilnehmer_PF,
-          'datum' => $datum
+          'datum' => $datum,
+          'details' => $details
         );
       }
 
@@ -337,7 +338,7 @@ class kurse {
   public function updateKurs($data,$id){
     $SQL = "UPDATE ebas.tbl_kurse_2014_2 SET bezeichnung_de ='".$data['bezeichnung_de']."',bezeichnung_fr ='".$data['bezeichnung_fr']."',bezeichnung_it ='".$data['bezeichnung_it']."', bezeichnung_en ='".$data['bezeichnung_en'].
     "',sortierung ='".$data['sortierung']."',sprache ='".$data['sprache']."',max_teilnehmer='".$data['max_teilnehmer']."',max_teilnehmer_PF='".$data['max_teilnehmer_PF'].
-    "',kursort='".$data['kursort']."',datum='".$data['datum'].
+    "',kursort='".$data['kursort']."',datum='".$data['datum']."',details='".$data['details'].
     "' WHERE tbl_kurse_2014_2.kurs_id =".$id;
     $this->ebas->db->query($SQL);
   }
@@ -350,10 +351,11 @@ class kurse {
   //Neuer Kurs erstellen
   public function neuerKurs($data){
     if (!empty($data)){
-    $SQL = "INSERT INTO ebas.tbl_kurse_2014_2 (bezeichnung_de, bezeichnung_fr, bezeichnung_it, bezeichnung_en, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, kursort, datum)
+    $SQL = "INSERT INTO ebas.tbl_kurse_2014_2 (bezeichnung_de, bezeichnung_fr, bezeichnung_it, bezeichnung_en, sortierung, sprache, max_teilnehmer, max_teilnehmer_PF, kursort, datum, details)
     VALUES
     ("."'".$data['bezeichnung_de']."'".", "."'".$data['bezeichnung_fr']."'".", "."'".$data['bezeichnung_it']."'".", "."'".$data['bezeichnung_en']."'".", "."'".$data['sortierung']."'".
-    ", "."'".$data['sprache']."'".", "."'".$data['max_teilnehmer']."'".", "."'".$data['max_teilnehmer_PF']."'".", "."'".$data['kursort']."'".", "."'".$data['datum']."'".")";
+    ", "."'".$data['sprache']."'".", "."'".$data['max_teilnehmer']."'".", "."'".$data['max_teilnehmer_PF']."'".", "."'".$data['kursort']."'".", "."'".$data['datum']."'".", "."'".
+    $data['details']."'".")";
 
     $this->ebas->db->query($SQL);
     }
