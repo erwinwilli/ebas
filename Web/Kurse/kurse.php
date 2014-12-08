@@ -9,6 +9,7 @@ require_once '../../session.php';
 //check Role
 if($ebas->user->role > 1){
   header('Location: ' .$loginUrl);
+  exit;
 }
 
 require_once '../../header.php';
@@ -44,6 +45,7 @@ require_once '../../header.php';
           if(!empty($kurse)){
           }else{
             header('Location: '.$webAnmeldungUrl."neuanmeldung.php?kurs=". $_GET["kurs"]);
+            exit;
             }
         }
         ?>
@@ -77,6 +79,7 @@ require_once '../../header.php';
           <?php }
         }else{
               header('Location: '.$rootUrl."index.php");
+              exit;
               }?>
 
         </tbody>

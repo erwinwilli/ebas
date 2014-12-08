@@ -10,6 +10,7 @@ require_once 'header.php';
 if(isset($_POST) && !empty($_POST)){
   if($ebas->session->set($_POST["username"],$_POST["password"])){
     header('Location: index.php');
+    exit;
   }
 }
 

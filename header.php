@@ -15,13 +15,13 @@
     <link href="<?php echo $cssUrl;?>bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo $cssUrl;?>ebas.css" rel="stylesheet">
 
-    <script type="text/javascript" src="<?php echo $jsUrl;?>bootstrap.min.js"></script>
-    <script type="text/javascript" src="<?php echo $jsUrl;?>ebas.js"></script>
-    <script type="text/javascript" src="<?php echo $jsUrl;?>jquery-ui.custom.js"></script>
-    <script type="text/javascript" src="<?php echo $jsUrl;?>jquery.js"></script>
-    <script type="text/javascript" src="<?php echo $jsUrl;?>jquery.min.js"></script>
-    <script type="text/javascript" src="<?php echo $jsUrl;?>modernizr.js"></script>
   </head>
+<script type="text/javascript" src="<?php echo $jsUrl;?>bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo $jsUrl;?>ebas.js"></script>
+<script type="text/javascript" src="<?php echo $jsUrl;?>jquery-ui.custom.js"></script>
+<script type="text/javascript" src="<?php echo $jsUrl;?>jquery.js"></script>
+<script type="text/javascript" src="<?php echo $jsUrl;?>jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo $jsUrl;?>modernizr.js"></script>
 
 <body id="ebas">
   <nav class="navbar navbar-default" role="navigation">
