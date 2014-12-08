@@ -135,6 +135,40 @@ require_once '../../header.php';
           <tr>
             <td><input type="text" name="gutschein" value=<?= $kurs["gutschein"] ?> ></td>
           </tr>
+		  <tr>
+		<tr>
+			<th>Datum Anmeldung</th>
+		</tr>
+			<td>
+				<link href="<?php echo $cssUrl;?>ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+				<script>
+				Modernizr.load({
+					test: Modernizr.inputtypes.date,
+					nope: "<?php echo $jsUrl;?>jquery-ui.custom.js",
+					callback: function() {
+					  $("input[type=date]").datepicker();
+					}
+				  });
+				</script>
+				<input type="date" name="zeit" id="zeit" date_format="dd/mm/yyyy" style="width: 260px"  ng-model="value" placeholder="dd-MM-yyyy" min="2013-01-01" value=<?= $kurs["zeit"] ?> >
+			</td>
+		</tr>
+		<tr>
+			<th>Datum Versand Einladung</th>
+		</tr>
+		<tr>
+			<td>
+				<input type="date" name="deinladung" id="deinladung" date_format="dd/mm/yyyy" style="width: 260px"  ng-model="value" placeholder="dd-MM-yyyy" min="2013-01-01" value=<?= $kurs["deinladung"] ?> >
+			</td>
+		</tr>
+		<tr>
+			<th>Datum Versand Rechnung</th>
+		</tr>
+		<tr>
+			<td>
+				<input type="date" name="drechnung" id="drechnung" date_format="dd/mm/yyyy" style="width: 260px"  ng-model="value" placeholder="dd-MM-yyyy" min="2013-01-01" value=<?= $kurs["drechnung"] ?> >
+			</td>
+		</tr>
         <?php } ?>
 
       </tbody>

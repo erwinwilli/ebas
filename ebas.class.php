@@ -400,7 +400,7 @@ class anmeldungen {
 
   //bestimmter User anzeigen
   public function getUser($id){
-      $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit
+      $SQL = "SELECT anmeldung_id, kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, zeit, deinladung, drechnung
       FROM `tbl_anmeldungen_2014_2`
       WHERE anmeldung_id = ? ";
       if ($stmt = $this->ebas->db->prepare($SQL)) {
@@ -412,7 +412,7 @@ class anmeldungen {
         $stmt->execute();
 
         /* bind result */
-        $stmt->bind_result($id, $kurs, $gutschein, $name, $vorname, $adresse, $plz, $ort, $email, $sprache, $zeit);
+        $stmt->bind_result($id, $kurs, $gutschein, $name, $vorname, $adresse, $plz, $ort, $email, $sprache, $zeit, $deinladung, $drechnung);
 
         // Daten zuweisen
         while ($stmt->fetch()) {
@@ -427,7 +427,9 @@ class anmeldungen {
             'ort' => $ort,
             'email' => $email,
             'sprache' => $sprache,
-            'zeit' => $zeit
+            'zeit' => $zeit,
+			'deinladung' => $deinladung,
+			'drechnung' => $drechnung	
           );
         }
 
@@ -508,7 +510,8 @@ class anmeldungen {
   public function updateAnmeldungen($data,$id){
     $SQL = "UPDATE ebas.tbl_anmeldungen_2014_2 SET kurs ='".$data['kurs']."',name ='".$data['name']."',vorname ='".$data['vorname'].
     "',adresse ='".$data['adresse']."',plz ='".$data['plz']."',ort='".$data['ort']."',email='".$data['email'].
-    "',sprache='".$data['sprache']."',gutschein='".$data['gutschein'].
+    "',sprache='".$data['sprache']."',gutschein='".$data['gutschein']."',zeit='".$data['zeit'].
+	"',deinladung='".$data['deinladung']."',drechnung='".$data['drechnung'].
     "' WHERE tbl_anmeldungen_2014_2.anmeldung_id =".$id;
     $this->ebas->db->query($SQL);
   }
@@ -516,10 +519,10 @@ class anmeldungen {
   //Neue Anmeldung erstellen
   public function neueAnmeldung($data){
     if (!empty($data)){
-    $SQL = "INSERT INTO ebas.tbl_anmeldungen_2014_2 (kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache)
+    $SQL = "INSERT INTO ebas.tbl_anmeldungen_2014_2 (kurs, gutschein, name, vorname, adresse, plz, ort, email, sprache, drechnung, deinladung)
     VALUES
-    ("."'".$data['kurs']."'".", "."'".$data['gutschein']."'".", "."'".$data['name']."'".", "."'".$data['vorname']."'".", "."'".$data['plz']."'"
-    .", "."'".$data['adresse']."'".", "."'".$data['ort']."'".", "."'".$data['email']."'".", "."'".$data['sprache']."'".")";
+    ("."'".$data['kurs']."'".", "."'".$data['gutschein']."'".", "."'".$data['name']."'".", "."'".$data['vorname']."'".", "."'".$data['adresse']."'"
+    .", "."'".$data['plz']."'".", "."'".$data['ort']."'".", "."'".$data['email']."'".", "."'".$data['sprache']."'".", "."'".$data['drechnung']."'".", "."'".$data['deinladung']."'".")";
     $this->ebas->db->query($SQL);
     }
   }
