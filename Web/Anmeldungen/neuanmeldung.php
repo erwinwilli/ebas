@@ -7,7 +7,7 @@ require_once '../../ebas.class.php';
 require_once '../../session.php';
 
 //check Role
-if($ebas->user->role >= 1){
+if($ebas->user->role > 0){
   header('Location: ' .$loginUrl);
 }
 
