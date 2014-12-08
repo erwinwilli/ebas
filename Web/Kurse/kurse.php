@@ -21,23 +21,21 @@ require_once '../../header.php';
     if(!is_numeric($_GET["kurs"])){
       die("Can not Connect");
     }
-      if(!empty($_GET["kurs"])){
-          if (isset($_GET["kurs"])){
+    if(!empty($_GET["kurs"])){
+        if (isset($_GET["kurs"])){
           $kurseX = $ebas->kurse->getKurs($_GET["kurs"]);
-          }
-            foreach($kurseX as $kursX){ ?>
-              <tr >
-                <td><?= $kursX["bezeichnung_de"] ?></td>
-              </tr>
+        }
+          foreach($kurseX as $kursX){ ?>
+            <tr>
+            <td><?= $kursX["bezeichnung_de"] ?></td>
+            </tr>
             <?php }
-          }else{
-              die("Kein Kurs vorhanden");
-            }?>
+    }else{
+      die("Kein Kurs vorhanden");
+     }?>
   </h2>
   <h3>
-    <?php
-      echo "Kursleiter: ".$kursX["kursleiter"];
-    ?>
+<?php echo "Kursleiter: ".$kursX["kursleiter"];?>
   </h3>
 </div>
 
@@ -49,10 +47,16 @@ require_once '../../header.php';
         $kurse = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
           if(!empty($kurse)){
           }else{
-            echo "Wisooooooooooooooooooooooooooooooooooooo";
-            $test = $webAnmeldungUrl."neuanmeldung.php?kurs=". $_GET["kurs"];
-            echo $test;
-            header('Location: '.$webAnmeldungUrl."neuanmeldung.php?kurs=". $_GET["kurs"]);
+		  $test = $webAnmeldungUrl.'neuanmeldung.php?kurs='. $_GET["kurs"];
+		  ?>
+		  <script type="text/javascript">//Musste mit JS gelöst werden da mehrer Header Location aufrufe nicht möglich sind.		
+		   document.location='<?php echo $test; ?>';
+		  </script>
+		  <?php
+		 
+
+
+			//header('Location: ' .$webAnmeldungUrl.'neuanmeldung.php?kurs='. $_GET["kurs"]);
             exit;
             }
         }
