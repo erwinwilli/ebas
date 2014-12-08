@@ -16,6 +16,7 @@ if(isset($_POST) && !empty($_POST)){
   if($_POST['sub']=="Speichern"){
     $ebas->kurse->updateKurs($_POST,$_GET["kurs"]);
     header('Location: '."kurse-bearbeiten-liste.php");
+    exit;
   //Kurs löschen
   }elseif($_POST['sub']=="Löschen"){
 	if($_POST["datum"] > date("yyyy.mm.dd")){ //Event ist noch nicht vorbei. Alle Kunden zu den Intresenten
@@ -35,7 +36,7 @@ if(isset($_POST) && !empty($_POST)){
 	}
 
     header('Location: '."kurse-bearbeiten-liste.php");
-
+    exit;
 
   }
 }
@@ -144,6 +145,12 @@ require_once '../../header.php';
 				<input type="date" name="datum"  style="width: 260px"  ng-model="value" placeholder="dd-MM-yyyy" min="2013-01-01" value=<?= $kurs["datum"] ?> >
 			  </td>
             </tr>
+        <tr>
+          <th>Kursleiter</th>
+        </tr>
+          <tr>
+            <td><input type="text" name="kursleiter" value='<?= $kurs["kursleiter"] ?>' ></td>
+          </tr>
         <tr>
           <th>Kurs Details</th>
         </tr>

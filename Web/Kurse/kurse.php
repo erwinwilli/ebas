@@ -19,7 +19,7 @@ require_once '../../header.php';
 <div class="page-header">
   <h2><?php
     if(!is_numeric($_GET["kurs"])){
-      die();
+      die("Can not Connect");
     }
       if(!empty($_GET["kurs"])){
           if (isset($_GET["kurs"])){
@@ -31,9 +31,14 @@ require_once '../../header.php';
               </tr>
             <?php }
           }else{
-              die();
+              die("Kein Kurs vorhanden");
             }?>
   </h2>
+  <h3>
+    <?php
+      echo "Kursleiter: ".$kursX["kursleiter"];
+    ?>
+  </h3>
 </div>
 
 <div class="row">
@@ -44,6 +49,9 @@ require_once '../../header.php';
         $kurse = $ebas->anmeldungen->getAnmeldungen($_GET["kurs"]);
           if(!empty($kurse)){
           }else{
+            echo "Wisooooooooooooooooooooooooooooooooooooo";
+            $test = $webAnmeldungUrl."neuanmeldung.php?kurs=". $_GET["kurs"];
+            echo $test;
             header('Location: '.$webAnmeldungUrl."neuanmeldung.php?kurs=". $_GET["kurs"]);
             exit;
             }
