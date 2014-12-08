@@ -6,7 +6,7 @@ ini_set('display_errors', 'On');
 require_once '../../ebas.class.php';
 require_once '../../session.php';
 
-if($ebas->user->role >= 1){
+if($ebas->user->role > 0){
   header('Location: ' .$loginUrl);
 }
 
