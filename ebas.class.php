@@ -577,7 +577,7 @@ class interessenten {
 
   //bestimmten Interessent anzeigen
   public function getInteressenten($id){
-    $SQL = "SELECT interessent_id, kurs, name, vorname, adresse, plz, ort, email, kursort, sprache, zeit
+    $SQL = "SELECT interessent_id, kurs, name, vorname, adresse, plz, ort, email, kursort, sprache, zeit, kteilnahme, details
     FROM `tbl_interessenten_2014_2`
     WHERE interessent_id = ? ORDER BY name ASC";
     if ($stmt = $this->ebas->db->prepare($SQL)) {
@@ -589,7 +589,7 @@ class interessenten {
       $stmt->execute();
 
       /* bind result */
-      $stmt->bind_result($id, $kurs, $name, $vorname, $adresse, $plz, $ort, $email, $kursort, $sprache, $zeit);
+      $stmt->bind_result($id, $kurs, $name, $vorname, $adresse, $plz, $ort, $email, $kursort, $sprache, $zeit, $kteilnahme, $details);
 
       // Daten zuweisen
       while ($stmt->fetch()) {
@@ -604,7 +604,9 @@ class interessenten {
           'email' => $email,
           'kursort' => $kursort,
           'sprache' => $sprache,
-          'zeit' => $zeit
+          'zeit' => $zeit,
+		  'kteilnahme' => $kteilnahme,
+		  'details' => $details
         );
 
         // Schliessen
@@ -646,7 +648,7 @@ class interessenten {
   public function updateInteressent($data, $id){
     $SQL = "UPDATE ebas.tbl_interessenten_2014_2 SET name ='".$data['name']."',vorname ='".$data['vorname'].
     "',adresse ='".$data['adresse']."',plz ='".$data['plz']."',ort='".$data['ort']."',email='".$data['email'].
-    "',kursort='".$data['kursort']."',sprache='".$data['sprache'].
+    "',kursort='".$data['kursort']."',sprache='".$data['sprache']."',kteilnahme='".$data['kteilnahme']."',details='".$data['details'].
     "' WHERE tbl_interessenten_2014_2.interessent_id =".$id;
     $this->ebas->db->query($SQL);
   }
@@ -654,10 +656,10 @@ class interessenten {
   //Neuer Interessent hinzufügen
     public function neuerInteressent($data){
       if (!empty($data)){
-      $SQL = "INSERT INTO ebas.tbl_interessenten_2014_2 (name, vorname, adresse, plz, ort, email, kursort, sprache)
+      $SQL = "INSERT INTO ebas.tbl_interessenten_2014_2 (name, vorname, adresse, plz, ort, email, kursort, sprache, kteilnahme, details)
       VALUES
       ("."'".$data['name']."'".", "."'".$data['vorname']."'".", "."'".$data['adresse']."'".", "."'".$data['plz']."'".", "."'".$data['ort']."'"
-      .", "."'".$data['email']."'".", "."'".$data['kursort']."'".", "."'".$data['sprache']."'".")";
+      .", "."'".$data['email']."'".", "."'".$data['kursort']."'".", "."'".$data['sprache']."'".", "."'".$data['kteilnahme']."'".", "."'".$data['details']."'".")";
       $this->ebas->db->query($SQL);
       }
     }

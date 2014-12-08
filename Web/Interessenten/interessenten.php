@@ -122,16 +122,40 @@ require_once '../../header.php';
               <tr>
                 <td><input type="text" name="gutschein" value=<?= @$kurs["gutschein"] ?> ></td>
               </tr>
-        <tr>
+       <tr>
           <th>Sprache</th>
         </tr>
           <tr>
-            <td><input type="text" name="sprache" value=<?= $kurs["sprache"] ?> ></td>
+            <td>
+
+              <select name="sprache" style="width: 100px" >
+                <option value="de" <?php if( $kurs['sprache']=="de")echo ' selected="selected"'; ?>  >de</option>
+                <option value="fr" <?php if( $kurs['sprache']=="fr")echo " selected='selected'"; ?> >fr</option>
+                <option value="it" <?php if( $kurs['sprache']=="it")echo ' selected="selected"'; ?> >it</option>
+                <option value="en" <?php if( $kurs['sprache']=="en")echo ' selected="selected"'; ?> >en</option>
+                </select>
+            </td>
           </tr>
+		   <tr>
+          <th>Kostenlose Teilnahme</th>
+        </tr>
+          <tr>
+            <td>
+
+              <select name="kteilnahme" style="width: 100px" >
+                <option value= "0" <?php if( $kurs['kteilnahme']=="0")echo ' selected="selected"'; ?> >Nein</option>
+                <option value= "1" <?php if( $kurs['kteilnahme']=="1")echo ' selected="selected"'; ?> >Ja</option>
+				
+                </select>
+            </td>
+          </tr>
+		  
         <?php } ?>
 
       </tbody>
     </table>
+	<textarea name="details" cols="40" rows="10"><?= $kurs["details"] ?></textarea>
+	<br></br>
     <input class="btn btn-primary" type="submit" name="sub" value="Speichern">
     <input class="btn btn-success" type="submit" name="sub" value="Zur Anmeldung verschieben">
     <input class="btn btn-danger" type="submit" name="sub" value="Löschen">

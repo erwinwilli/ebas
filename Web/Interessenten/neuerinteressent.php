@@ -93,8 +93,22 @@ require_once '../../header.php';
 			</select>
 		  </td>
         </tr>
+		<tr>
+          <th>Kostenlose Teilnahme</th>
+        </tr>
+          <tr>
+            <td>
+
+              <select name="kteilnahme" style="width: 100px" >
+                <option value="0">Nein</option>
+                <option value="1" >Ja</option>
+                </select>
+            </td>
+          </tr>
       </tbody>
     </table>
+	<textarea name="details" cols="40" rows="10"></textarea>
+	<br></br>
     <input class="btn btn-primary" type="submit" onSubmit="formTestInteressent()" id="sendButton" value="Speichern" >
   </form>
      </div>
