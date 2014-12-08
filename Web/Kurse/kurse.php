@@ -49,14 +49,10 @@ require_once '../../header.php';
           }else{
 		  $test = $webAnmeldungUrl.'neuanmeldung.php?kurs='. $_GET["kurs"];
 		  ?>
-		  <script type="text/javascript">//Musste mit JS gelöst werden da mehrer Header Location aufrufe nicht möglich sind.		
+		  <script type="text/javascript">//Musste mit JS gelöst werden da mehrer Header Location aufrufe nicht möglich sind.
 		   document.location='<?php echo $test; ?>';
 		  </script>
 		  <?php
-		 
-
-
-			//header('Location: ' .$webAnmeldungUrl.'neuanmeldung.php?kurs='. $_GET["kurs"]);
             exit;
             }
         }
