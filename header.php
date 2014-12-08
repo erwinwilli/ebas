@@ -76,12 +76,7 @@
       <ul class="nav navbar-nav navbar-right">
       <?php
         if(basename($_SERVER['PHP_SELF']) !== "login.php" ){
-            if($ebas->user->role < 1){
-              echo '<li><a href="'.$webUserUrl.'neueruser.php">Neuer User erstellen</a></li>';
               echo '<li><a href="'.$logoutUrl.'">Ausloggen</a></li>';
-            }else{
-              echo '<li><a href="logout.php">Ausloggen</a></li>';
-              }
         }
       ?>
       </ul>

@@ -9,7 +9,6 @@ $cssUrl = EBAS_URL.'ebas/css/';
 $webAnmeldungUrl = EBAS_URL.'ebas/Web/Anmeldungen/';
 $webInteressentenUrl = EBAS_URL.'ebas/Web/Interessenten/';
 $webKurseUrl = EBAS_URL.'ebas/Web/Kurse/';
-$webUserUrl = EBAS_URL.'ebas/Web/User/';
 
 
 $ebas = new ebas;
