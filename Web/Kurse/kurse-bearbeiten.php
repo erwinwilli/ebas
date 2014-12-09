@@ -92,7 +92,7 @@ require_once '../../header.php';
           <th>Sortierung</th>
         </tr>
         <tr>
-			<td><input type="text" name="sortierung" value=<?= $kurs["sortierung"] ?> ></td>
+			<td><input type="text" name="sortierung" value='<?= $kurs["sortierung"] ?>' ></td>
 		</tr>
 		<tr>
 			<th>Sprache</th>
@@ -111,19 +111,19 @@ require_once '../../header.php';
           <th>max. Teilnehmer</th>
         </tr>
           <tr>
-            <td><input type="text" name="max_teilnehmer" value=<?= $kurs["max_teilnehmer"] ?> ></td>
+            <td><input type="text" name="max_teilnehmer" value='<?= $kurs["max_teilnehmer"] ?>' ></td>
           </tr>
         <tr>
           <th>max. Teilnehmer PF</th>
         </tr>
           <tr>
-            <td><input type="text" name="max_teilnehmer_PF" value=<?= $kurs["max_teilnehmer_PF"] ?> ></td>
+            <td><input type="text" name="max_teilnehmer_PF" value='<?= $kurs["max_teilnehmer_PF"] ?>' ></td>
           </tr>
         <tr>
           <th>Kursort</th>
         </tr>
           <tr>
-            <td><input type="text" name="kursort" value=<?= $kurs["kursort"] ?> ></td>
+            <td><input type="text" name="kursort" value='<?= $kurs["kursort"] ?>' ></td>
           </tr>
           <tr>
             <th>Datum</th>
@@ -156,7 +156,7 @@ require_once '../../header.php';
         </tr>
           <tr>
             <td>
-                <textarea name="details" cols="40" rows="10" value=<?= $kurs["details"] ?>><?= $kurs["details"] ?></textarea>
+                <textarea name="details" cols="40" rows="10" value=<?= $kurs["details"] ?>> <?= $kurs["details"] ?></textarea>
             </td>
           </tr>
 

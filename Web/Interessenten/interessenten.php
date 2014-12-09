@@ -78,49 +78,49 @@ require_once '../../header.php';
           <th>Name</th>
         </tr>
           <tr>
-            <td><input type="text" name="name" value=<?= $kurs["name"] ?> ></td>
+            <td><input type="text" name="name" value='<?= $kurs["name"] ?>' ></td>
           </tr>
         <tr>
           <th>Vorname</th>
         </tr>
           <tr>
-            <td><input type="text" name="vorname" value=<?= $kurs["vorname"] ?> ></td>
+            <td><input type="text" name="vorname" value='<?= $kurs["vorname"] ?>' ></td>
           </tr>
         <tr>
           <th>Adresse</th>
         </tr>
           <tr>
-            <td><input type="text" name="adresse" value=<?= $kurs["adresse"] ?> ></td>
+            <td><input type="text" name="adresse" value='<?= $kurs["adresse"] ?>' ></td>
           </tr>
         <tr>
           <th>PLZ</th>
         </tr>
           <tr>
-            <td><input type="text" name="plz" value=<?= $kurs["plz"] ?> ></td>
+            <td><input type="text" name="plz" value='<?= $kurs["plz"] ?>' ></td>
           </tr>
         <tr>
           <th>Ort</th>
         </tr>
           <tr>
-            <td><input type="text" name="ort" value=<?= $kurs["ort"] ?> ></td>
+            <td><input type="text" name="ort" value='<?= $kurs["ort"] ?>' ></td>
           </tr>
         <tr>
           <th>E-Mail</th>
         </tr>
           <tr>
-            <td><input type="text" name="email" value=<?= $kurs["email"] ?> ></td>
+            <td><input type="text" name="email" value='<?= $kurs["email"] ?>' ></td>
           </tr>
           <tr>
             <th>Kursort</th>
           </tr>
             <tr>
-              <td><input type="text" name="kursort" value=<?= $kurs["kursort"] ?> ></td>
+              <td><input type="text" name="kursort" value='<?= $kurs["kursort"] ?>' ></td>
             </tr>
             <tr>
               <th>Gutschein</th>
             </tr>
               <tr>
-                <td><input type="text" name="gutschein" value=<?= @$kurs["gutschein"] ?> ></td>
+                <td><input type="text" name="gutschein" value='<?= @$kurs["gutschein"] ?>' ></td>
               </tr>
        <tr>
           <th>Sprache</th>

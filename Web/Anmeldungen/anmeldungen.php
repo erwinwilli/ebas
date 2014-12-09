@@ -78,37 +78,37 @@ require_once '../../header.php';
           <th>Name</th>
         </tr>
           <tr>
-            <td><input type="text" name="name" value=<?= $kurs["name"] ?> ><font id="txtErrorName" value="" color="#FF0000"></font></td>
+            <td><input type="text" name="name" value='<?= $kurs["name"] ?>' ><font id="txtErrorName" value="" color="#FF0000"></font></td>
           </tr>
         <tr>
           <th>Vorname</th>
         </tr>
           <tr>
-            <td><input type="text" name="vorname" value=<?= $kurs["vorname"] ?> ><font id="txtErrorVorname" value="" color="#FF0000"></font></td>
+            <td><input type="text" name="vorname" value='<?= $kurs["vorname"] ?>' ><font id="txtErrorVorname" value="" color="#FF0000"></font></td>
           </tr>
         <tr>
           <th>Adresse</th>
         </tr>
           <tr>
-            <td><input type="text" name="adresse" value=<?= $kurs["adresse"] ?> ><font id="txtErrorAdresse" value="" color="#FF0000"></font></td>
+            <td><input type="text" name="adresse" value='<?= $kurs["adresse"] ?>' ><font id="txtErrorAdresse" value="" color="#FF0000"></font></td>
           </tr>
         <tr>
           <th>PLZ</th>
         </tr>
           <tr>
-            <td><input type="text" name="plz" value=<?= $kurs["plz"] ?> ><font id="txtErrorPLZ" value="" color="#FF0000"></font></td>
+            <td><input type="text" name="plz" value='<?= $kurs["plz"] ?>' ><font id="txtErrorPLZ" value="" color="#FF0000"></font></td>
           </tr>
         <tr>
           <th>Ort</th>
         </tr>
           <tr>
-            <td><input type="text" name="ort" value=<?= $kurs["ort"] ?> ><font id="txtErrorOrt" value="" color="#FF0000"></font></td>
+            <td><input type="text" name="ort" value='<?= $kurs["ort"] ?>' ><font id="txtErrorOrt" value="" color="#FF0000"></font></td>
           </tr>
         <tr>
           <th>E-Mail</th>
         </tr>
           <tr>
-            <td><input type="text" name="email" value=<?= $kurs["email"] ?> ><font id="txtErrorEmail" value="" color="#FF0000"></font></td>
+            <td><input type="text" name="email" value='<?= $kurs["email"] ?>' ><font id="txtErrorEmail" value="" color="#FF0000"></font></td>
           </tr>
         <tr>
           <th>Sprache</th>
@@ -128,13 +128,13 @@ require_once '../../header.php';
             <th>Kursort</th>
           </tr>
             <tr>
-              <td><input type="text" name="kursort" value=<?= $kursort ?> ><font id="txtErrorName" value="" color="#FF0000"></font></td>
+              <td><input type="text" name="kursort" value='<?= $kursort ?>' ><font id="txtErrorName" value="" color="#FF0000"></font></td>
             </tr>
         <tr>
           <th>Gutschein</th>
         </tr>
           <tr>
-            <td><input type="text" name="gutschein" value=<?= $kurs["gutschein"] ?> ></td>
+            <td><input type="text" name="gutschein" value='<?= $kurs["gutschein"] ?>' ></td>
           </tr>
 		  <tr>
 		<tr>
