@@ -62,7 +62,6 @@ require_once '../../header.php';
       </tbody>
     </table>
     <a class="btn btn-primary" href="neuerinteressent.php">Neuer Interessent</a>
-    <button class="btn btn-info export-csv">Export in CSV</button>
         </div>
 </div>
 

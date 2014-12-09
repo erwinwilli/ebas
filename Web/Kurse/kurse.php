@@ -99,7 +99,6 @@ require_once '../../header.php';
 	  </br> </br>
 	  <a class="btn btn-info" href="kurseDruckvorschau.php?kurs=<?php echo $_GET["kurs"]; ?>">Druckvorschau</a>
 	 <a class="btn btn-info" href="kurseDruckvorschauKompakt.php?kurs=<?php echo $_GET["kurs"]; ?>">Druckvorschau Kompakt</a>
-   <button class="btn btn-info export-csv">Export in CSV</button>
 
           </div>
   </div>
