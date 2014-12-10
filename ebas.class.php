@@ -1,6 +1,6 @@
 <?php
 error_reporting( E_ALL );
-ini_set('display_errors', 'On');
+ini_set('display_errors', 'Off');
 
 $GLOBALS['strGlobAlleAnmel'] = "*";
 $GLOBALS['strGlobAlleintre'] = "*";
@@ -429,7 +429,7 @@ class anmeldungen {
             'sprache' => $sprache,
             'zeit' => $zeit,
 			'deinladung' => $deinladung,
-			'drechnung' => $drechnung	
+			'drechnung' => $drechnung
           );
         }
 

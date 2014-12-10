@@ -1,7 +1,7 @@
 <?php
 
 error_reporting( E_ALL );
-ini_set('display_errors', 'On');
+ini_set('display_errors', 'Off');
 
 require_once '../../ebas.class.php';
 require_once '../../session.php';
@@ -145,11 +145,11 @@ require_once '../../header.php';
               <select name="kteilnahme" style="width: 100px" >
                 <option value= "0" <?php if( $kurs['kteilnahme']=="0")echo ' selected="selected"'; ?> >Nein</option>
                 <option value= "1" <?php if( $kurs['kteilnahme']=="1")echo ' selected="selected"'; ?> >Ja</option>
-				
+
                 </select>
             </td>
           </tr>
-		  
+
         <?php } ?>
 
       </tbody>

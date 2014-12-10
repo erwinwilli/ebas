@@ -1,7 +1,7 @@
 <?php
 
 error_reporting( E_ALL );
-ini_set('display_errors', 'On');
+ini_set('display_errors', 'Off');
 
 require_once '../../ebas.class.php';
 require_once '../../session.php';
@@ -109,8 +109,8 @@ require_once '../../header.php';
         <tr>
           <td><input type="text" name="gutschein" ></td>
         </tr>
-		
-		
+
+
       </tbody>
     </table>
     <input class="btn btn-primary" type="submit" onSubmit="formTestAnmeldung()" id="sendButton" value="Speichern" >
