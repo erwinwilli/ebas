@@ -1,6 +1,6 @@
 <?php
 //const Host_URL definieren "/github/" = Pfad zu ebas
-define("EBAS_URL", "http://".$_SERVER["HTTP_HOST"]."/");
+define("EBAS_URL", "http://".$_SERVER["HTTP_HOST"]."/github/");
 $loginUrl = EBAS_URL.'ebas/login.php';
 $logoutUrl = EBAS_URL.'ebas/logout.php';
 $rootUrl = EBAS_URL.'ebas/';

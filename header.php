@@ -53,7 +53,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Anmeldungen <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="<?php echo $webAnmeldungUrl;?>anmeldungen-liste.php">Alle Anmeldungen</a></li>
-            <li><a href="<?php echo $webAnmeldungUrl;?>neuanmeldung.php">Neue Anmeldung erstelle</a></li>
+            <li><a href="<?php echo $webAnmeldungUrl;?>neuanmeldung.php">Neue Anmeldung erstellen</a></li>
           </ul>
       </li>
 
